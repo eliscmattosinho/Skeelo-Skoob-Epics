@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "./components/Header";
+import Sobre from "./components/Sobre";
 import "./styles/App.css";
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
     <div className="App">
       <div id="main">
       <Header /> {}
+      <Sobre /> {}
       </div>
     </div>
   );

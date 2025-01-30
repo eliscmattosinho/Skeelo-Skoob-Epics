@@ -1,0 +1,31 @@
+#block-h2 {
+    background-image: linear-gradient(90deg, #2DA44A 0%, #3DD6B3 50%, #2C7FA3 100%);
+    color: transparent;
+    background-clip: text;
+    font-size: 5rem;
+}
+
+#bg-tgreen {
+    margin-right: 20px;
+    margin-left: 20px;
+    padding: 60px;
+
+    background: linear-gradient(180deg, rgba(61, 214, 179, 0.2) 0%, rgba(91, 220, 191, 0.168839) 35.76%, rgba(121, 227, 203, 0.137677) 71.53%, rgba(255, 255, 255, 0) 100%);
+    border-radius: 100px 100px 0px 0px;
+}
+
+.center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    gap: 3rem;
+}
+
+.alone-p {
+    font-weight: 600;
+}
+
+#block-sub {
+    margin-bottom: -20px;
+}
