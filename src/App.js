@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import Sobre from "./components/Sobre";
 import Contexto from "./components/Contexto";
 import Elementos from "./components/Elementos";
+import Footer from "./components/Footer";
 import "./styles/App.css";
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
         <Sobre /> { }
         <Contexto /> { }
         <Elementos /> { }
+        <Footer /> { }
       </div>
     </div>
   );
