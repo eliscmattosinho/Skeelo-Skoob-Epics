@@ -54,16 +54,13 @@
 
 .img-container {
     position: relative;
-    z-index: 1;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-.img-container {
-    position: relative;
     display: inline-block;
     padding: 4px;
     border-radius: 50%;
     background: linear-gradient(90deg, #2da44a 0%, #3dd6b3 50%, #2c7fa3 100%);
+
+    z-index: 1;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .img-container .img {

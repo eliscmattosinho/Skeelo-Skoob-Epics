@@ -2,6 +2,7 @@ import React from "react";
 import Header from "./components/Header";
 import Sobre from "./components/Sobre";
 import Contexto from "./components/Contexto";
+import Elementos from "./components/Elementos";
 import "./styles/App.css";
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
         <Header /> { }
         <Sobre /> { }
         <Contexto /> { }
+        <Elementos /> { }
       </div>
     </div>
   );
