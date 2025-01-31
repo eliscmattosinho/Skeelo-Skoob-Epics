@@ -7,7 +7,7 @@ function Sobre() {
     // @TODO: Pensar em nomes melhores para os identificadores e classes
     return (
         <div id="bg-tgreen" className="content-block">
-            <div className="content">
+            <div id="sobre" className="content">
                 <div className="content-blocks">
                     <div className="block-title">
                         <p id="block-sub">Ecossistema de leitura digital</p>
