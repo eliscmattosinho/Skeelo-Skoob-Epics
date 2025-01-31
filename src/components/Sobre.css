@@ -11,7 +11,6 @@
     padding: 60px;
 
     background: linear-gradient(180deg, rgba(61, 214, 179, 0.2) 0%, rgba(91, 220, 191, 0.168839) 35.76%, rgba(121, 227, 203, 0.137677) 71.53%, rgba(255, 255, 255, 0) 100%);
-    border-radius: 100px 100px 0px 0px;
 }
 
 .center {
@@ -30,10 +29,6 @@
 }
 
 @media (max-width: 480px) {
-    #bg-tgreen {
-        border-radius: 50px 50px 0px 0px;
-    }
-
     .center {
         gap:2rem;
     }
