@@ -10,7 +10,7 @@ function Sobre() {
             <div id="sobre" className="content">
                 <div className="content-blocks">
                     <div className="block-title">
-                        <p id="block-sub">Ecossistema de leitura digital</p>
+                        <h4 id="block-sub" className="sub-title">Ecossistema de leitura digital</h4>
                         <h2 id="block-h2">Skeelo-Skoob</h2>
                     </div>
                     <div id="block-image-p" className="center">
