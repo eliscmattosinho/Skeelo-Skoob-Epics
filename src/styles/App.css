@@ -10,6 +10,10 @@
 /* Estilização da main */
 #main {
   background-color: #efefef;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 .content {
@@ -67,6 +71,12 @@ h4.sub-title {
 
 p {
   text-indent: 20px;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .p-block {
