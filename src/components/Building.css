@@ -1,0 +1,38 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background-color: #141414;
+    color: #efefef;
+}
+
+.block {
+    display: flex;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+h2 {
+    font-size: 5rem;
+}
+
+/* vertical center */
+.center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#block-p {
+    max-width: 400px;
+    text-align: center;
+}
+
+.social-link {
+    font-weight: 600;
+}
