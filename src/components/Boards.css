@@ -197,3 +197,15 @@ p.btn-title {
 .board.active {
     display: flex;
 }
+
+button.back-btn {
+    border: none;
+}
+button.back-btn:hover {
+    cursor: pointer;
+}
+
+button.back-btn svg {
+    width: 30px;
+    height: auto;
+}

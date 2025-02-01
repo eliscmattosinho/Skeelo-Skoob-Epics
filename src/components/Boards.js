@@ -1,11 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { setupBoards } from "../scripts/boardsManipulation";
 
 import "../styles/App.css";
 import "./Boards.css";
 import svgBoard from "../assets/image-icons/svg-board.svg";
 
+import { FaArrowCircleLeft  } from "react-icons/fa";
+
 function Boards() {
+    const navigate = useNavigate(); // Hook para navegação
+    useEffect(() => {
+        setupBoards();
+    }, []);
+
     useEffect(() => {
         setupBoards();
     }, []);
@@ -13,6 +21,12 @@ function Boards() {
     return (
         <div className="content-block">
             <div id="general-content" className="content">
+            <div className="back-button">
+                    <button onClick={() => navigate("/")} className="back-btn">
+                        <FaArrowCircleLeft  />
+                    </button>
+                </div>
+
                 <div className="first-section-board">
                     <div className="text-content-intro">
                         <div className="titles-content">
