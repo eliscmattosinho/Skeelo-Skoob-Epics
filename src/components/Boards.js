@@ -60,7 +60,7 @@ function Boards() {
                     <h3 id="h3-title">ExampleVar</h3>
                     <div className="tables-block">
                         <div id="kanban" className="board kanban-board">
-                            <div className="col-board kanban-column" id="a fazer">
+                            <div className="col-board kanban-column" id="to-do">
                                 <div className="title-col-board">
                                     <h4 className="col-title-board todo">A Fazer</h4>
                                 </div>
@@ -71,7 +71,7 @@ function Boards() {
                                 >
                                 </div>
                             </div>
-                            <div className="col-board kanban-column" id="em progresso">
+                            <div className="col-board kanban-column" id="k-in-progress">
                                 <div className="title-col-board">
                                     <h4 className="col-title-board progress">Em Progresso</h4>
                                 </div>
@@ -82,7 +82,7 @@ function Boards() {
                                 >
                                 </div>
                             </div>
-                            <div className="col-board kanban-column" id="concluído">
+                            <div className="col-board kanban-column" id="k-done">
                                 <div className="title-col-board">
                                     <h4 className="col-title-board done">Concluído</h4>
                                 </div>
@@ -94,6 +94,7 @@ function Boards() {
                                 </div>
                             </div>
                         </div>
+
                         <div id="scrum" className="board scrum-board">
                             <div className="col-board scrum-column" id="backlog">
                                 <div className="title-col-board">
@@ -106,7 +107,7 @@ function Boards() {
                                 >
                                 </div>
                             </div>
-                            <div className="col-board scrum-column" id="sprint backlog">
+                            <div className="col-board scrum-column" id="sprint-backlog">
                                 <div className="title-col-board">
                                     <h4 className="col-title-board todo">Sprint Backlog</h4>
                                 </div>
@@ -117,7 +118,7 @@ function Boards() {
                                 >
                                 </div>
                             </div>
-                            <div className="col-board scrum-column" id="em progresso">
+                            <div className="col-board scrum-column" id="s-in-progress">
                                 <div className="title-col-board">
                                     <h4 className="col-title-board progress">Em Progresso</h4>
                                 </div>
@@ -128,7 +129,7 @@ function Boards() {
                                 >
                                 </div>
                             </div>
-                            <div className="col-board scrum-column" id="revisão">
+                            <div className="col-board scrum-column" id="review">
                                 <div className="title-col-board review">
                                     <h4 className="col-title-board review">Revisão</h4>
                                 </div>
@@ -139,7 +140,7 @@ function Boards() {
                                 >
                                 </div>
                             </div>
-                            <div className="col-board scrum-column" id="concluído">
+                            <div className="col-board scrum-column" id="s-done">
                                 <div className="title-col-board">
                                     <h4 className="col-title-board done">Concluído</h4>
                                 </div>

@@ -63,7 +63,7 @@ Tarefa 16: Configurar o Ambiente de Desenvolvimento
 Descrição: Estabelecer repositórios no GitHub/GitLab e configurar a integração e entrega contínua.
 
 Tarefa 17: Implementar Funcionalidades
-- Status: Em Progresso
+- Status: Revisão
 Descrição: Implementar as funcionalidades do produto conforme os requisitos definidos, com foco no uso de código limpo e documentação.
 
 Tarefa 18: Garantir a Qualidade do Código

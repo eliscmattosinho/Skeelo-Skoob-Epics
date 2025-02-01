@@ -10,6 +10,10 @@
     background-clip: text;
 }
 
+.task-counter {
+    background-color: transparent;
+}
+
 p.btn-title {
     background: linear-gradient(90deg, #2DA44A 0%, #3DD6B3 50%, #2C7FA3 100%);
     -webkit-background-clip: text;
@@ -105,21 +109,21 @@ p.btn-title {
 }
 
 .kanban-items::-webkit-scrollbar,
-.scrum-item::-webkit-scrollbar {
+.scrum-items::-webkit-scrollbar {
     width: 5px;
     padding: 10px;
 }
 
 .board::-webkit-scrollbar-thumb,
 .kanban-items::-webkit-scrollbar-thumb,
-.scrum-item::-webkit-scrollbar-thumb {
+.scrum-items::-webkit-scrollbar-thumb {
     background-color: #fefefe6c;
     border-radius: 5px;
 }
 
 .board::-webkit-scrollbar-thumb:hover,
 .kanban-items::-webkit-scrollbar-thumb:hover,
-.scrum-item::-webkit-scrollbar-thumb:hover {
+.scrum-items::-webkit-scrollbar-thumb:hover {
     cursor: pointer;
 }
 
@@ -185,9 +189,10 @@ p.btn-title {
 .item-title {
     font-size: 16px;
     font-weight: 500;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
+    white-space: wrap;
+    /* text-overflow: ellipsis; */
+    /* overflow: hidden; */
+    text-align: center;
 }
 
 .board {
