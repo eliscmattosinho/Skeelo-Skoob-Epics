@@ -57,6 +57,12 @@ h4.sub-title {
   font-weight: 100;
 }
 
+a {
+  text-decoration: none;
+  color: #efefef;
+  cursor: pointer;
+}
+
 .btn {
   padding: 10px 20px;
   border: none;
@@ -114,6 +120,9 @@ p {
   #bg-tgreen {
     border-radius: 50px 50px 0px 0px;
   }
+  #bg-cgreen {
+    border-radius: 0px 0px 50px 50px;
+  }
 }
 
 @media (min-width: 768px) {
@@ -126,5 +135,8 @@ p {
 
   #bg-tgreen {
     border-radius: 100px 100px 0px 0px;
+  }
+  #bg-cgreen {
+    border-radius: 0px 0px 100px 100px;
   }
 }
