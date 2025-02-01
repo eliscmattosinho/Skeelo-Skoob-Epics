@@ -1,29 +1,38 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { setupBoards } from "../scripts/boardsManipulation";
+import { loadTasks } from "../scripts/tasksLoader";
 
 import "../styles/App.css";
 import "./Boards.css";
 import svgBoard from "../assets/image-icons/svg-board.svg";
-
-import { FaArrowCircleLeft  } from "react-icons/fa";
+import { FaArrowCircleLeft } from "react-icons/fa";
 
 function Boards() {
-    const navigate = useNavigate(); // Hook para navegação
-    useEffect(() => {
-        setupBoards();
-    }, []);
+    const navigate = useNavigate();
 
     useEffect(() => {
         setupBoards();
+        loadTasks();
     }, []);
+
+    const allowDrop = (event) => {
+        event.preventDefault();
+    };
+
+    const handleDrop = (event) => {
+        event.preventDefault();
+        const data = event.dataTransfer.getData("text");
+        const taskElement = document.getElementById(data);
+        event.target.appendChild(taskElement);
+    };
 
     return (
         <div className="content-block">
             <div id="general-content" className="content">
-            <div className="back-button">
+                <div className="back-button">
                     <button onClick={() => navigate("/")} className="back-btn">
-                        <FaArrowCircleLeft  />
+                        <FaArrowCircleLeft />
                     </button>
                 </div>
 
@@ -43,98 +52,102 @@ function Boards() {
                         </div>
                     </div>
                     <div className="img-block">
-                        <img src={svgBoard} alt=""></img>
+                        <img src={svgBoard} alt="" />
                     </div>
                 </div>
 
                 <div className="second-section-board">
                     <h3 id="h3-title">ExampleVar</h3>
                     <div className="tables-block">
-
-                        {/* Kanban */}
                         <div id="kanban" className="board kanban-board">
-                            <div className="col-board kanban-column" id="todo">
+                            <div className="col-board kanban-column" id="a fazer">
                                 <div className="title-col-board">
                                     <h4 className="col-title-board todo">A Fazer</h4>
                                 </div>
-                                <div className="col-items kanban-items" ondrop="drop(event)" ondragover="allowDrop(event)">
-                                    {/* Exemplo de tarefas para css */}
-                                    <div className="item kanban-item" draggable="true" ondragstart="drag(event)" id="task1">
-                                        <h3 className="item-title">Tarefa 1</h3>
-                                    </div>
-                                    <div className="item kanban-item" draggable="true" ondragstart="drag(event)" id="task2">
-                                        <h3 className="item-title">Tarefa 2</h3>
-                                    </div>
+                                <div
+                                    className="col-items kanban-items"
+                                    onDrop={handleDrop}
+                                    onDragOver={allowDrop}
+                                >
                                 </div>
                             </div>
-                            <div className="col-board kanban-column" id="in-progress">
+                            <div className="col-board kanban-column" id="em progresso">
                                 <div className="title-col-board">
                                     <h4 className="col-title-board progress">Em Progresso</h4>
                                 </div>
-                                <div className="col-items kanban-items" ondrop="drop(event)" ondragover="allowDrop(event)">
-                                    {/* Tarefas em andamento */}
+                                <div
+                                    className="col-items kanban-items"
+                                    onDrop={handleDrop}
+                                    onDragOver={allowDrop}
+                                >
                                 </div>
                             </div>
-                            <div className="col-board kanban-column" id="done">
+                            <div className="col-board kanban-column" id="concluído">
                                 <div className="title-col-board">
                                     <h4 className="col-title-board done">Concluído</h4>
                                 </div>
-                                <div className="col-items kanban-items" ondrop="drop(event)" ondragover="allowDrop(event)">
-                                    {/* Tarefas concluídas */}
+                                <div
+                                    className="col-items kanban-items"
+                                    onDrop={handleDrop}
+                                    onDragOver={allowDrop}
+                                >
                                 </div>
                             </div>
                         </div>
-
-                        {/* Scrum */}
                         <div id="scrum" className="board scrum-board">
-                            {/* Backlog */}
                             <div className="col-board scrum-column" id="backlog">
                                 <div className="title-col-board">
                                     <h4 className="col-title-board backlog">Backlog</h4>
                                 </div>
-                                <div className="col-items scrum-items" ondrop="drop(event)" ondragover="allowDrop(event)">
-                                    <div className="item scrum-item" draggable="true" ondragstart="drag(event)" id="task-">
-                                        <h3 className="item-title">História 1</h3>
-                                    </div>
-                                    <div className="item scrum-item" draggable="true" ondragstart="drag(event)" id="task-">
-                                        <h3 className="item-title">História 2</h3>
-                                    </div>
+                                <div
+                                    className="col-items scrum-items"
+                                    onDrop={handleDrop}
+                                    onDragOver={allowDrop}
+                                >
                                 </div>
                             </div>
-                            {/* Sprint Backlog*/}
-                            <div className="col-board scrum-column" id="sprint-backlog">
+                            <div className="col-board scrum-column" id="sprint backlog">
                                 <div className="title-col-board">
                                     <h4 className="col-title-board todo">Sprint Backlog</h4>
                                 </div>
-                                <div className="col-items scrum-items" ondrop="drop(event)" ondragover="allowDrop(event)">
-                                    {/* Tarefas selecionadas para o Sprint */}
+                                <div
+                                    className="col-items scrum-items"
+                                    onDrop={handleDrop}
+                                    onDragOver={allowDrop}
+                                >
                                 </div>
                             </div>
-                            {/* Em Progresso */}
-                            <div className="col-board scrum-column" id="in-progress">
+                            <div className="col-board scrum-column" id="em progresso">
                                 <div className="title-col-board">
                                     <h4 className="col-title-board progress">Em Progresso</h4>
                                 </div>
-                                <div className="col-items scrum-items" ondrop="drop(event)" ondragover="allowDrop(event)">
-                                    {/* Tarefas em andamento */}
+                                <div
+                                    className="col-items scrum-items"
+                                    onDrop={handleDrop}
+                                    onDragOver={allowDrop}
+                                >
                                 </div>
                             </div>
-                            {/* Revisão */}
-                            <div className="col-board scrum-column" id="review">
+                            <div className="col-board scrum-column" id="revisão">
                                 <div className="title-col-board review">
                                     <h4 className="col-title-board review">Revisão</h4>
                                 </div>
-                                <div className="col-items scrum-items" ondrop="drop(event)" ondragover="allowDrop(event)">
-                                    {/* Tarefas em revisão */}
+                                <div
+                                    className="col-items scrum-items"
+                                    onDrop={handleDrop}
+                                    onDragOver={allowDrop}
+                                >
                                 </div>
                             </div>
-                            {/* Concluído */}
-                            <div className="col-board scrum-column" id="done">
+                            <div className="col-board scrum-column" id="concluído">
                                 <div className="title-col-board">
                                     <h4 className="col-title-board done">Concluído</h4>
                                 </div>
-                                <div className="col-items scrum-items" ondrop="drop(event)" ondragover="allowDrop(event)">
-                                    {/* Tarefas finalizadas */}
+                                <div
+                                    className="col-items scrum-items"
+                                    onDrop={handleDrop}
+                                    onDragOver={allowDrop}
+                                >
                                 </div>
                             </div>
                         </div>
