@@ -1,9 +1,6 @@
 export async function loadTasks() {
     try {
-        // console.log("Iniciando o carregamento das tarefas...");
-
         const response = await fetch(`${process.env.PUBLIC_URL || ''}/assets/tarefas.txt`);
-        // console.log("Resposta do fetch:", response);
 
         if (!response.ok) {
             console.error("Falha ao carregar o arquivo de tarefas.");
@@ -11,11 +8,9 @@ export async function loadTasks() {
         }
 
         const text = await response.text();
-        // console.log("Tarefas carregadas do arquivo:", text);
 
         // Processando as tarefas
         const tasks = parseTasks(text);
-        // console.log("Tarefas processadas:", tasks);
 
         createTaskItems(tasks);
 
@@ -28,15 +23,12 @@ export async function loadTasks() {
 
 // Função para parsear o conteúdo do arquivo
 function parseTasks(text) {
-    // console.log("Iniciando o parse das tarefas...");
     const tasks = [];
 
     const taskRegex = /Tarefa (\d+): (.*?)\n- Status: (.*?)\nDescrição: (.*?)(?=\nTarefa \d+:|$)/gs;
     let match;
 
     while ((match = taskRegex.exec(text)) !== null) {
-        // console.log("Match encontrado:", match);
-
         const title = match[2].trim();
         const status = match[3].trim();
         const description = match[4].trim();
@@ -44,13 +36,10 @@ function parseTasks(text) {
         tasks.push({ title, status, description});
     }
 
-    // console.log("Tarefas parseadas:", tasks);
     return tasks;
 }
 
 function createTaskItems(tasks) {
-    // console.log("Iniciando a criação de itens nas colunas...");
-
     const mappings = {
         kanban: {
             'A Fazer': 'to-do',
@@ -85,11 +74,6 @@ function createTaskItems(tasks) {
         taskTitle.textContent = task.title;
         taskElement.appendChild(taskTitle);
 
-        // const taskDescription = document.createElement('p');
-        // taskDescription.classList.add('item-description');
-        // taskDescription.textContent = task.description;
-        // taskElement.appendChild(taskDescription);
-
         // Adiciona evento de clique para abrir o modal
         taskElement.onclick = () => {
         openTaskModal(task)
@@ -99,8 +83,6 @@ function createTaskItems(tasks) {
     }
 
     tasks.forEach((task) => {
-        // console.log(`Criando item para a tarefa: ${task.title}, status: ${task.status}`);
-
         // Função para adicionar tarefa na coluna de Kaban ou Scrum
         function addTaskToColumn(mapping, platform) {
             const columnId = mapping[task.status];
@@ -117,8 +99,6 @@ function createTaskItems(tasks) {
         addTaskToColumn(mappings.kanban, 'Kanban');
         addTaskToColumn(mappings.scrum, 'Scrum');
     });
-
-    // console.log("Itens criados nas colunas.");
 }
 
 function updateColumnTaskCount() {
@@ -158,7 +138,6 @@ function updateTotalTaskCount() {
             // Vê se já existe um span com o contador e atualiza ou cria um novo
             let counterSpan = h3Title.querySelector('.task-counter');
             if (!counterSpan) {
-                // Criar um novo span caso não exista
                 counterSpan = document.createElement('span');
                 counterSpan.classList.add('task-counter');
                 h3Title.appendChild(counterSpan);
@@ -175,8 +154,7 @@ function updateTotalTaskCount() {
 function openTaskModal(task) {
     const modal = document.createElement('div');
     modal.classList.add('modal');
-    
-    // Modal Content
+
     const modalContent = document.createElement('div');
     modalContent.classList.add('modal-content');
     
@@ -204,8 +182,7 @@ function openTaskModal(task) {
     description.appendChild(strong);
     description.appendChild(document.createTextNode(task.description || 'Nenhuma descrição disponível.'));
     infoContent.appendChild(description);
-    
-    // Botão de Fechar
+
     const closeButton = document.createElement('button');
     closeButton.textContent = 'X';
     closeButton.classList.add('modal-close');
@@ -215,8 +192,7 @@ function openTaskModal(task) {
     modalContent.appendChild(closeButton);
     
     modal.appendChild(modalContent);
-    
-    // Adicionar o modal à página
+
     document.body.appendChild(modal);
 }
 
