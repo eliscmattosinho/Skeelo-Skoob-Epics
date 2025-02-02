@@ -1,9 +1,9 @@
 export async function loadTasks() {
     try {
-        console.log("Iniciando o carregamento das tarefas...");
+        // console.log("Iniciando o carregamento das tarefas...");
 
         const response = await fetch(`${process.env.PUBLIC_URL || ''}/assets/tarefas.txt`);
-        console.log("Resposta do fetch:", response);
+        // console.log("Resposta do fetch:", response);
 
         if (!response.ok) {
             console.error("Falha ao carregar o arquivo de tarefas.");
@@ -11,11 +11,11 @@ export async function loadTasks() {
         }
 
         const text = await response.text();
-        console.log("Tarefas carregadas do arquivo:", text);
+        // console.log("Tarefas carregadas do arquivo:", text);
 
         // Processando as tarefas
         const tasks = parseTasks(text);
-        console.log("Tarefas processadas:", tasks);
+        // console.log("Tarefas processadas:", tasks);
 
         createTaskItems(tasks);
 
@@ -28,14 +28,14 @@ export async function loadTasks() {
 
 // Função para parsear o conteúdo do arquivo
 function parseTasks(text) {
-    console.log("Iniciando o parse das tarefas...");
+    // console.log("Iniciando o parse das tarefas...");
     const tasks = [];
 
     const taskRegex = /Tarefa (\d+): (.*?)\n- Status: (.*?)\nDescrição: (.*?)(?=\nTarefa \d+:|$)/gs;
     let match;
 
     while ((match = taskRegex.exec(text)) !== null) {
-        console.log("Match encontrado:", match);
+        // console.log("Match encontrado:", match);
 
         const title = match[2].trim();
         const status = match[3].trim();
@@ -44,12 +44,12 @@ function parseTasks(text) {
         tasks.push({ title, status});
     }
 
-    console.log("Tarefas parseadas:", tasks);
+    // console.log("Tarefas parseadas:", tasks);
     return tasks;
 }
 
 function createTaskItems(tasks) {
-    console.log("Iniciando a criação de itens nas colunas...");
+    // console.log("Iniciando a criação de itens nas colunas...");
 
     const mappings = {
         kanban: {
@@ -94,7 +94,7 @@ function createTaskItems(tasks) {
     }
 
     tasks.forEach((task) => {
-        console.log(`Criando item para a tarefa: ${task.title}, status: ${task.status}`);
+        // console.log(`Criando item para a tarefa: ${task.title}, status: ${task.status}`);
 
         // Função para adicionar tarefa na coluna de Kaban ou Scrum
         function addTaskToColumn(mapping, platform) {
@@ -113,7 +113,7 @@ function createTaskItems(tasks) {
         addTaskToColumn(mappings.scrum, 'Scrum');
     });
 
-    console.log("Itens criados nas colunas.");
+    // console.log("Itens criados nas colunas.");
 }
 
 function updateColumnTaskCount() {

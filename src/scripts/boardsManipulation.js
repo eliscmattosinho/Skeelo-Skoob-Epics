@@ -1,28 +1,47 @@
-
 // Setagem de visualização dos boards
 export function setupBoards() {
     const kanbanButton = document.getElementById("b-kanban");
     const scrumButton = document.getElementById("b-scrum");
     const kanbanBoard = document.getElementById("kanban");
     const scrumBoard = document.getElementById("scrum");
+    const titleElement = document.getElementById("h3-title");
 
     // Kanban por padrão
-    kanbanBoard.classList.add("active");
-    kanbanButton.classList.add("active");
+    setActiveBoard(kanbanBoard, kanbanButton, "Kanban");
 
-    kanbanButton.addEventListener("click", function () {
-        kanbanBoard.classList.add("active");
-        scrumBoard.classList.remove("active");
+    kanbanButton.addEventListener("click", () => setActiveBoard(kanbanBoard, kanbanButton, "Kanban"));
+    scrumButton.addEventListener("click", () => setActiveBoard(scrumBoard, scrumButton, "Scrum"));
 
-        kanbanButton.classList.add("active");
-        scrumButton.classList.remove("active");
-    });
+    // Função para ativar o board selecionado
+    function setActiveBoard(activeBoard, activeButton, boardName) {
+        const inactiveBoard = activeBoard === kanbanBoard ? scrumBoard : kanbanBoard;
+        const inactiveButton = activeButton === kanbanButton ? scrumButton : kanbanButton;
 
-    scrumButton.addEventListener("click", function () {
-        scrumBoard.classList.add("active");
-        kanbanBoard.classList.remove("active");
+        activeBoard.classList.add("active");
+        activeButton.classList.add("active");
 
-        scrumButton.classList.add("active");
-        kanbanButton.classList.remove("active");
-    });
+        inactiveBoard.classList.remove("active");
+        inactiveButton.classList.remove("active");
+
+        // Atualiza o título
+        updateBoardTitle(boardName);
+    }
+
+    // Função para atualizar o título sem afetar o contador de tarefas
+    function updateBoardTitle(boardName) {
+        const counterSpan = titleElement.querySelector('.task-counter');
+        const currentTitle = titleElement.textContent.split(' (')[0];
+
+        titleElement.textContent = `${boardName}`;
+
+        // Se já houver um contador, preserva ele
+        if (counterSpan) {
+            titleElement.appendChild(counterSpan);
+        }
+    }
 }
+
+
+  
+
+  
