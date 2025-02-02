@@ -33,7 +33,7 @@ function parseTasks(text) {
         const status = match[3].trim();
         const description = match[4].trim();
 
-        tasks.push({ title, status, description});
+        tasks.push({ title, status, description });
     }
 
     return tasks;
@@ -67,7 +67,8 @@ function createTaskItems(tasks) {
         const taskElement = document.createElement('div');
         taskElement.classList.add('item', 'task-item');
         taskElement.setAttribute('draggable', 'true');
-        taskElement.setAttribute('ondragstart', 'drag(event)');
+        taskElement.setAttribute('data-task-id', task.title);
+        taskElement.addEventListener('dragstart', drag);
 
         const taskTitle = document.createElement('h3');
         taskTitle.classList.add('item-title');
@@ -76,8 +77,8 @@ function createTaskItems(tasks) {
 
         // Adiciona evento de clique para abrir o modal
         taskElement.onclick = () => {
-        openTaskModal(task)
-    };
+            openTaskModal(task);
+        };
 
         return taskElement;
     }
@@ -94,13 +95,18 @@ function createTaskItems(tasks) {
                     console.error(`Coluna ${platform} não encontrada para o status: ${task.status}`);
                 }
             }
-        };
+        }
 
         addTaskToColumn(mappings.kanban, 'Kanban');
         addTaskToColumn(mappings.scrum, 'Scrum');
     });
 }
 
+function drag(event) {
+    event.dataTransfer.setData("text", event.target.getAttribute("data-task-id"));
+}
+
+// Atualiza a contagem de tarefas em cada coluna
 function updateColumnTaskCount() {
     document.querySelectorAll('.col-board').forEach(column => {
         const titleElement = column.querySelector('.col-title-board');
@@ -116,18 +122,19 @@ function updateColumnTaskCount() {
                 counterSpan.classList.add('task-counter');
                 titleElement.appendChild(counterSpan);
             }
-            
-            counterSpan.textContent = ` (${taskCount})`;
+
+            counterSpan.textContent = `(${taskCount})`;
         }
     });
 }
 
+// Atualiza a contagem total de tarefas no board ativo
 function updateTotalTaskCount() {
     let totalTaskCount = 0;
 
     // Encontra o board ativo
     const activeBoard = document.querySelector('.board.active');
-    
+
     if (activeBoard) {
         activeBoard.querySelectorAll('.col-items').forEach(column => {
             totalTaskCount += column.children.length;
@@ -143,7 +150,7 @@ function updateTotalTaskCount() {
                 h3Title.appendChild(counterSpan);
             }
 
-            counterSpan.textContent = ` (${totalTaskCount})`;
+            counterSpan.textContent = `(${totalTaskCount})`;
         }
     } else {
         console.error('Board ativo não encontrado.');
@@ -157,7 +164,7 @@ function openTaskModal(task) {
 
     const modalContent = document.createElement('div');
     modalContent.classList.add('modal-content');
-    
+
     // Título
     const title = document.createElement('h2');
     title.textContent = task.title;
@@ -166,7 +173,7 @@ function openTaskModal(task) {
     const infoContent = document.createElement('div');
     infoContent.classList.add('info-content');
     modalContent.appendChild(infoContent);
-    
+
     // Status
     const status = document.createElement('p');
     const strongStatus = document.createElement('strong');
@@ -174,7 +181,7 @@ function openTaskModal(task) {
     status.appendChild(strongStatus);
     status.appendChild(document.createTextNode(task.status));
     infoContent.appendChild(status);
-    
+
     // Descrição
     const description = document.createElement('p');
     const strong = document.createElement('strong');
@@ -190,9 +197,8 @@ function openTaskModal(task) {
         modal.remove();
     };
     modalContent.appendChild(closeButton);
-    
+
     modal.appendChild(modalContent);
 
     document.body.appendChild(modal);
 }
-
