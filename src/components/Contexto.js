@@ -10,7 +10,7 @@ function Contexto() {
         <div id="contexto" className="content-block">
             <div className="content-section">
                 <div className="block-context">
-                    <div class="grid mobile-section section-content-blocks">
+                    <div className="grid mobile-section section-content-blocks">
                         <div className="section-content-blocks first-column">
                             <div id="header-block">
                                 <h3 className="section-title context-title">Contexto</h3>
