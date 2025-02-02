@@ -39,9 +39,9 @@ function parseTasks(text) {
 
         const title = match[2].trim();
         const status = match[3].trim();
-        // const description = match[4].trim();
+        const description = match[4].trim();
 
-        tasks.push({ title, status});
+        tasks.push({ title, status, description});
     }
 
     // console.log("Tarefas parseadas:", tasks);
@@ -85,10 +85,15 @@ function createTaskItems(tasks) {
         taskTitle.textContent = task.title;
         taskElement.appendChild(taskTitle);
 
-        const taskDescription = document.createElement('p');
-        taskDescription.classList.add('item-description');
-        taskDescription.textContent = task.description;
-        taskElement.appendChild(taskDescription);
+        // const taskDescription = document.createElement('p');
+        // taskDescription.classList.add('item-description');
+        // taskDescription.textContent = task.description;
+        // taskElement.appendChild(taskDescription);
+
+        // Adiciona evento de clique para abrir o modal
+        taskElement.onclick = () => {
+        openTaskModal(task)
+    };
 
         return taskElement;
     }
@@ -164,5 +169,54 @@ function updateTotalTaskCount() {
     } else {
         console.error('Board ativo não encontrado.');
     }
+}
+
+// Função para abrir o modal com as informações da tarefa
+function openTaskModal(task) {
+    const modal = document.createElement('div');
+    modal.classList.add('modal');
+    
+    // Modal Content
+    const modalContent = document.createElement('div');
+    modalContent.classList.add('modal-content');
+    
+    // Título
+    const title = document.createElement('h2');
+    title.textContent = task.title;
+    modalContent.appendChild(title);
+
+    const infoContent = document.createElement('div');
+    infoContent.classList.add('info-content');
+    modalContent.appendChild(infoContent);
+    
+    // Status
+    const status = document.createElement('p');
+    const strongStatus = document.createElement('strong');
+    strongStatus.textContent = 'Status: ';
+    status.appendChild(strongStatus);
+    status.appendChild(document.createTextNode(task.status));
+    infoContent.appendChild(status);
+    
+    // Descrição
+    const description = document.createElement('p');
+    const strong = document.createElement('strong');
+    strong.textContent = 'Descrição: ';
+    description.appendChild(strong);
+    description.appendChild(document.createTextNode(task.description || 'Nenhuma descrição disponível.'));
+    infoContent.appendChild(description);
+    
+    // Botão de Fechar
+    const closeButton = document.createElement('button');
+    closeButton.textContent = 'X';
+    closeButton.classList.add('modal-close');
+    closeButton.onclick = () => {
+        modal.remove();
+    };
+    modalContent.appendChild(closeButton);
+    
+    modal.appendChild(modalContent);
+    
+    // Adicionar o modal à página
+    document.body.appendChild(modal);
 }
 
