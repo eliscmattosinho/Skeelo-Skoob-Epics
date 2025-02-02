@@ -1,3 +1,5 @@
+import '../js/DinamicEpics';
+
 import '../styles/App.css';
 import "./Skeelo.css";
 
@@ -31,13 +33,13 @@ function Skeelo() {
                         <img className="imageMoc" src={skeeloMoc} alt='Skeelo mockups'></img>
                     </div>
                 </div>
-
-                <div className="range skeelo-range">
-                    <p className="range-tag">Net Promoter Score</p>
-                    <p className="range-tag"> Engajamento</p>
-                    <p className="range-tag">Alcance</p>
-                    <p className="range-tag">Fidelidade</p>
-                    <p className="range-tag">Satisfação</p>
+               
+                    <div className="range skeelo-range">
+                        <p className="range-tag">Net Promoter Score</p>
+                        <p className="range-tag"> Engajamento</p>
+                        <p className="range-tag">Alcance</p>
+                        <p className="range-tag">Fidelidade</p>
+                        <p className="range-tag">Satisfação</p>
                 </div>
 
                 <div className="mockups-stack mockups-stack-skeelo">
