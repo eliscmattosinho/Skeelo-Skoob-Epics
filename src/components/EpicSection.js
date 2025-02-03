@@ -5,24 +5,24 @@ import '../js/DinamicEpics';
 
 function EpicSection({ logo, title, description, mocImage, rangeItems, epics, theme }) {
     return (
-        <div className={`content-block ${theme}`}>
+        <div id={`${theme}`} className={`content-block`}>
             <div className="content-section">
                 <div className="content epic-content-mockups">
-                    <div className={`${theme}-content`}>
-                        <div className="first-col">
+                    <div className="epics-content">
+                        <div className="first-col-epic">
                             <div className="epic-block-title">
                                 <h2 className={`${theme}-title`}>{title}</h2>
                                 <span className="span-image">
                                     <img src={logo} alt={`${title} logo`} />
                                 </span>
                             </div>
-                            <div className="block-p">
+                            <div className="block-p-epic">
                                 {description.map((para, index) => (
-                                    <p className={`${theme}-p`} key={index}>{para}</p>
+                                    <p className={`p-${theme}`} key={index}>{para}</p>
                                 ))}
                             </div>
                         </div>
-                        <div className="second-col">
+                        <div className="second-col-epic">
                             <img className="imageMoc" src={mocImage} alt={`${title} mockups`} />
                         </div>
                     </div>
@@ -38,8 +38,8 @@ function EpicSection({ logo, title, description, mocImage, rangeItems, epics, th
                             {epics.map((epic, index) => (
                                 <div className="mockup-frame" key={index}>
                                     <span className="cam-point"></span>
-                                    <img className={`frame-image ${theme}`} src={epic.image} alt={`frame ${title}`} />
-                                    <span className="hide-epic"></span>
+                                    <img className={`frame-image frame-image-${theme}`} src={epic.image} alt={`frame ${title}`} />
+                                    <span className={`hide-${theme}-epic`}></span>
                                     <div className="frame-infos-action">
                                         <h4 className="frame-info-title">{epic.title}</h4>
                                         <CiLock />

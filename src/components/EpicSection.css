@@ -1,10 +1,29 @@
+.epics-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 2rem;
+}
+
+.first-col-epic {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.block-p-epic {
+    width: 400px;
+}
+
 .epic-content-mockups {
     display: flex;
     flex-direction: column;
     gap: 3rem;
 }
 
-.second-col {
+.second-col-epic {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -125,4 +144,21 @@
 
 .frame-infos-action svg {
     color: #efefef;
+}
+
+@media (min-width: 400px) and (max-width: 768px) {
+    .epics-content {
+        justify-content: flex-start;
+    }
+
+    .block-p-epic {
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+        width: 90%;
+    }
+
+    .second-col-epic {
+        display: none;
+    }
 }
