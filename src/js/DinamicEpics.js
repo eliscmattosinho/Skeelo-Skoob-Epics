@@ -1,28 +1,30 @@
 window.onload = function () {
-    const container = document.querySelector(".skeelo-range");
+    const containers = document.querySelectorAll(".range");
 
-    if (!container) {
-        console.error("Elemento não encontrado no DOM.");
+    if (containers.length === 0) {
+        console.error("Nenhum elemento com a classe .range encontrado no DOM.");
         return;
     }
 
-    const items = Array.from(container.children);
-    const scrollSpeed = 1;
+    containers.forEach(container => {
+        const items = Array.from(container.children);
+        const scrollSpeed = 1;
 
-    items.forEach(item => {
-        const clone = item.cloneNode(true);
-        container.appendChild(clone);
-    });
+        items.forEach(item => {
+            const clone = item.cloneNode(true);
+            container.appendChild(clone);
+        });
 
-    function autoScroll() {
-        container.scrollLeft += scrollSpeed;
+        function autoScroll() {
+            container.scrollLeft += scrollSpeed;
 
-        if (container.scrollLeft >= container.scrollWidth / 2) {
-            container.scrollLeft = 0;
+            if (container.scrollLeft >= container.scrollWidth / 2) {
+                container.scrollLeft = 0;
+            }
+            
+            requestAnimationFrame(autoScroll);
         }
-        
-        requestAnimationFrame(autoScroll);
-    }
 
-    autoScroll();
+        autoScroll();
+    });
 };
