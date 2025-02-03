@@ -40,7 +40,7 @@ function EpicSection({ logo, title, description, mocImage, rangeItems, epics, th
                                 <div id={epic.id} className="mockup-frame" key={index}>
                                     <span className="cam-point"></span>
                                     <img className={`frame-image frame-image-${theme}`} src={epic.image} alt={`frame ${title}`} />
-                                    <span className={`hide-${theme}-epic`}></span>
+                                    <span className={`hide-epic hide-${theme}-epic`}></span>
                                     <div className="frame-infos-action">
                                         <h4 className="frame-info-title">{epic.title}</h4>
                                         <CiLock />

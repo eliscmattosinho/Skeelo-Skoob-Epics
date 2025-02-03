@@ -10,14 +10,7 @@
 }
 
 .hide-skoob-epic {
-    position: absolute;
-    top: 9px;
-    left: 10px;
-    width: 190px;
-    height: 360px;
-    border-radius: 20px;
     background: rgba(44, 127, 163, 0.5);
-    backdrop-filter: blur(35px);
 }
 
 @media (min-width: 400px) and (max-width: 768px) {

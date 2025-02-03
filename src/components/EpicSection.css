@@ -135,6 +135,13 @@
 
 .hide-epic {
     z-index: 1;
+    position: absolute;
+    top: 9px;
+    left: 10px;
+    width: 190px;
+    height: 360px;
+    border-radius: 20px;
+    backdrop-filter: blur(35px);
 }
 
 .frame-infos-action .frame-info-title {
@@ -161,4 +168,29 @@
     .second-col-epic {
         display: none;
     }
+
+    .mockup-frame {
+        max-width: 200px;
+    }
+
+    .hide-epic {
+        left: -5px;
+    }
+
+    .cam-point {
+        left: 50%;
+    }
+}
+
+/* CSS para EpicDinamicDetails */
+.frames-block {
+    justify-content: flex-start;
+}
+
+.frames-block::-webkit-scrollbar {
+    width: 8px;
+}
+
+.frame-infos-action {
+    top: 120px;
 }
