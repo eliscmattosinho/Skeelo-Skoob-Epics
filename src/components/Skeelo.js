@@ -16,10 +16,10 @@ const skeeloDescription = [
 const skeeloRangeItems = ["Net Promoter Score", "Engajamento", "Alcance", "Fidelidade", "Satisfação"];
 
 const skeeloEpics = [
-    { title: 'Visualização de livros relacionados', image: skeeEpicOne },
-    { title: 'Alerta de promoção de livros', image: skeeEpicTwo },
-    { title: 'Lista de livros marcados para resgate', image: skeeEpicThree },
-    { title: 'Presentear', image: skeeEpicFour }
+    { title: 'Visualização de livros relacionados', image: skeeEpicOne, id: 'skeeEpicOne'},
+    { title: 'Alerta de promoção de livros', image: skeeEpicTwo, id: 'skeeEpicTwo'},
+    { title: 'Lista de livros marcados para resgate', image: skeeEpicThree, id: 'skeeEpicThree'},
+    { title: 'Presentear', image: skeeEpicFour, id: 'skeeEpicFour'}
 ];
 
 function Skeelo() {

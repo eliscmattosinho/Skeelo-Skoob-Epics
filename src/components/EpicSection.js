@@ -2,6 +2,7 @@ import React from 'react';
 import { CiLock } from "react-icons/ci";
 import './EpicSection.css';
 import '../js/DinamicEpics';
+import { handleEpicDetails } from '../js/EpicDinamicDetails';
 
 function EpicSection({ logo, title, description, mocImage, rangeItems, epics, theme }) {
     return (
@@ -33,17 +34,17 @@ function EpicSection({ logo, title, description, mocImage, rangeItems, epics, th
                         ))}
                     </div>
 
-                    <div className="mockups-stack">
+                    <div id={`${theme}`} className="mockups-stack">
                         <div className="frames-block">
                             {epics.map((epic, index) => (
-                                <div className="mockup-frame" key={index}>
+                                <div id={epic.id} className="mockup-frame" key={index}>
                                     <span className="cam-point"></span>
                                     <img className={`frame-image frame-image-${theme}`} src={epic.image} alt={`frame ${title}`} />
                                     <span className={`hide-${theme}-epic`}></span>
                                     <div className="frame-infos-action">
                                         <h4 className="frame-info-title">{epic.title}</h4>
                                         <CiLock />
-                                        <button className="btn go-to-block-frame">Desbloquear</button>
+                                        <button className="btn go-to-block-frame" onClick={() => handleEpicDetails(epic.id)}>Desbloquear</button>
                                     </div>
                                 </div>
                             ))}

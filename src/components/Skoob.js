@@ -13,9 +13,9 @@ const skoobDescription = [
 const skoobRangeItems = ["Net Promoter Score", "Engajamento", "Alcance", "Fidelidade", "Satisfação"];
 
 const skoobEpics = [
-    { title: 'Cadastrar/Alterar registro no app', image: skoobEpicOne },
-    { title: 'Leituras coletivas', image: skoobEpicTwo },
-    { title: 'Alerta de conteúdo', image: skoobEpicThree }
+    { title: 'Cadastrar/Alterar registro no app', image: skoobEpicOne, id: 'skoobEpicOne'},
+    { title: 'Leituras coletivas', image: skoobEpicTwo, id: 'skoobEpicTwo'},
+    { title: 'Alerta de conteúdo', image: skoobEpicThree,  id: 'skoobEpicThree'},
 ];
 
 function Skoob() {
