@@ -1,0 +1,411 @@
+{
+    "Skeelo": {
+        "epicos": [
+            {
+                "identificador": "epico1",
+                "titulo_epico": "Visualização de livros relacionados",
+                "contexto": "Em um aplicativo de leitura digital, os usuários desejam saber se um livro faz parte de um conjunto (série ou coleção) e qual a sua ordem de lançamento, para planejar sua leitura e aquisição dos demais livros de forma organizada e prática.",
+                "historias_de_usuario": [
+                    {
+                        "us1": [
+                            {
+                                "titulo": "US1: Identificar livros relacionados",
+                                "numero": "1",
+                                "user_storie": "Como skeelover gostaria de saber se uma obra faz parte de um conjunto e qual a ordem de lançamento para que consiga organizar a sequência da minha leitura e aquisição dos títulos sem precisar procurar em outros lugares.",
+                                "criterios_de_aceitacao": [
+                                    "Deve ser exibida uma seção Também fazem parte, na página da obra, entre as seções de Ficha técnica e Avaliações.",
+                                    "A lista deve estar ordenada em ordem crescente pelo ano de lançamento.",
+                                    "Cada item da lista deve mostrar: Capa da obra, Nome da editora, Ano de lançamento, Número de páginas.",
+                                    "O usuário deve poder navegar na lista com um scroll horizontal.",
+                                    "Ao clicar em um item da lista, o usuário deve ser redirecionado para a página desse item."
+                                ]
+                            }
+                        ],
+                        "us2": [
+                            {
+                                "titulo": "US2: Cadastrar relações entre livros",
+                                "numero": "2",
+                                "criterios_de_aceitacao": [
+                                    "Deve ser possível adicionar, editar e excluir relações entre obras na interface de cadastro.",
+                                    "O sistema deve permitir associar uma obra a uma série ou coleção, informando também a ordem de lançamento.",
+                                    "As relações devem ser salvas corretamente no banco de dados."
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "criterios_de_aceitacao": [
+                    "A interface de cadastro permite criar, editar e excluir correlações entre obras.",
+                    "O usuário pode ver a seção 'Também fazem parte' com as obras relacionadas.",
+                    "A lista de títulos relacionados exibe: Capa, Editora, Ano de lançamento, Número de páginas.",
+                    "A lista possui scroll horizontal e está ordenada por ano de lançamento.",
+                    "O usuário pode acessar a página de qualquer obra relacionada ao clicar nela."
+                ],
+                "definicao_de_pronto": [
+                    "Banco de dados: revisado e em produção com suporte para correlações.",
+                    "APIs: testadas e implantadas em produção.",
+                    "Interface de cadastro de correlações: testada e em produção.",
+                    "Seção 'Também fazem parte': testada e em produção.",
+                    "Navegação para a tela dos títulos relacionados testada e em produção.",
+                    "Documentação atualizada para usuários e administradores (FAQ, guias de uso)."
+                ],
+                "metricas": [
+                    {
+                        "titulo": "Participação em séries",
+                        "info": "Percentual de usuários que completam ou acompanham séries.",
+                        "valor": "15%"
+                    },
+                    {
+                        "titulo": "Taxa de engajamento",
+                        "info": "Frequência com que os usuários interagem com as funcionalidades de série.",
+                        "valor": "20%"
+                    }
+                ]
+            },
+            {
+                "identificador": "epico2",
+                "titulo_epico": "Alerta de promoção de livros",
+                "contexto": "Em um aplicativo de leitura digital, os usuários gostariam de ser alertados caso haja promoções em determinados livros da loja Skeelo para que realizem compras alinhadas com suas preferências.",
+                "historias_de_usuario": [
+                    {
+                        "us1": [
+                            {
+                                "titulo": "US1: Configurar limites de promoção",
+                                "numero": "1",
+                                "criterios_de_aceitacao": [
+                                    "Deve ser possível definir um limite de preço máximo para cada livro de interesse.",
+                                    "Os limites devem ser salvos e associados à conta do usuário.",
+                                    "O sistema deve permitir a atualização ou exclusão desses limites.",
+                                    "O usuário deve receber confirmação ao salvar ou atualizar os limites."
+                                ]
+                            }
+                        ],
+                        "us2": [
+                            {
+                                "titulo": "US2: Notificação de promoção",
+                                "numero": "2",
+                                "criterios_de_aceitacao": [
+                                    "Quando um livro atingir o preço configurado pelo usuário, o sistema deve enviar uma notificação por e-mail em até 30 segundos.",
+                                    "A notificação deve conter: Título do livro, Preço promocional atual, Redirecionamento direto para a página do livro.",
+                                    "Se não houver limites configurados, nenhuma notificação deve ser enviada.",
+                                    "O usuário pode escolher entre receber notificações por e-mail, push ou ambos."
+                                ]
+                            }
+                        ],
+                        "us3": [
+                            {
+                                "titulo": "US3: Visualizar relatórios de alertas",
+                                "numero": "3",
+                                "criterios_de_aceitacao": [
+                                    "Deve ser possível gerar relatórios trimestrais contendo: Tipos de usuários Skeelo, Livros mais desejados com alertas configurados, Faixas de preço mais comuns para os alertas.",
+                                    "O relatório deve estar disponível para exportação em PDF e Excel."
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "criterios_de_aceitacao": [
+                    "O usuário deve conseguir ver o componente de configurar/alterar alerta de preço em todos os livros da loja Skeelo.",
+                    "O usuário deve conseguir configurar um alerta de preço.",
+                    "O usuário precisa ser notificado em sua modalidade escolhida (e-mail e/ou push) quando a promoção entrar em vigor.",
+                    "As notificações devem ser enviadas em até 30 segundos após a promoção ser identificada.",
+                    "A notificação deve direcionar o usuário para a tela do livro.",
+                    "Relatório trimestral geral que contenha: Tipo de usuário Skeelo, Livros mais esperados, Faixa de preço mais desejada."
+                ],
+                "definicao_de_pronto": [
+                    "Banco de dados: alterações revisadas e em produção.",
+                    "API: desenvolvida, testada e em produção.",
+                    "Interface de usuário: testada e em produção.",
+                    "Notificações: e-mail e push testados e em produção.",
+                    "Relatórios: disponíveis para geração e exportação.",
+                    "Documentação: ajuda ao usuário final revisada e disponibilizada (ex.: FAQ)."
+                ],
+                "metricas": [
+                    {
+                        "titulo": "Adoção de alertas",
+                        "info": "Percentual de usuários que configuraram alertas de promoção.",
+                        "valor": "25%"
+                    },
+                    {
+                        "titulo": "Conversão via notificação",
+                        "info": "Percentual de usuários que compraram um livro após receberem uma notificação de alerta de promoção.",
+                        "valor": "30%"
+                    }
+                ]
+            },
+            {
+                "identificador": "epico3",
+                "titulo_epico": "Lista de livros marcados para resgate",
+                "contexto": "Em um aplicativo de leitura digital, os usuários podem ter preferência por marcar livros que desejam resgatar no futuro, para que tenham um acesso rápido a eles quando tiverem a quantidade de nozes necessárias, sem precisar procurá-los todas as vezes na listagem.",
+                "historias_de_usuario": [
+                    {
+                        "us1": [
+                            {
+                                "titulo": "US1: Marcar livros para resgate",
+                                "numero": "1",
+                                "criterios_de_aceitacao": [
+                                    "O usuário pode marcar ou desmarcar livros para resgatar diretamente na lista de resgates.",
+                                    "Os livros marcados devem ser listados separadamente no topo da tela de Resgate.",
+                                    "A lista de livros marcados deve ser facilmente acessível e interativa para o usuário.",
+                                    "Os livros marcados podem ser retirados da lista a qualquer momento."
+                                ]
+                            }
+                        ],
+                        "us2": [
+                            {
+                                "titulo": "US2: Visualizar livros marcados para resgate",
+                                "numero": "2",
+                                "criterios_de_aceitacao": [
+                                    "A tela de Resgate deve exibir uma seção no topo com todos os livros marcados pelo usuário.",
+                                    "Os livros marcados devem ser visualizados em formato de lista ou grid, com as informações essenciais de cada livro (ex.: capa, título).",
+                                    "O usuário deve conseguir acessar os detalhes de qualquer livro clicando em seu título ou capa.",
+                                    "A lista de livros marcados deve ser interativa e permitir que o usuário marque ou desmarque os livros facilmente."
+                                ]
+                            }
+                        ],
+                        "us3": [
+                            {
+                                "titulo": "US3: Resgatar livros marcados",
+                                "numero": "3",
+                                "criterios_de_aceitacao": [
+                                    "O usuário deve ser capaz de resgatar os livros da lista de marcados quando tiver as nozes necessárias.",
+                                    "Após o resgate, o livro deve ser removido da lista de marcados ou marcado de alguma forma como 'resgatado'.",
+                                    "A ação de resgatar um livro deve ser clara e simples para o usuário."
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "criterios_de_aceitacao": [
+                    "A tela de Resgate deve exibir uma lista de livros marcados no topo.",
+                    "O usuário deve ser capaz de marcar e desmarcar livros na tela de Resgate.",
+                    "O usuário deve poder acessar facilmente os livros marcados e resgatá-los.",
+                    "Os livros resgatados devem ser removidos da lista ou marcados como 'resgatados'."
+                ],
+                "definicao_de_pronto": [
+                    "Banco de dados: revisado e em produção com o controle de livros marcados para resgatar.",
+                    "Funcionalidade de marcar e desmarcar livros: testada e em produção.",
+                    "Visualização da lista de livros marcados: testada e em produção.",
+                    "O processo de resgatar livros da lista: testado e em produção.",
+                    "Documentação atualizada para o usuário sobre como marcar e resgatar livros."
+                ]
+            },
+            {
+                "identificador": "epico4",
+                "titulo_epico": "Presentear",
+                "contexto": "Em um aplicativo de leitura digital, os usuários gostariam de presentear uns aos outros, ou futuros usuários, com livros digitais ou cupons, para incentivarem a leitura e compartilharem boas histórias.",
+                "historias_de_usuario": [
+                    {
+                        "us1": [
+                            {
+                                "titulo": "US1: Configuração de presente",
+                                "numero": "1",
+                                "criterios_de_aceitacao": [
+                                    "O usuário pode configurar o presente para um usuário registrado (Skeelover) ou não registrado (futuro Skeelover).",
+                                    "O usuário pode inserir as informações do destinatário, como e-mail, nome ou CPF (caso seja um Skeelover).",
+                                    "O usuário deve ser capaz de incluir uma mensagem personalizada ou não ao presenteado.",
+                                    "O livro presenteado deve ser adicionado diretamente na estante do presenteado, sem necessidade de compras adicionais."
+                                ]
+                            }
+                        ],
+                        "us2": [
+                            {
+                                "titulo": "US2: Realizar transação de presente",
+                                "numero": "2",
+                                "criterios_de_aceitacao": [
+                                    "Após configurar o presente, o usuário deve ser redirecionado para uma tela de pagamento.",
+                                    "O usuário deve conseguir finalizar a transação de pagamento para o presente.",
+                                    "O usuário remetente receberá um recibo da transação por e-mail.",
+                                    "O sistema deve registrar a transação no banco de dados como uma transação de presente."
+                                ]
+                            }
+                        ],
+                        "us3": [
+                            {
+                                "titulo": "US3: Notificação ao destinatário",
+                                "numero": "3",
+                                "criterios_de_aceitacao": [
+                                    "O usuário destinatário deve ser notificado por e-mail e push.",
+                                    "A notificação deve informar o título do livro, quem enviou o presente e, opcionalmente, incluir a mensagem personalizada.",
+                                    "O usuário destinatário deve ser direcionado ao livro na sua estante ou ser redirecionado para o aplicativo, se necessário."
+                                ]
+                            }
+                        ],
+                        "us4": [
+                            {
+                                "titulo": "US4: Receber o presente",
+                                "numero": "4",
+                                "criterios_de_aceitacao": [
+                                    "O livro presenteado deve ser automaticamente adicionado à estante do destinatário.",
+                                    "O presenteado deve ter acesso ao livro assim que a transação for concluída, sem precisar de passos adicionais."
+                                ]
+                            }
+                        ],
+                        "us5": [
+                            {
+                                "titulo": "US5: Relatórios de presentes",
+                                "numero": "5",
+                                "criterios_de_aceitacao": [
+                                    "Relatórios trimestrais devem ser gerados com as seguintes informações:",
+                                    "- Porcentagem do tipo de usuário remetente (novo cadastro ou não).",
+                                    "- Porcentagem do tipo de usuário destinatário (novo cadastro ou não).",
+                                    "- Livro mais escolhido para presentear.",
+                                    "- Faixa de preço mais escolhida para presente.",
+                                    "Relatórios devem ser exportáveis em formato PDF ou Excel."
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "criterios_de_aceitacao": [
+                    "O usuário deve conseguir configurar um presente para um destinatário registrado ou não registrado.",
+                    "O usuário deve ser redirecionado para a tela de pagamento após configurar o presente.",
+                    "O usuário deve receber um recibo da transação por e-mail.",
+                    "O destinatário deve ser notificado por e-mail e push sobre o presente, com ou sem mensagem personalizada.",
+                    "O livro presenteado deve ser adicionado automaticamente à estante do destinatário.",
+                    "Relatórios trimestrais devem ser gerados com informações detalhadas sobre a funcionalidade de presentear."
+                ],
+                "definicao_de_pronto": [
+                    "Banco de dados: revisado e em produção para suportar transações de presentes.",
+                    "API de transação de presentes: testada e em produção.",
+                    "Interface de presentear e interface de receber presente: testadas e em produção.",
+                    "Notificações (e-mail e push): testadas e em produção.",
+                    "Geração de relatório trimestral: testada e em produção."
+                ],
+                "metricas": [
+                    {
+                        "titulo": "Taxa de transação de presentes",
+                        "info": "Percentual de transações de presentes realizadas com sucesso.",
+                        "valor": "30%"
+                    },
+                    {
+                        "titulo": "Taxa de engajamento do presenteado",
+                        "info": "Percentual de destinatários que acessam e leem o livro presenteado.",
+                        "valor": "50%"
+                    },
+                    {
+                        "titulo": "Número de presentes enviados",
+                        "info": "Total de livros ou cupons enviados como presentes.",
+                        "valor": "2.000"
+                    }
+                ]
+            }
+        ]
+    },
+    "Skoob": {
+        "epicos": [
+            {
+                "identificador": "epico1",
+                "titulo_epico": "Cadastrar/alterar registro no app",
+                "contexto": "Em um aplicativo de leitura digital, os usuários gostariam de cadastrar livros diretamente pelo app, sem precisar terem de acessar outro dispositivo ou terem de usar a versão web no celular.",
+                "historias_de_usuario": [
+                    {
+                        "us1": [
+                            {
+                                "titulo": "US1: Cadastrar livro ou HQ pelo app",
+                                "numero": "1",
+                                "user_storie": "Como skoober gostaria de cadastrar um livro ou HQ, que não está presente no acervo da Skoob, diretamente pelo app porque me poupa tempo e vários redirecionamentos.",
+                                "criterios_de_aceitacao": [
+                                    "O usuário deve conseguir cadastrar um novo livro ou HQ com as informações obrigatórias: Livro: Título, Série/Coleção, Editora, Autor(a/es), Ano, Número de páginas, Idioma. E HQ: Título, Série/Coleção, Ano, Número de páginas, Idioma.",
+                                    "O usuário pode adicionar informações opcionais ao cadastrar um livro ou HQ. Livro: Subtítulo, Volume, Edição, Tradutor, Sinopse, Capa, Gêneros. HQ: Subtítulo, Editora, Edição, Volume, Ilustrador(es), Sinopse, Capa, Gêneros.",
+                                    "Após o cadastro, o livro/HQ deve ser adicionado automaticamente à estante do usuário com o status 'QUERO LER'."
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "criterios_de_aceitacao": [
+                    "O usuário poderá cadastrar livros e HQs diretamente pelo app.",
+                    "Os registros deverão ser adicionados automaticamente à estante com status 'QUERO LER'.",
+                    "O cadastro inclui campos obrigatórios e opcionais conforme o tipo de mídia.",
+                    "A interface de cadastro é intuitiva e acessível."
+                ],
+                "definicao_de_pronto": [
+                    "Banco de dados: revisado e em produção, suportando o cadastro direto pelo app.",
+                    "API de cadastro: testada e implantada em produção.",
+                    "Interfaces de cadastro: testadas e implantadas no app.",
+                    "Funcionalidade: livros/HQs cadastrados aparecem na estante com status 'QUERO LER'."
+                ]
+            },
+            {
+                "identificador": "epico2",
+                "titulo_epico": "Leituras coletivas",
+                "contexto": "Em um aplicativo de leitura digital, os usuários desejam criar e participar de leituras coletivas (LCs) diretamente pelo app, promovendo um ambiente de discussão e interação sobre os livros lidos em grupo.",
+                "historias_de_usuario": [
+                    {
+                        "us1": [
+                            {
+                                "titulo": "US1: Criar e participar de leitura coletiva",
+                                "numero": "1",
+                                "user_storie": "Como fundador da leitura coletiva, gostaria de criar e configurar uma LC com informações sobre o período, descrição, metas de leitura e até 3 responsáveis, para promover uma boa experiência de leitura e interação entre os participantes.",
+                                "criterios_de_aceitacao": [
+                                    "O fundador deve conseguir criar e configurar uma LC com: Sobre (Período, Descrição, etc.), Metas de leitura, Definição de até 3 responsáveis (Fundador, Co-fundador, Mediador), Configurações de privacidade e moderação.",
+                                    "Possibilidade de convidar usuários skoobers e não skoobers por nome ou email.",
+                                    "Usuários podem enviar mensagens no ambiente da LC.",
+                                    "Histórico de leitura é compartilhado na LC e no perfil pessoal do usuário.",
+                                    "Criadores devem ter acesso às configurações de moderação (filtros, conduta).",
+                                    "Envio de convites por email ou push."
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "criterios_de_aceitacao": [
+                    "O usuário fundador precisa conseguir criar e configurar uma sala de leitura coletiva para determinado livro, incluindo informações como Sobre, Período da LC, Descrição, Metas, e definir responsáveis (Fundador, Co-fundador, Moderador).",
+                    "O usuário precisa conseguir convidar usuários skoobers e não skoobers, por nome ou email.",
+                    "O usuário deve conseguir mandar mensagens no ambiente da leitura coletiva.",
+                    "O histórico de leitura deve ser compartilhado no ambiente da leitura coletiva e no perfil pessoal do usuário.",
+                    "Os usuários criadores (máx. 3) devem ter acesso às configurações de moderação.",
+                    "Os usuários devem receber convites por e-mail ou notificação."
+                ],
+                "definicao_de_pronto": [
+                    "Banco de dados revisado e em produção.",
+                    "APIs testadas e em produção.",
+                    "Interfaces das leituras coletivas testadas e em produção.",
+                    "Envio de convites por e-mail e push testado e em produção."
+                ]
+            },
+            {
+                "identificador": "epico3",
+                "titulo_epico": "Alerta de conteúdo",
+                "contexto": "Em um aplicativo de leitura digital, os usuários desejam saber antecipadamente sobre temas sensíveis ou conteúdos que possam ser gatilhos antes de lerem ou presentearem alguém com o livro.",
+                "historias_de_usuario": [
+                    {
+                        "us1": [
+                            {
+                                "titulo": "US1: Visualizar avisos de conteúdo",
+                                "numero": "1",
+                                "user_storie": "Como usuário, gostaria de ser informado sobre temas sensíveis ou conteúdos que possam ser gatilhos antes de ler um livro ou presenteá-lo, para me preparar adequadamente para a leitura.",
+                                "criterios_de_aceitacao": [
+                                    "Os avisos de conteúdo devem ser exibidos na página do livro."
+                                ]
+                            }
+                        ],
+                        "us2": [
+                            {
+                                "titulo": "US2: Cadastrar avisos de conteúdo",
+                                "numero": "2",
+                                "user_storie": "Como usuário, gostaria de poder adicionar ou alterar avisos de conteúdo ao registrar ou editar um livro, para garantir que outras pessoas também tenham acesso a essas informações sensíveis.",
+                                "criterios_de_aceitacao": [
+                                    "O usuário deve poder adicionar tags de conteúdo ao registrar ou editar um livro/HQ.",
+                                    "O usuário pode alterar os avisos de conteúdo ao marcar um livro como lido."
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "criterios_de_aceitacao": [
+                    "O usuário precisa ver as tags de aviso de conteúdo que o livro contém.",
+                    "O usuário pode adicionar ou editar avisos de conteúdo ao registrar ou alterar um livro.",
+                    "O usuário deve ser capaz de alterar as tags de aviso de conteúdos enquanto o livro estiver marcado como lido."
+                ],
+                "definicao_de_pronto": [
+                    "Banco de dados: revisado e em produção com suporte para avisos de conteúdo.",
+                    "Interfaces de cadastro: testadas e implantadas em produção.",
+                    "Componente de visualização: testado e implantado em produção.",
+                    "Documentação: atualizada para usuários e administradores."
+                ]
+            }
+        ]
+    }
+}
