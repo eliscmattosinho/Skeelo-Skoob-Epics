@@ -16,11 +16,16 @@ export const handleEpicDetails = (epicId) => {
         }
     });
 
-    // Chama a função pra ocultar os elementos com atraso
+    // Ocultar elementos com delay
     hideElementsWithDelay(themeSection, epicId);
 
-    // Ajusta a propriedade 'left' para .hide-epic e .frame-infos-action
+    // Ajustar estilos
     adjustHideEpicStyle(epicId);
+
+    // Espera a transição e mostra os detalhes épicos
+    setTimeout(() => {
+        showEpicDetailsSection();
+    }, 1000);
 };
 
 // Função para animar o desbloqueio antes de ocultar os elementos
@@ -62,44 +67,98 @@ const hideElementsWithDelay = (themeSection, epicId) => {
     }, 500);
 };
 
-// Função para ajustar o estilo 'left' da classe .hide-epic e .frame-infos-action exclusivamente para o epicId com matchMedia para responsividade
-const adjustHideEpicStyle = (epicId) => {
+const getEpicElements = (epicId) => {
     const epicFrame = document.getElementById(epicId);
+    if (!epicFrame) return {};
+    
+    const theme = epicFrame.closest('.mockups-stack')?.id;
+    return {
+        hideEpicElement: epicFrame.querySelector(`.hide-${theme}-epic`),
+        frameInfosAction: epicFrame.querySelector('.frame-infos-action')
+    };
+};
 
-    if (epicFrame) {
-        const theme = epicFrame.closest('.mockups-stack').id;
-        const hideEpicElement = epicFrame.querySelector(`.hide-${theme}-epic`);
-        const frameInfosAction = epicFrame.querySelector('.frame-infos-action');
+const updateElementStyles = (hideEpicElement, frameInfosAction) => {
+    if (hideEpicElement) {
+        if (window.matchMedia('(min-width: 768px)').matches) {
+            hideEpicElement.style.left = '10px';
+        } else if (window.matchMedia('(min-width: 400px) and (max-width: 767px)').matches) {
+            hideEpicElement.style.left = '9px';
+        } else {
+            hideEpicElement.style.left = '-5px';
+        }
+    }
 
-        const updateStyles = () => {
-            if (hideEpicElement) {
-                if (window.matchMedia('(min-width: 768px)').matches) {
-                    hideEpicElement.style.left = '10px';
-                } else if (window.matchMedia('(min-width: 400px) and (max-width: 767px)').matches) {
-                    hideEpicElement.style.left = '9px';
-                } else {
-                    hideEpicElement.style.left = '-5px';
-                }
-            }
-
-            if (frameInfosAction) {
-                if (window.matchMedia('(min-width: 400px) and (max-width: 768px)').matches) {
-                    frameInfosAction.style.left = '10px';
-                } else {
-                    frameInfosAction.style.left = '0px';
-                }
-            }
-        };
-
-        updateStyles();
-
-        // Adiciona um listener para mudanças na largura da tela
-        const mediaQueries = [
-            window.matchMedia('(min-width: 768px)'),
-            window.matchMedia('(min-width: 400px) and (max-width: 767px)'),
-            window.matchMedia('(max-width: 399px)')
-        ];
-
-        mediaQueries.forEach((mq) => mq.addEventListener('change', updateStyles));
+    if (frameInfosAction) {
+        if (window.matchMedia('(min-width: 400px) and (max-width: 768px)').matches) {
+            frameInfosAction.style.left = '10px';
+        } else {
+            frameInfosAction.style.left = '0px';
+        }
     }
 };
+
+const addMediaQueryListeners = (callback) => {
+    const mediaQueries = [
+        window.matchMedia('(min-width: 768px)'),
+        window.matchMedia('(min-width: 400px) and (max-width: 767px)'),
+        window.matchMedia('(max-width: 399px)')
+    ];
+    mediaQueries.forEach((mq) => mq.addEventListener('change', callback));
+};
+
+const adjustHideEpicStyle = (epicId) => {
+    const { hideEpicElement, frameInfosAction } = getEpicElements(epicId);
+    if (!hideEpicElement && !frameInfosAction) return;
+    
+    const updateStyles = () => updateElementStyles(hideEpicElement, frameInfosAction);
+    updateStyles();
+    addMediaQueryListeners(updateStyles);
+};
+
+
+const configureFramesBlock = (framesBlock) => {
+    framesBlock.style.transition = 'transform 0.3s ease-in-out';
+    framesBlock.style.transform = 'translateX(-10px)';
+    framesBlock.style.margin = '20px';
+};
+
+const getTheme = () => {
+    const themeElement = document.querySelector('.frames-block');
+    return themeElement.className.split(' ').find(cls => cls !== 'frames-block');
+};
+
+const getElements = (theme) => {
+    return {
+        blockElements: document.querySelector('.block-elements-details'),
+        mockupsStack: document.querySelector(`#${theme}.mockups-stack`),
+        framesBlock: document.querySelector(`.frames-block.${theme}`)
+    };
+};
+
+// Horrível, porém funcional
+const configureBlockElements = (blockElements, mockupsStack) => {
+    blockElements.classList.remove('hide');
+
+    if (window.matchMedia('(min-width: 400px) and (max-width: 767px)').matches) {
+        mockupsStack.style.position = 'relative';
+        blockElements.style.position = 'absolute';
+        blockElements.style.transition = 'opacity 0.5s linear';
+        blockElements.style.opacity = '1';
+    }
+};
+
+const showEpicDetailsSection = () => {
+    const theme = getTheme();
+    const { blockElements, mockupsStack, framesBlock } = getElements(theme);
+    
+    configureFramesBlock(framesBlock);
+    
+    setTimeout(() => {
+        configureBlockElements(blockElements, mockupsStack);
+    }, 500);
+    
+    framesBlock.addEventListener('transitionend', () => {}, { once: true });
+};
+
+// Função para conectar frame ao bloco de elementos de contexto, para fazer com que o bloco de elementos apareça corretamente para seu frame de ligação

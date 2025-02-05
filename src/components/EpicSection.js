@@ -36,7 +36,7 @@ function EpicSection({ logo, title, description, mocImage, rangeItems, epics, th
                     </div>
 
                     <div id={`${theme}`} className="mockups-stack">
-                        <div className="frames-block">
+                        <div className={`frames-block ${theme}`}>
                             {epics.map((epic, index) => (
                                 <div id={epic.id} className="mockup-frame" key={index}>
                                     <span className="cam-point"></span>
@@ -51,7 +51,7 @@ function EpicSection({ logo, title, description, mocImage, rangeItems, epics, th
                             ))}
                         </div>
 
-                        <div className='block-elements hide'>
+                        <div className='block-elements-details hide'>
                             <EpicDetailsSection />
                         </div>
                     </div>
