@@ -1,9 +1,11 @@
+import React, { useLayoutEffect, useRef, useState } from 'react';
 import './EpicDetailsSection.css';
 import { useEpicDetails } from '../js/EpicDetails';
 import { RiExpandDiagonalLine } from "react-icons/ri";
 import { GrPrevious, GrNext } from "react-icons/gr";
+import { initializeNavigation } from '../js/EpicDinamicElements';
 
-// Sucomponentes para cada parte da seção
+// Subcomponentes para cada parte da seção
 function EpicContext({ context }) {
     return (
         <div className="epic-section epic-context">
@@ -103,21 +105,45 @@ function Metrics({ metrics }) {
 function EpicDetailsSection() {
     const data = useEpicDetails();
 
+    const previousButtonRef = useRef(null);
+    const nextButtonRef = useRef(null);
+    const navItemsRef = useRef([]);
+
+    // Usando useLayoutEffect para garantir que a navegação seja inicializada após o render. P.S. Acho que não foi a melhor abordagem, mas funciona
+    useLayoutEffect(() => {
+        const navElements = document.querySelectorAll('.block-elements-nav');
+        navItemsRef.current = Array.from(navElements);
+
+        if (previousButtonRef.current && nextButtonRef.current && navItemsRef.current.length > 0) {
+            initializeNavigation(previousButtonRef.current, nextButtonRef.current, navItemsRef.current);
+        }
+    }, [data]);
+
     if (!data) {
         return <div>Nenhum dado foi encontrado.</div>;
     }
 
     return (
-        <div className='epic-details-container'>
+        <div id={`${data.identificador}`} className='epic-details-container'>
             <div className='navigation-controls'>
-                <span className='nav-icon nav-previous'><GrPrevious /></span>
-                <span className='nav-icon nav-next'><GrNext /></span>
+                <span ref={previousButtonRef} className='nav-icon nav-previous'><GrPrevious /></span>
+                <span ref={nextButtonRef} className='nav-icon nav-next'><GrNext /></span>
             </div>
-            <h2>{data.titulo_epico}</h2>
-            <EpicContext context={data.contexto} />
-            <UserStories stories={data.historias_de_usuario} />
-            <DefinitionOfDone doneCriteria={data.criterios_de_aceitacao} />
-            <Metrics metrics={data.metricas} />
+            <h2 className='epic-section-title'>{data.titulo_epico}</h2>
+            <div id='block-elements'>
+                <div className="block-elements-nav">
+                    <EpicContext context={data.contexto} />
+                </div>
+                <div className="block-elements-nav hide">
+                    <UserStories stories={data.historias_de_usuario} />
+                </div>
+                <div className="block-elements-nav hide">
+                    <DefinitionOfDone doneCriteria={data.criterios_de_aceitacao} />
+                </div>
+                <div className="block-elements-nav hide">
+                    <Metrics metrics={data.metricas} />
+                </div>
+            </div>
         </div>
     );
 }

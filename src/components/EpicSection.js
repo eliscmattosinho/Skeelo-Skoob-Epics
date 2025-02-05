@@ -3,6 +3,7 @@ import { CiLock } from "react-icons/ci";
 import './EpicSection.css';
 import '../js/DinamicEpics';
 import { handleEpicDetails } from '../js/EpicDinamicDetails';
+import EpicDetailsSection from "./EpicDetailsSection";
 
 function EpicSection({ logo, title, description, mocImage, rangeItems, epics, theme }) {
     return (
@@ -48,6 +49,10 @@ function EpicSection({ logo, title, description, mocImage, rangeItems, epics, th
                                     </div>
                                 </div>
                             ))}
+                        </div>
+
+                        <div className='block-elements hide'>
+                            <EpicDetailsSection />
                         </div>
                     </div>
                 </div>

@@ -194,3 +194,22 @@
 .frame-infos-action {
     top: 120px;
 }
+
+.mockups-stack {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.hide {
+    display: none;
+}
+
+@media (min-width: 400px) and (max-width: 768px) {
+    .mockups-stack {
+        flex-direction: column;
+    }
+}

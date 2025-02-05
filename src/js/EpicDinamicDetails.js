@@ -21,8 +21,6 @@ export const handleEpicDetails = (epicId) => {
 
     // Ajusta a propriedade 'left' para .hide-epic e .frame-infos-action
     adjustHideEpicStyle(epicId);
-
-    console.log(epicId);
 };
 
 // Função para animar o desbloqueio antes de ocultar os elementos
@@ -105,4 +103,3 @@ const adjustHideEpicStyle = (epicId) => {
         mediaQueries.forEach((mq) => mq.addEventListener('change', updateStyles));
     }
 };
-
