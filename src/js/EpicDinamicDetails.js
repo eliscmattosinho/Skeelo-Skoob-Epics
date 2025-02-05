@@ -118,9 +118,12 @@ const adjustHideEpicStyle = (epicId) => {
 
 
 const configureFramesBlock = (framesBlock) => {
-    framesBlock.style.transition = 'transform 0.3s ease-in-out';
-    framesBlock.style.transform = 'translateX(-10px)';
     framesBlock.style.margin = '20px';
+
+    if (window.matchMedia(window.matchMedia('(min-width: 768px)')).matches) {
+        framesBlock.style.transition = 'transform 0.3s ease-in-out';
+        framesBlock.style.transform = 'translateX(-10px)';
+    }
 };
 
 const getTheme = () => {
@@ -136,17 +139,26 @@ const getElements = (theme) => {
     };
 };
 
-// Horrível, porém funcional
 const configureBlockElements = (blockElements, mockupsStack) => {
     blockElements.classList.remove('hide');
 
-    if (window.matchMedia('(min-width: 400px) and (max-width: 767px)').matches) {
+    if (window.matchMedia(window.matchMedia('(min-width: 768px)')).matches) {
         mockupsStack.style.position = 'relative';
         blockElements.style.position = 'absolute';
         blockElements.style.transition = 'opacity 0.5s linear';
         blockElements.style.opacity = '1';
+    } else if (window.matchMedia('(min-width: 400px) and (max-width: 767px)').matches) {
+        blockElements.style.transition = 'opacity 0.5s linear, transform 0.5s ease-in-out';
+        blockElements.style.opacity = '1';
+        blockElements.style.transform = 'translateY(-20px)';
+
+        setTimeout(() => {
+            blockElements.style.transition = 'transform 0.5s ease-in-out';
+            blockElements.style.transform = 'translateY(10px)';
+        }, 50);
     }
 };
+
 
 const showEpicDetailsSection = () => {
     const theme = getTheme();

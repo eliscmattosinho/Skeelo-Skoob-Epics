@@ -79,7 +79,6 @@
 }
 
 .frames-block::-webkit-scrollbar {
-    color: #10303D;
     height: 8px;
     background-color: transparent;
     border-radius: 5px;
@@ -210,6 +209,18 @@
 
 @media (min-width: 400px) and (max-width: 768px) {
     .mockups-stack {
+        overflow: hidden;
+        overflow-x: auto;
         flex-direction: column;
+    }
+
+    .mockups-stack::-webkit-scrollbar {
+        height: 8px;
+        background-color: transparent;
+        border-radius: 5px;
+    }
+    .mockups-stack::-webkit-scrollbar-thumb {
+        background-color: #c7c7c7;
+        border-radius: 25px;
     }
 }
