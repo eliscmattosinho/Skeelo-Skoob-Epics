@@ -5,14 +5,13 @@ import { RiExpandDiagonalLine } from "react-icons/ri";
 import { GrPrevious, GrNext } from "react-icons/gr";
 import { initializeNavigation } from '../js/EpicDinamicElements';
 
-// Subcomponentes para cada parte da seção
 function EpicContext({ context }) {
     return (
         <div className="epic-section epic-context">
             <div id='epic-context-content'>
                 <h3 className='epic-section-title'>Contexto</h3>
                 <div className='epic-section-body'>
-                    <p className="epic-context-text">{context}</p>
+                    <p className="epic-context-text">{context || "Contexto não disponível"}</p>
                 </div>
             </div>
         </div>
@@ -69,7 +68,7 @@ function DefinitionOfDone({ doneCriteria }) {
                         <RiExpandDiagonalLine />
                     </button>
                     <ul>
-                        {doneCriteria.map((item, index) => (
+                        {(doneCriteria || []).map((item, index) => (
                             <li key={index}>{item}</li>
                         ))}
                     </ul>
@@ -85,15 +84,15 @@ function Metrics({ metrics }) {
             <div id='epic-metrics-content' className="epic-metrics-container">
                 <h3 className='epic-section-title'>Métricas e KPIs</h3>
                 <div className='metrics-container'>
-                    {metrics.map((metric, index) => (
+                    {(metrics || []).map((metric, index) => (
                         <div key={index} className='metric-item'>
                             <div className="metric-value-container">
                                 <span className='metric-value-block'>
                                     <span className='metric-value metric-value-element'>+</span>
-                                    <p className='metric-value'>{metric.valor}</p>
+                                    <p className='metric-value'>{metric.valor || "Valor não disponível"}</p>
                                 </span>
                             </div>
-                            <h5 className='metric-title'>{metric.titulo}</h5>
+                            <h5 className='metric-title'>{metric.titulo || "Título não disponível"}</h5>
                         </div>
                     ))}
                 </div>
@@ -102,14 +101,15 @@ function Metrics({ metrics }) {
     );
 }
 
-function EpicDetailsSection() {
-    const data = useEpicDetails();
-
+function EpicDetailsSection({ productName }) {
+    const [currentEpicIndex, setCurrentEpicIndex] = useState(0);
+    const [currentBlock, setCurrentBlock] = useState(0);
+    const data = useEpicDetails(productName);
+    
     const previousButtonRef = useRef(null);
     const nextButtonRef = useRef(null);
     const navItemsRef = useRef([]);
 
-    // Usando useLayoutEffect para garantir que a navegação seja inicializada após o render. P.S. Acho que não foi a melhor abordagem, mas funciona
     useLayoutEffect(() => {
         const navElements = document.querySelectorAll('.block-elements-nav');
         navItemsRef.current = Array.from(navElements);
@@ -119,29 +119,47 @@ function EpicDetailsSection() {
         }
     }, [data]);
 
-    if (!data) {
+    if (!data || data.length === 0) {
         return <div>Nenhum dado foi encontrado.</div>;
     }
 
+    const currentEpic = data[currentEpicIndex];
+
+    const handleNextBlock = () => {
+        if (currentBlock < 3) {
+            setCurrentBlock(currentBlock + 1);
+        }
+    };
+
+    const handlePreviousBlock = () => {
+        if (currentBlock > 0) {
+            setCurrentBlock(currentBlock - 1);
+        }
+    };
+
     return (
-        <div id={`${data.identificador}`} className='epic-details-container'>
-            <div className='navigation-controls'>
-                <span ref={previousButtonRef} className='nav-icon nav-previous'><GrPrevious /></span>
-                <span ref={nextButtonRef} className='nav-icon nav-next'><GrNext /></span>
+        <div id={`${currentEpic.identificador}`} className='epic-details-container'>
+            <div className="block-elements-navigation navigation-controls">
+                <span className="nav-icon nav-previous" onClick={handlePreviousBlock}>
+                    <GrPrevious />
+                </span>
+                <span className="nav-icon nav-next" onClick={handleNextBlock}>
+                    <GrNext />
+                </span>
             </div>
-            <h2 className='epic-section-title'>{data.titulo_epico}</h2>
+            <h2 className='epic-section-title'>{currentEpic.titulo_epico || "Título não disponível"}</h2>
             <div id='block-elements'>
-                <div className="block-elements-nav">
-                    <EpicContext context={data.contexto} />
+                <div className={`block-elements-nav ${currentBlock === 0 ? '' : 'hide'}`}>
+                    <EpicContext context={currentEpic.contexto} />
                 </div>
-                <div className="block-elements-nav hide">
-                    <UserStories stories={data.historias_de_usuario} />
+                <div className={`block-elements-nav ${currentBlock === 1 ? '' : 'hide'}`}>
+                    <UserStories stories={currentEpic.historias_de_usuario} />
                 </div>
-                <div className="block-elements-nav hide">
-                    <DefinitionOfDone doneCriteria={data.criterios_de_aceitacao} />
+                <div className={`block-elements-nav ${currentBlock === 2 ? '' : 'hide'}`}>
+                    <DefinitionOfDone doneCriteria={currentEpic.criterios_de_aceitacao} />
                 </div>
-                <div className="block-elements-nav hide">
-                    <Metrics metrics={data.metricas} />
+                <div className={`block-elements-nav ${currentBlock === 3 ? '' : 'hide'}`}>
+                    <Metrics metrics={currentEpic.metricas} />
                 </div>
             </div>
         </div>

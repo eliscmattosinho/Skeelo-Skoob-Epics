@@ -1,5 +1,11 @@
 export const handleEpicDetails = (epicId) => {
-    const themeSection = document.getElementById(`${epicId}`).closest('.mockups-stack');
+    const epicFrame = document.getElementById(epicId);
+    if (!epicFrame) {
+        console.error(`Não foi possível encontrar o épico com id ${epicId}`);
+        return;
+    }
+
+    const themeSection = epicFrame.closest('.mockups-stack');
 
     if (!themeSection) {
         console.error(`Não foi possível encontrar a seção com id ${epicId}`);
@@ -116,7 +122,6 @@ const adjustHideEpicStyle = (epicId) => {
     addMediaQueryListeners(updateStyles);
 };
 
-
 const configureFramesBlock = (framesBlock) => {
     framesBlock.style.margin = '20px';
 
@@ -159,7 +164,6 @@ const configureBlockElements = (blockElements, mockupsStack) => {
     }
 };
 
-
 const showEpicDetailsSection = () => {
     const theme = getTheme();
     const { blockElements, mockupsStack, framesBlock } = getElements(theme);
@@ -172,5 +176,3 @@ const showEpicDetailsSection = () => {
     
     framesBlock.addEventListener('transitionend', () => {}, { once: true });
 };
-
-// Função para conectar frame ao bloco de elementos de contexto, para fazer com que o bloco de elementos apareça corretamente para seu frame de ligação

@@ -1,5 +1,5 @@
 {
-    "Skeelo": {
+    "skeelo": {
         "epicos": [
             {
                 "identificador": "epico1",
@@ -292,7 +292,7 @@
             }
         ]
     },
-    "Skoob": {
+    "skoob": {
         "epicos": [
             {
                 "identificador": "epico1",

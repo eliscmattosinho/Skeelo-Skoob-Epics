@@ -1,28 +1,28 @@
 import { useEffect, useState } from 'react';
 
-export function useEpicDetails() {
-    const [epicData, setEpicData] = useState(null);
+export function useEpicDetails(productName) {
+    const [epicData, setEpicData] = useState([]);
 
     useEffect(() => {
         fetch('/epics.json')
             .then((response) => response.json())
             .then((data) => {
-                if (data?.Skeelo?.epicos?.length > 0) {
-                    const primeiroEpico = data.Skeelo.epicos[0];
+                const product = data[productName];
 
-                    const dadosTratados = {
-                        identificador: primeiroEpico.identificador || "Sem identificador",
-                        titulo_epico: primeiroEpico.titulo_epico || "Título não disponível",
-                        contexto: primeiroEpico.contexto || "Contexto não disponível",
-                        historias_de_usuario: tratarHistorias(primeiroEpico.historias_de_usuario),
-                        criterios_de_aceitacao: primeiroEpico.criterios_de_aceitacao || [],
-                        definicao_de_pronto: primeiroEpico.definicao_de_pronto || [],
-                        metricas: primeiroEpico.metricas || []
-                    };
+                if (product?.epicos?.length > 0) {
+                    const dadosTratados = product.epicos.map(epico => ({
+                        identificador: epico.identificador || "Sem identificador",
+                        titulo_epico: epico.titulo_epico || "Título não disponível",
+                        contexto: epico.contexto || "Contexto não disponível",
+                        historias_de_usuario: tratarHistorias(epico.historias_de_usuario),
+                        criterios_de_aceitacao: epico.criterios_de_aceitacao || [],
+                        definicao_de_pronto: epico.definicao_de_pronto || [],
+                        metricas: epico.metricas || []
+                    }));
 
                     setEpicData(dadosTratados);
                 } else {
-                    setEpicData({
+                    setEpicData([{
                         identificador: "Sem identificador",
                         titulo_epico: "Título não disponível",
                         contexto: "Contexto não disponível",
@@ -30,12 +30,12 @@ export function useEpicDetails() {
                         criterios_de_aceitacao: [],
                         definicao_de_pronto: [],
                         metricas: []
-                    });
+                    }]);
                 }
             })
             .catch((error) => {
                 console.error('Erro ao carregar dados:', error);
-                setEpicData({
+                setEpicData([{
                     identificador: "Erro",
                     titulo_epico: "Erro ao carregar os dados",
                     contexto: "Não foi possível obter as informações.",
@@ -43,9 +43,9 @@ export function useEpicDetails() {
                     criterios_de_aceitacao: [],
                     definicao_de_pronto: [],
                     metricas: []
-                });
+                }]);
             });
-    }, []);
+    }, [productName]);
 
     return epicData;
 }
@@ -56,7 +56,7 @@ function tratarHistorias(historias) {
     }
 
     return historias.flatMap(historia => {
-        const chave = Object.keys(historia)[0]; //pega a primeira
+        const chave = Object.keys(historia)[0];
         return historia[chave]?.map(us => ({
             titulo: us.titulo || "Título não disponível",
             numero: us.numero || "-",
