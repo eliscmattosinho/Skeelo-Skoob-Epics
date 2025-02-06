@@ -101,11 +101,10 @@ function Metrics({ metrics }) {
     );
 }
 
-function EpicDetailsSection({ productName }) {
-    const [currentEpicIndex, setCurrentEpicIndex] = useState(0);
+function EpicDetailsSection({ productName, epicId }) {
     const [currentBlock, setCurrentBlock] = useState(0);
     const data = useEpicDetails(productName);
-    
+
     const previousButtonRef = useRef(null);
     const nextButtonRef = useRef(null);
     const navItemsRef = useRef([]);
@@ -123,7 +122,12 @@ function EpicDetailsSection({ productName }) {
         return <div>Nenhum dado foi encontrado.</div>;
     }
 
-    const currentEpic = data[currentEpicIndex];
+    // 🔹 Agora busca o épico correto com base no epicId
+    const currentEpic = data.find(epic => epic.identificador === epicId);
+
+    if (!currentEpic) {
+        return <div>Épico não encontrado.</div>;
+    }
 
     const handleNextBlock = () => {
         if (currentBlock < 3) {

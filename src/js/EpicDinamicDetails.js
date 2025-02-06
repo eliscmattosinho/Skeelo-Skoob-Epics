@@ -8,30 +8,24 @@ export const handleEpicDetails = (epicId) => {
     const themeSection = epicFrame.closest('.mockups-stack');
 
     if (!themeSection) {
-        console.error(`Não foi possível encontrar a seção com id ${epicId}`);
+        console.error(`Não foi possível encontrar a seção do tema`);
         return;
     }
 
+    // Esconder todos os épicos, exceto o selecionado
     const sections = themeSection.querySelectorAll('.mockup-frame');
-
     sections.forEach(section => {
         if (section.id !== epicId) {
-            section.style.display = 'none';
+            section.classList.add = 'hide';
         } else {
-            section.style.display = 'block';
+            section.classList.remove = 'hide';
         }
     });
 
-    // Ocultar elementos com delay
-    hideElementsWithDelay(themeSection, epicId);
-
-    // Ajustar estilos
-    adjustHideEpicStyle(epicId);
-
-    // Espera a transição e mostra os detalhes épicos
+    // Mostra a seção de detalhes do épico desbloqueado
     setTimeout(() => {
-        showEpicDetailsSection();
-    }, 1000);
+        showEpicDetailsSection(epicId);
+    }, 500);
 };
 
 // Função para animar o desbloqueio antes de ocultar os elementos
@@ -164,15 +158,22 @@ const configureBlockElements = (blockElements, mockupsStack) => {
     }
 };
 
-const showEpicDetailsSection = () => {
+const showEpicDetailsSection = (epicId) => {
     const theme = getTheme();
     const { blockElements, mockupsStack, framesBlock } = getElements(theme);
-    
+
+    // Garante que apenas a seção do épico atual aparece
+    const allDetailSections = document.querySelectorAll('.block-elements-details');
+    allDetailSections.forEach(section => {
+        section.style.display = 'none';
+    });
+
+    blockElements.style.display = 'flex';
+
     configureFramesBlock(framesBlock);
     
     setTimeout(() => {
         configureBlockElements(blockElements, mockupsStack);
     }, 500);
-    
-    framesBlock.addEventListener('transitionend', () => {}, { once: true });
 };
+
