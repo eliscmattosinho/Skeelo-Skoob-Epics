@@ -1,8 +1,12 @@
-export function initializeNavigation(previousButton, nextButton, navItems, currentBlock) {
+export function initializeNavigation(previousButton, nextButton, navItems, currentBlock, currentEpic) {
     let currentIndex = currentBlock;
 
     function updateNavigation() {
-        navItems.forEach((item, index) => {
+        // Verifica os blocos do épico específico
+        const epicBlocks = navItems.filter(item => item.dataset.epicId === currentEpic.identificador);
+
+        // Atualiza visibilidade dos blocos
+        epicBlocks.forEach((item, index) => {
             if (index === currentIndex) {
                 item.classList.remove('hide');
             } else {
@@ -16,7 +20,7 @@ export function initializeNavigation(previousButton, nextButton, navItems, curre
             previousButton.style.visibility = 'visible';
         }
 
-        if (currentIndex === navItems.length - 1) {
+        if (currentIndex === 3) {
             nextButton.style.visibility = 'hidden';
         } else {
             nextButton.style.visibility = 'visible';

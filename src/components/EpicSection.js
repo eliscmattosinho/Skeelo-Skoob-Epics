@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { CiLock } from "react-icons/ci";
 import './EpicSection.css';
 import EpicDetailsSection from "./EpicDetailsSection";
-import { handleEpicDetails } from "../js/EpicDinamicDetails";
+import { handleEpicDetails, addMediaQueryListeners } from "../js/EpicDinamicDetails";
 
 function EpicSection({ logo, title, description, mocImage, rangeItems, epics, theme }) {
     const [selectedEpics, setSelectedEpics] = useState({});
@@ -17,6 +17,12 @@ function EpicSection({ logo, title, description, mocImage, rangeItems, epics, th
 
         handleEpicDetails(epicId, theme);
     };
+
+    useEffect(() => {
+        const handleMediaQueryChange = () => { };
+        addMediaQueryListeners(handleMediaQueryChange);
+        return () => { };
+    }, []);
 
     return (
         <div id={`${theme}`} className={`content-block`}>

@@ -109,20 +109,20 @@ function EpicDetailsSection({ productName, epicId }) {
     const nextButtonRef = useRef(null);
     const navItemsRef = useRef([]);
 
+    const currentEpic = data.find(epic => epic.identificador === epicId);
+
     useLayoutEffect(() => {
         const navElements = document.querySelectorAll('.block-elements-nav');
         navItemsRef.current = Array.from(navElements);
-
+    
         if (previousButtonRef.current && nextButtonRef.current && navItemsRef.current.length > 0) {
-            initializeNavigation(previousButtonRef.current, nextButtonRef.current, navItemsRef.current, currentBlock);
+            initializeNavigation(previousButtonRef.current, nextButtonRef.current, navItemsRef.current, currentBlock, currentEpic);
         }
-    }, [data, currentBlock]);
+    }, [data, currentBlock, currentEpic]);
 
     if (!data || data.length === 0) {
         return <div>Nenhum dado foi encontrado.</div>;
     }
-
-    const currentEpic = data.find(epic => epic.identificador === epicId);
 
     if (!currentEpic) {
         return <div>Épico não encontrado.</div>;
@@ -143,10 +143,10 @@ function EpicDetailsSection({ productName, epicId }) {
     return (
         <div id={`${currentEpic.identificador}`} className='epic-details-container'>
             <div className="block-elements-navigation navigation-controls">
-                <span className="nav-icon nav-previous" onClick={handlePreviousBlock}>
+                <span className="nav-icon nav-previous" ref={previousButtonRef} onClick={handlePreviousBlock}>
                     <GrPrevious />
                 </span>
-                <span className="nav-icon nav-next" onClick={handleNextBlock}>
+                <span className="nav-icon nav-next"ref={nextButtonRef}  onClick={handleNextBlock}>
                     <GrNext />
                 </span>
             </div>
