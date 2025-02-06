@@ -1,30 +1,36 @@
-export const handleEpicDetails = (epicId) => {
+export const handleEpicDetails = (epicId, theme) => {
     const epicFrame = document.getElementById(epicId);
     if (!epicFrame) {
         console.error(`Não foi possível encontrar o épico com id ${epicId}`);
         return;
     }
 
-    const themeSection = epicFrame.closest('.mockups-stack');
-
+    // Seleciona a seção diretamente para o tema correto
+    const themeSection = document.querySelector(`#${theme} .mockups-stack`);
     if (!themeSection) {
-        console.error(`Não foi possível encontrar a seção do tema`);
+        console.error(`Não foi possível encontrar a seção do tema ${theme}`);
         return;
     }
 
-    // Esconder todos os épicos, exceto o selecionado
+    // Esconde todos os épicos do tema, exceto o selecionado
     const sections = themeSection.querySelectorAll('.mockup-frame');
     sections.forEach(section => {
         if (section.id !== epicId) {
-            section.classList.add = 'hide';
+            section.classList.add('hide');
         } else {
-            section.classList.remove = 'hide';
+            section.classList.remove('hide');
         }
     });
 
-    // Mostra a seção de detalhes do épico desbloqueado
+    // Ocultar elementos com atraso
+    hideElementsWithDelay(themeSection, epicId, theme);
+
+    // Ajustar estilos do épico
+    adjustHideEpicStyle(epicId, theme);
+
+    // Mostra a seção de detalhes do épico desbloqueado para o tema específico
     setTimeout(() => {
-        showEpicDetailsSection(epicId);
+        showEpicDetailsSection(epicId, theme);
     }, 500);
 };
 
@@ -42,9 +48,7 @@ const unlockAnimation = (element, callback) => {
 };
 
 // Função para ocultar os elementos com atraso e acionar a transição
-const hideElementsWithDelay = (themeSection, epicId) => {
-    const theme = themeSection.id;
-
+const hideElementsWithDelay = (themeSection, epicId, theme) => {
     setTimeout(() => {
         const epicFrame = themeSection.querySelector(`#${epicId}`);
 
@@ -67,81 +71,42 @@ const hideElementsWithDelay = (themeSection, epicId) => {
     }, 500);
 };
 
-const getEpicElements = (epicId) => {
+const getEpicElements = (epicId, theme) => {
     const epicFrame = document.getElementById(epicId);
     if (!epicFrame) return {};
     
-    const theme = epicFrame.closest('.mockups-stack')?.id;
     return {
         hideEpicElement: epicFrame.querySelector(`.hide-${theme}-epic`),
         frameInfosAction: epicFrame.querySelector('.frame-infos-action')
     };
 };
 
-const updateElementStyles = (hideEpicElement, frameInfosAction) => {
-    if (hideEpicElement) {
-        if (window.matchMedia('(min-width: 768px)').matches) {
-            hideEpicElement.style.left = '10px';
-        } else if (window.matchMedia('(min-width: 400px) and (max-width: 767px)').matches) {
-            hideEpicElement.style.left = '9px';
-        } else {
-            hideEpicElement.style.left = '-5px';
-        }
-    }
-
-    if (frameInfosAction) {
-        if (window.matchMedia('(min-width: 400px) and (max-width: 768px)').matches) {
-            frameInfosAction.style.left = '10px';
-        } else {
-            frameInfosAction.style.left = '0px';
-        }
-    }
-};
-
-const addMediaQueryListeners = (callback) => {
-    const mediaQueries = [
-        window.matchMedia('(min-width: 768px)'),
-        window.matchMedia('(min-width: 400px) and (max-width: 767px)'),
-        window.matchMedia('(max-width: 399px)')
-    ];
-    mediaQueries.forEach((mq) => mq.addEventListener('change', callback));
-};
-
-const adjustHideEpicStyle = (epicId) => {
-    const { hideEpicElement, frameInfosAction } = getEpicElements(epicId);
+const adjustHideEpicStyle = (epicId, theme) => {
+    const { hideEpicElement, frameInfosAction } = getEpicElements(epicId, theme);
     if (!hideEpicElement && !frameInfosAction) return;
-    
-    const updateStyles = () => updateElementStyles(hideEpicElement, frameInfosAction);
-    updateStyles();
-    addMediaQueryListeners(updateStyles);
+};
+
+const getElements = (theme) => {
+    return {
+        blockElements: document.querySelector(`#${theme} .block-elements-details`),
+        mockupsStack: document.querySelector(`#${theme} .mockups-stack`),
+        framesBlock: document.querySelector(`#${theme} .frames-block`)
+    };
 };
 
 const configureFramesBlock = (framesBlock) => {
     framesBlock.style.margin = '20px';
 
-    if (window.matchMedia(window.matchMedia('(min-width: 768px)')).matches) {
+    if (window.matchMedia('(min-width: 768px)').matches) {
         framesBlock.style.transition = 'transform 0.3s ease-in-out';
         framesBlock.style.transform = 'translateX(-10px)';
     }
 };
 
-const getTheme = () => {
-    const themeElement = document.querySelector('.frames-block');
-    return themeElement.className.split(' ').find(cls => cls !== 'frames-block');
-};
-
-const getElements = (theme) => {
-    return {
-        blockElements: document.querySelector('.block-elements-details'),
-        mockupsStack: document.querySelector(`#${theme}.mockups-stack`),
-        framesBlock: document.querySelector(`.frames-block.${theme}`)
-    };
-};
-
 const configureBlockElements = (blockElements, mockupsStack) => {
     blockElements.classList.remove('hide');
 
-    if (window.matchMedia(window.matchMedia('(min-width: 768px)')).matches) {
+    if (window.matchMedia('(min-width: 768px)').matches) {
         mockupsStack.style.position = 'relative';
         blockElements.style.position = 'absolute';
         blockElements.style.transition = 'opacity 0.5s linear';
@@ -158,8 +123,7 @@ const configureBlockElements = (blockElements, mockupsStack) => {
     }
 };
 
-const showEpicDetailsSection = (epicId) => {
-    const theme = getTheme();
+const showEpicDetailsSection = (epicId, theme) => {
     const { blockElements, mockupsStack, framesBlock } = getElements(theme);
 
     // Garante que apenas a seção do épico atual aparece
@@ -176,4 +140,3 @@ const showEpicDetailsSection = (epicId) => {
         configureBlockElements(blockElements, mockupsStack);
     }, 500);
 };
-

@@ -148,6 +148,10 @@
     color: #efefef;
 }
 
+.frame-info-title {
+    width: 120px;
+}
+
 .frame-infos-action svg {
     color: #efefef;
 }

@@ -2,16 +2,20 @@ import React, { useState } from 'react';
 import { CiLock } from "react-icons/ci";
 import './EpicSection.css';
 import EpicDetailsSection from "./EpicDetailsSection";
+import { handleEpicDetails } from "../js/EpicDinamicDetails";
 
 function EpicSection({ logo, title, description, mocImage, rangeItems, epics, theme }) {
     const [selectedEpics, setSelectedEpics] = useState({});
+    const [clicked, setClicked] = useState(false);
 
-    // Função para lidar com a seleção do épico
-    const handleEpicSelection = (epicId) => {
+    const handleEpicSelection = (epicId, theme) => {
+        setClicked(true);
         setSelectedEpics(prevState => ({
             ...prevState,
             [theme]: epicId
         }));
+
+        handleEpicDetails(epicId, theme);
     };
 
     return (
@@ -46,14 +50,21 @@ function EpicSection({ logo, title, description, mocImage, rangeItems, epics, th
                     <div id={`${theme}`} className="mockups-stack">
                         <div className={`frames-block ${theme}`}>
                             {epics.map((epic, index) => (
-                                <div id={epic.identificador} className="mockup-frame" key={index}>
+                                <div
+                                    id={epic.identificador}
+                                    className={`mockup-frame ${clicked && selectedEpics[theme] !== epic.identificador ? 'hide' : ''}`}
+                                    key={index}
+                                >
                                     <span className="cam-point"></span>
                                     <img className={`frame-image frame-image-${theme}`} src={epic.image} alt={`frame ${epic.title}`} />
                                     <span className={`hide-epic hide-${theme}-epic`}></span>
                                     <div className="frame-infos-action">
                                         <h4 className="frame-info-title">{epic.title || epic.titulo_epico}</h4>
                                         <CiLock />
-                                        <button className="btn go-to-block-frame" onClick={() => handleEpicSelection(epic.identificador)}>
+                                        <button
+                                            className="btn go-to-block-frame"
+                                            onClick={() => handleEpicSelection(epic.identificador, theme)}
+                                        >
                                             Desbloquear
                                         </button>
                                     </div>
@@ -61,7 +72,7 @@ function EpicSection({ logo, title, description, mocImage, rangeItems, epics, th
                             ))}
                         </div>
 
-                        {/* Cada seção só exibe os detalhes do épico do próprio poduto */}
+                        {/* Cada seção só exibe os detalhes do épico do próprio produto */}
                         {selectedEpics[theme] && (
                             <div id={`${theme}-elements`} className="block-elements-details">
                                 <EpicDetailsSection
