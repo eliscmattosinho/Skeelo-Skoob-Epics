@@ -3,6 +3,7 @@ import { CiLock } from "react-icons/ci";
 import './EpicSection.css';
 import EpicDetailsSection from "./EpicDetailsSection";
 import { handleEpicDetails, addMediaQueryListeners } from "../js/EpicDinamicDetails";
+import { initAutoScroll } from "../js/DinamicEpics";
 
 function EpicSection({ logo, title, description, mocImage, rangeItems, epics, theme }) {
     const [selectedEpics, setSelectedEpics] = useState({});
@@ -24,8 +25,12 @@ function EpicSection({ logo, title, description, mocImage, rangeItems, epics, th
         return () => { };
     }, []);
 
+    useEffect(() => {
+        initAutoScroll();
+    }, []);
+
     return (
-        <div id={`${theme}`} className={`content-block`}>
+        <div id={`${theme}`} className="content-block">
             <div className="content-section">
                 <div className="content epic-content-mockups">
                     <div className="epics-content">

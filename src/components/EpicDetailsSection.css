@@ -133,7 +133,7 @@ ul, ol  {
 .metrics-container {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: start;
     text-align: center;
     gap: 2rem;
 }
