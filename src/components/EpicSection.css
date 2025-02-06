@@ -149,7 +149,7 @@
 }
 
 .frame-info-title {
-    width: 120px;
+    max-width: 180px;
 }
 
 .frame-infos-action svg {

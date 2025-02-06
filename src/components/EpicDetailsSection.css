@@ -29,7 +29,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 20px;
+    padding: 30px;
 }
 
 .epic-section-title, .user-story-title {
@@ -82,7 +82,7 @@
     background: #FFFFFF;
     box-shadow: inset 10px 0px 20px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
-    padding: 20px;
+    padding: 25px;
     max-height: 200px;
     overflow: hidden;
     overflow-y: auto;
@@ -110,6 +110,7 @@ ul, ol  {
 
 .epic-context-text, .user-story-content p, .user-story-content ol li, .dod-details ul li {
     font-size: 12px;
+    text-align: justify;
 }
 
 .expand-modal {
