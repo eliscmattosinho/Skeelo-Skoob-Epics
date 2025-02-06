@@ -156,6 +156,15 @@
     color: #efefef;
 }
 
+.hide {
+    display: none;
+}
+
+.close-icon {
+    display: flex;
+    justify-content: flex-end;
+}
+
 @media (min-width: 400px) and (max-width: 768px) {
     .epics-content {
         justify-content: flex-start;
@@ -205,10 +214,6 @@
     align-items: center;
     justify-content: space-around;
     gap: 1rem;
-}
-
-.hide {
-    display: none;
 }
 
 @media (min-width: 400px) and (max-width: 768px) {

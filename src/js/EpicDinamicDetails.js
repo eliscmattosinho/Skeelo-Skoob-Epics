@@ -37,6 +37,25 @@ const applyAnimation = (element, callback) => {
     setTimeout(() => callback(), 500);
 };
 
+export const restoreEpicElements = (theme) => {
+    const themeSection = document.querySelector(`#${theme} .mockups-stack`);
+    if (!themeSection) {
+        console.error(`Erro ao encontrar a seção do tema: ${theme}`);
+        return;
+    }
+    
+    const epicFrames = themeSection.querySelectorAll(`.mockup-frame`);
+    epicFrames.forEach(epicFrame => {
+        ['hide', 'frame-infos-action'].forEach(cls => {
+            const element = epicFrame.querySelector(`.${cls}-${theme}-epic`) || epicFrame.querySelector(`.${cls}`);
+            if (element) {
+                element.style.display = 'flex';
+                element.style.opacity = '1';
+            }
+        });
+    });
+};
+
 export const addMediaQueryListeners = callback => {
     ['(min-width: 768px)', '(min-width: 400px) and (max-width: 767px)', '(max-width: 399px)']
         .map(q => window.matchMedia(q))
