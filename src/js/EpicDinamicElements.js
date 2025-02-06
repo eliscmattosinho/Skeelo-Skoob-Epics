@@ -1,5 +1,5 @@
-export function initializeNavigation(previousButton, nextButton, navItems) {
-    let currentIndex = 0;
+export function initializeNavigation(previousButton, nextButton, navItems, currentBlock) {
+    let currentIndex = currentBlock;
 
     function updateNavigation() {
         navItems.forEach((item, index) => {
@@ -16,8 +16,7 @@ export function initializeNavigation(previousButton, nextButton, navItems) {
             previousButton.style.visibility = 'visible';
         }
 
-        // gambs prévia
-        if (currentIndex === navItems.length - 5) {
+        if (currentIndex === navItems.length - 1) {
             nextButton.style.visibility = 'hidden';
         } else {
             nextButton.style.visibility = 'visible';
@@ -39,5 +38,4 @@ export function initializeNavigation(previousButton, nextButton, navItems) {
             updateNavigation();
         }
     });
-
 }

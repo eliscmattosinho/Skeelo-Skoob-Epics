@@ -114,15 +114,14 @@ function EpicDetailsSection({ productName, epicId }) {
         navItemsRef.current = Array.from(navElements);
 
         if (previousButtonRef.current && nextButtonRef.current && navItemsRef.current.length > 0) {
-            initializeNavigation(previousButtonRef.current, nextButtonRef.current, navItemsRef.current);
+            initializeNavigation(previousButtonRef.current, nextButtonRef.current, navItemsRef.current, currentBlock);
         }
-    }, [data]);
+    }, [data, currentBlock]);
 
     if (!data || data.length === 0) {
         return <div>Nenhum dado foi encontrado.</div>;
     }
 
-    // 🔹 Agora busca o épico correto com base no epicId
     const currentEpic = data.find(epic => epic.identificador === epicId);
 
     if (!currentEpic) {
