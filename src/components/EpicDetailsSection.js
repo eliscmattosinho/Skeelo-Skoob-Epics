@@ -150,7 +150,7 @@ function EpicDetailsSection({ productName, epicId }) {
                     <GrNext />
                 </span>
             </div>
-            <h2 className='epic-section-title'>{currentEpic.titulo_epico || "Título não disponível"}</h2>
+
             <div id='block-elements'>
                 <div className={`block-elements-nav ${currentBlock === 0 ? '' : 'hide'}`}>
                     <EpicContext context={currentEpic.contexto} />

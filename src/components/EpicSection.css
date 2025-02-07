@@ -165,6 +165,11 @@
     justify-content: flex-end;
 }
 
+.epic-title.epic-section-title {
+    font-size:16px;
+    text-align: center;
+}
+
 @media (min-width: 400px) and (max-width: 768px) {
     .epics-content {
         justify-content: flex-start;
@@ -192,6 +197,10 @@
     .cam-point {
         left: 50%;
     }
+
+    .epic-title.epic-section-title {
+        font-size: 14px;
+    }
 }
 
 /* CSS para EpicDinamicDetails */
@@ -218,8 +227,6 @@
 
 @media (min-width: 400px) and (max-width: 768px) {
     .mockups-stack {
-        overflow: hidden;
-        overflow-x: auto;
         flex-direction: column;
     }
 

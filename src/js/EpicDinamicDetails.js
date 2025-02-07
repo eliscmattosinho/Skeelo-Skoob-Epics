@@ -1,4 +1,11 @@
 export const handleEpicDetails = (epicId, theme) => {
+    // Extrair o número do épico a partir do identificador
+    const epicNumber = epicId.replace('epico', '');
+
+    const mockupSection = document.querySelector(".epic-section-mockups");
+    mockupSection.style.margin = '0 auto';
+
+
     //container mockups-stack
     const themeSection = document.querySelector(`#${theme} .mockups-stack`);
     // épico .mockup-frame
@@ -43,6 +50,9 @@ export const restoreEpicElements = (theme) => {
         console.error(`Erro ao encontrar a seção do tema: ${theme}`);
         return;
     }
+
+    const mockupSection = document.querySelector(".epic-section-mockups");
+    mockupSection.style.margin = '0';
     
     const epicFrames = themeSection.querySelectorAll(`.mockup-frame`);
     epicFrames.forEach(epicFrame => {

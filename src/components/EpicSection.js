@@ -10,14 +10,21 @@ function EpicSection({ logo, title, description, mocImage, rangeItems, epics, th
     const [selectedEpics, setSelectedEpics] = useState({});
     const [clicked, setClicked] = useState(false);
     const [isEpicVisible, setIsEpicVisible] = useState(false);
+    const [selectedTitle, setSelectedTitle] = useState("");
+    const [showTitle, setShowTitle] = useState(false);
 
-    const handleEpicSelection = (epicId, theme) => {
+    const handleEpicSelection = (epicId, theme, epicTitle) => {
+        const epicNumber = epicId.replace('epico', '');
+        const formattedTitle = `Épico ${epicNumber} - ${epicTitle}`;
+        
         setClicked(true);
         setSelectedEpics(prevState => ({
             ...prevState,
             [theme]: epicId
         }));
+        setSelectedTitle(formattedTitle);
         setIsEpicVisible(true);
+        setShowTitle(true);
         handleEpicDetails(epicId, theme);
     };
 
@@ -27,8 +34,10 @@ function EpicSection({ logo, title, description, mocImage, rangeItems, epics, th
             ...prevState,
             [theme]: null
         }));
+        setSelectedTitle("");
         setIsEpicVisible(false);
         setClicked(false);
+        setShowTitle(false);
     };
 
     useEffect(() => {
@@ -80,6 +89,9 @@ function EpicSection({ logo, title, description, mocImage, rangeItems, epics, th
                                 <IoIosCloseCircleOutline />
                             </span>
                         )}
+
+                        {showTitle && <h2 className="epic-title epic-section-title">{selectedTitle}</h2>}
+
                         <div id={`${theme}`} className="mockups-stack">
                             <div className={`frames-block ${theme}`}>
                                 {epics.map((epic, index) => (
@@ -96,7 +108,7 @@ function EpicSection({ logo, title, description, mocImage, rangeItems, epics, th
                                             <CiLock />
                                             <button
                                                 className="btn go-to-block-frame"
-                                                onClick={() => handleEpicSelection(epic.identificador, theme)}
+                                                onClick={() => handleEpicSelection(epic.identificador, theme, epic.title || epic.titulo_epico)}
                                             >
                                                 Desbloquear
                                             </button>
