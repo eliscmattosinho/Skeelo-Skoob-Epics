@@ -11,7 +11,7 @@
                             {
                                 "titulo": "US1: Identificar livros relacionados",
                                 "numero": "1",
-                                "user_storie": "Como skeelover gostaria de saber se uma obra faz parte de um conjunto e qual a ordem de lançamento para que consiga organizar a sequência da minha leitura e aquisição dos títulos sem precisar procurar em outros lugares.",
+                                "user_storie": "Como usuário gostaria de saber se uma obra faz parte de um conjunto e qual a ordem de lançamento para que consiga organizar a sequência da minha leitura e aquisição dos títulos sem precisar procurar em outros lugares.",
                                 "criterios_de_aceitacao": [
                                     "Deve ser exibida uma seção Também fazem parte, na página da obra, entre as seções de Ficha técnica e Avaliações.",
                                     "A lista deve estar ordenada em ordem crescente pelo ano de lançamento.",
@@ -25,6 +25,7 @@
                             {
                                 "titulo": "US2: Cadastrar relações entre livros",
                                 "numero": "2",
+                                "user_storie": "Como (editoras? Skeelers? Curadoria?), quero poder cadastrar e gerenciar relações entre obras por meio de uma interface, para que os usuários possam ver quais obras fazem parte de um conjunto e a sequência correta, além de manter um catálogo organizado e relacional.",
                                 "criterios_de_aceitacao": [
                                     "Deve ser possível adicionar, editar e excluir relações entre obras na interface de cadastro.",
                                     "O sistema deve permitir associar uma obra a uma série ou coleção, informando também a ordem de lançamento.",
@@ -72,6 +73,7 @@
                             {
                                 "titulo": "US1: Configurar limites de promoção",
                                 "numero": "1",
+                                "user_storie": "Como usuário, quero configurar limites de preço para os livros que me interessam, para que eu possa ser notificado quando eles entrarem em promoção dentro dos meus critérios.",
                                 "criterios_de_aceitacao": [
                                     "Deve ser possível definir um limite de preço máximo para cada livro de interesse.",
                                     "Os limites devem ser salvos e associados à conta do usuário.",
@@ -84,6 +86,7 @@
                             {
                                 "titulo": "US2: Notificação de promoção",
                                 "numero": "2",
+                                "user_storie": "Como usuário, quero receber uma notificação quando um livro de interesse estiver em promoção e dentro dos meus limites configurados, para que eu possa aproveitar a oferta no momento certo.",
                                 "criterios_de_aceitacao": [
                                     "Quando um livro atingir o preço configurado pelo usuário, o sistema deve enviar uma notificação por e-mail em até 30 segundos.",
                                     "A notificação deve conter: Título do livro, Preço promocional atual, Redirecionamento direto para a página do livro.",
@@ -96,6 +99,7 @@
                             {
                                 "titulo": "US3: Visualizar relatórios de alertas",
                                 "numero": "3",
+                                "user_storie": "Como admin Skeelo, quero gerar relatórios sobre o comportamento dos alertas de preço, para que possa entender melhor os padrões de consumo dos usuários.",
                                 "criterios_de_aceitacao": [
                                     "Deve ser possível gerar relatórios trimestrais contendo: Tipos de usuários Skeelo, Livros mais desejados com alertas configurados, Faixas de preço mais comuns para os alertas.",
                                     "O relatório deve estar disponível para exportação em PDF e Excel."
@@ -143,6 +147,7 @@
                             {
                                 "titulo": "US1: Marcar livros para resgate",
                                 "numero": "1",
+                                "user_storie": "Como usuário, quero poder marcar livros para resgatar no futuro, para que eu tenha uma lista personalizada de livros de interesse para resgatar quando tiver nozes suficientes.",
                                 "criterios_de_aceitacao": [
                                     "O usuário pode marcar ou desmarcar livros para resgatar diretamente na lista de resgates.",
                                     "Os livros marcados devem ser listados separadamente no topo da tela de Resgate.",
@@ -155,6 +160,7 @@
                             {
                                 "titulo": "US2: Visualizar livros marcados para resgate",
                                 "numero": "2",
+                                "user_storie": "Como usuário, quero visualizar todos os livros que marquei para resgatar, para que eu tenha acesso facilitado aos livros que defini serem do meu interesse, para resgatar posteriormente.",
                                 "criterios_de_aceitacao": [
                                     "A tela de Resgate deve exibir uma seção no topo com todos os livros marcados pelo usuário.",
                                     "Os livros marcados devem ser visualizados em formato de lista ou grid, com as informações essenciais de cada livro (ex.: capa, título).",
@@ -167,6 +173,7 @@
                             {
                                 "titulo": "US3: Resgatar livros marcados",
                                 "numero": "3",
+                                "user_storie": "Como usuário, quero resgatar facilmente os livros que selecionei para irem à lista de marcados para resgate, para que possa adquiri-los rapidamente.",
                                 "criterios_de_aceitacao": [
                                     "O usuário deve ser capaz de resgatar os livros da lista de marcados quando tiver as nozes necessárias.",
                                     "Após o resgate, o livro deve ser removido da lista de marcados ou marcado de alguma forma como 'resgatado'.",
@@ -188,6 +195,18 @@
                     "Visualização da lista de livros marcados: testada e em produção.",
                     "O processo de resgatar livros da lista: testado e em produção.",
                     "Documentação atualizada para o usuário sobre como marcar e resgatar livros."
+                ],
+                "metricas": [
+                    {
+                        "titulo": "Taxa de utilização da lista",
+                        "info": "Percentual de usuários que utilizam a lista.",
+                        "valor": "25%"
+                    },
+                    {
+                        "titulo": "Conversão de lista para resgate",
+                        "info": "Percentual de itens da lista que são efetivamente resgatados",
+                        "valor": "20%"
+                    }
                 ]
             },
             {
@@ -200,6 +219,7 @@
                             {
                                 "titulo": "US1: Configuração de presente",
                                 "numero": "1",
+                                "user_storie": "Como usuário, quero poder configurar um livro para presentear outra pessoa, para que eu possa enviar um livro digital para um amigo, incentivando a leitura ou garantindo meu presente em uma data comemorativa.",
                                 "criterios_de_aceitacao": [
                                     "O usuário pode configurar o presente para um usuário registrado (Skeelover) ou não registrado (futuro Skeelover).",
                                     "O usuário pode inserir as informações do destinatário, como e-mail, nome ou CPF (caso seja um Skeelover).",
@@ -212,6 +232,7 @@
                             {
                                 "titulo": "US2: Realizar transação de presente",
                                 "numero": "2",
+                                "user_storie": "Como usuário, quero poder realizar a transação e pagamento de um livro para presente, para que o processo de envio do livro seja finalizado e o presenteado receba o livro digital na mesma hora.",
                                 "criterios_de_aceitacao": [
                                     "Após configurar o presente, o usuário deve ser redirecionado para uma tela de pagamento.",
                                     "O usuário deve conseguir finalizar a transação de pagamento para o presente.",
@@ -224,6 +245,7 @@
                             {
                                 "titulo": "US3: Notificação ao destinatário",
                                 "numero": "3",
+                                "user_storie": "Como destinatário de um presente, quero ser notificado sobre o livro que me foi enviado, para que eu saiba que recebi um presente e tenha acesso rápido ao livro e as informações de quem o enviou.",
                                 "criterios_de_aceitacao": [
                                     "O usuário destinatário deve ser notificado por e-mail e push.",
                                     "A notificação deve informar o título do livro, quem enviou o presente e, opcionalmente, incluir a mensagem personalizada.",
@@ -235,6 +257,7 @@
                             {
                                 "titulo": "US4: Receber o presente",
                                 "numero": "4",
+                                "user_storie": "Como destinatário de um presente, quero receber o livro diretamente na minha estante, para que eu possa começar a leitura imediatamente, sem precisar de qualquer outra ação.",
                                 "criterios_de_aceitacao": [
                                     "O livro presenteado deve ser automaticamente adicionado à estante do destinatário.",
                                     "O presenteado deve ter acesso ao livro assim que a transação for concluída, sem precisar de passos adicionais."
@@ -245,6 +268,7 @@
                             {
                                 "titulo": "US5: Relatórios de presentes",
                                 "numero": "5",
+                                "user_storie": "Como admin Skeelo, quero ter relatórios detalhados sobre os presentes enviados, para que eu possa acompanhar o uso da funcionalidade de presentear, os tipos de usuários e os livros mais presentes.",
                                 "criterios_de_aceitacao": [
                                     "Relatórios trimestrais devem ser gerados com as seguintes informações:",
                                     "- Porcentagem do tipo de usuário remetente (novo cadastro ou não).",
@@ -304,7 +328,7 @@
                             {
                                 "titulo": "US1: Cadastrar livro ou HQ pelo app",
                                 "numero": "1",
-                                "user_storie": "Como skoober gostaria de cadastrar um livro ou HQ, que não está presente no acervo da Skoob, diretamente pelo app porque me poupa tempo e vários redirecionamentos.",
+                                "user_storie": "Como usuário gostaria de cadastrar um livro ou HQ, que não está presente no acervo da Skoob, diretamente pelo app porque me poupa tempo e vários redirecionamentos.",
                                 "criterios_de_aceitacao": [
                                     "O usuário deve conseguir cadastrar um novo livro ou HQ com as informações obrigatórias: Livro: Título, Série/Coleção, Editora, Autor(a/es), Ano, Número de páginas, Idioma. E HQ: Título, Série/Coleção, Ano, Número de páginas, Idioma.",
                                     "O usuário pode adicionar informações opcionais ao cadastrar um livro ou HQ. Livro: Subtítulo, Volume, Edição, Tradutor, Sinopse, Capa, Gêneros. HQ: Subtítulo, Editora, Edição, Volume, Ilustrador(es), Sinopse, Capa, Gêneros.",
@@ -325,6 +349,18 @@
                     "API de cadastro: testada e implantada em produção.",
                     "Interfaces de cadastro: testadas e implantadas no app.",
                     "Funcionalidade: livros/HQs cadastrados aparecem na estante com status 'QUERO LER'."
+                ],
+                "metricas": [
+                    {
+                        "titulo": "Facilidade de uso",
+                        "info": "Taxa de utilização da funcionalidade.",
+                        "valor": "30%"
+                    },
+                    {
+                        "titulo": "Crescimento do catálogo de livros",
+                        "info": "Número de livros adicionados por usuário ao longo do tempo.",
+                        "valor": "25%"
+                    }
                 ]
             },
             {
@@ -363,6 +399,23 @@
                     "APIs testadas e em produção.",
                     "Interfaces das leituras coletivas testadas e em produção.",
                     "Envio de convites por e-mail e push testado e em produção."
+                ],
+                "metricas": [
+                    {
+                        "titulo": "Aumento do engajamento",
+                        "info": "Taxa de participação em leituras coletivas.",
+                        "valor": "20%"
+                    },
+                    {
+                        "titulo": "Tempo de uso",
+                        "info": "Aumento no tempo médio de uso diário/mensal.",
+                        "valor": "30%"
+                    },
+                    {
+                        "titulo": "Taxa de retenção",
+                        "info": "Percentual de usuários que continuam participando de outras leituras coletivas após a primeira.",
+                        "valor": "15%"
+                    }
                 ]
             },
             {
@@ -404,6 +457,18 @@
                     "Interfaces de cadastro: testadas e implantadas em produção.",
                     "Componente de visualização: testado e implantado em produção.",
                     "Documentação: atualizada para usuários e administradores."
+                ],
+                "metricas": [
+                    {
+                        "titulo": "Satisfação do usuário",
+                        "info": "Aumento na pontuação de satisfação com a plataforma.",
+                        "valor": "17,5%"
+                    },
+                    {
+                        "titulo": "Redução de incidentes de violação de conteúdo",
+                        "info": "Número de reclamações, resenhas negativas ou incidentes relacionados a conteúdo inadequado.",
+                        "valor": "22,5%"
+                    }
                 ]
             }
         ]
