@@ -4,6 +4,7 @@ import { useEpicDetails } from '../js/EpicDetails';
 import { RiExpandDiagonalLine } from "react-icons/ri";
 import { GrPrevious, GrNext } from "react-icons/gr";
 import { initializeNavigation } from '../js/EpicDinamicElements';
+import { initializeUserStoryNavigation } from '../js/EpicDinamicElements';
 
 function EpicContext({ context }) {
     return (
@@ -19,6 +20,10 @@ function EpicContext({ context }) {
 }
 
 function UserStories({ stories = [] }) {
+    useLayoutEffect(() => {
+        initializeUserStoryNavigation();
+    }, [stories]);
+
     return (
         <div className="epic-section epic-user-stories">
             <div id='epic-user-stories-content'>
