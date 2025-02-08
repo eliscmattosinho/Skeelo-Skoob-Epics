@@ -45,24 +45,27 @@ export function initializeNavigation(previousButton, nextButton, navItems, curre
 }
 
 export function initializeUserStoryNavigation() {
-    const userStoryContainers = document.querySelectorAll('.user-story-details');
-    const userStoryButtons = document.querySelectorAll('.epic-buttons-container .epic-button');
+    const epicSections = document.querySelectorAll('.epic-user-stories');
 
-    if (userStoryContainers.length === 0 || userStoryButtons.length === 0) return;
+    epicSections.forEach(epicSection => {
+        const userStoryContainers = epicSection.querySelectorAll('.user-story-details');
+        const userStoryButtons = epicSection.querySelectorAll('.epic-buttons-container .epic-button');
 
-    userStoryContainers.forEach((container, index) => {
-        if (index === 0) {
-            container.classList.remove('hide');
-        } else {
-            container.classList.add('hide');
-        }
-    });
+        if (userStoryContainers.length === 0 || userStoryButtons.length === 0) return;
 
-    userStoryButtons.forEach((button, index) => {
-        button.addEventListener('click', () => {
-            userStoryContainers.forEach(container => container.classList.add('hide'));
+        userStoryContainers.forEach((container, index) => {
+            if (index === 0) {
+                container.classList.remove('hide');
+            } else {
+                container.classList.add('hide');
+            }
+        });
 
-            userStoryContainers[index].classList.remove('hide');
+        userStoryButtons.forEach((button, index) => {
+            button.addEventListener('click', () => {
+                userStoryContainers.forEach(container => container.classList.add('hide'));
+                userStoryContainers[index].classList.remove('hide');
+            });
         });
     });
 }
