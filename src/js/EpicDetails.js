@@ -1,3 +1,4 @@
+// lp-skeelo-skoob\src\js\EpicDetails.js
 import { useEffect, useState } from 'react';
 
 export function useEpicDetails(productName) {
@@ -55,13 +56,24 @@ function tratarHistorias(historias) {
         return [];
     }
 
-    return historias.flatMap(historia => {
-        const chave = Object.keys(historia)[0];
-        return historia[chave]?.map(us => ({
-            titulo: us.titulo || "Título não disponível",
-            numero: us.numero || "-",
-            user_storie: us.user_storie || "Sem descrição",
-            criterios_de_aceitacao: us.criterios_de_aceitacao || []
-        })) || [];
+    const historiasTratadas = [];
+
+    historias.forEach(historia => {
+        Object.keys(historia).forEach(chave => {
+            const historiasDaChave = historia[chave];
+
+            if (Array.isArray(historiasDaChave)) {
+                historiasDaChave.forEach(us => {
+                    historiasTratadas.push({
+                        titulo: us.titulo || "Título não disponível",
+                        numero: us.numero || "-",
+                        user_storie: us.user_storie || "Sem descrição",
+                        criterios_de_aceitacao: us.criterios_de_aceitacao || []
+                    });
+                });
+            }
+        });
     });
+
+    return historiasTratadas;
 }

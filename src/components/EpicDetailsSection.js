@@ -146,7 +146,7 @@ function EpicDetailsSection({ productName, epicId }) {
                 <span className="nav-icon nav-previous" ref={previousButtonRef} onClick={handlePreviousBlock}>
                     <GrPrevious />
                 </span>
-                <span className="nav-icon nav-next"ref={nextButtonRef}  onClick={handleNextBlock}>
+                <span className="nav-icon nav-next" ref={nextButtonRef} onClick={handleNextBlock}>
                     <GrNext />
                 </span>
             </div>
