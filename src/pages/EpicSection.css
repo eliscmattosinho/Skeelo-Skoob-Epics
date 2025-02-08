@@ -228,6 +228,8 @@
 @media (min-width: 400px) and (max-width: 768px) {
     .mockups-stack {
         flex-direction: column;
+        overflow: hidden;
+        overflow-x: auto;
     }
 
     .mockups-stack::-webkit-scrollbar {
