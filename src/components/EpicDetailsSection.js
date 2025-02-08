@@ -19,7 +19,7 @@ function EpicContext({ context }) {
     );
 }
 
-function UserStories({ stories = [] }) {
+function UserStories({ stories = [], productName }) {
     useLayoutEffect(() => {
         initializeUserStoryNavigation();
     }, [stories]);
@@ -31,7 +31,7 @@ function UserStories({ stories = [] }) {
                 <div className='epic-buttons-container'>
                     {stories.length > 0 ? (
                         stories.map((story, index) => (
-                            <button key={index} className='btn epic-button'>US{story.numero}</button>
+                            <button key={index} className={`btn epic-button btn-${productName}`}>US{story.numero}</button>
                         ))
                     ) : (
                         <p>Nenhuma história de usuário disponível.</p>
@@ -83,7 +83,7 @@ function DefinitionOfDone({ doneCriteria }) {
     );
 }
 
-function Metrics({ metrics }) {
+function Metrics({ metrics, productName }) {
     return (
         <div className="epic-section epic-metrics">
             <div id='epic-metrics-content' className="epic-metrics-container">
@@ -91,7 +91,7 @@ function Metrics({ metrics }) {
                 <div className='metrics-container'>
                     {(metrics || []).map((metric, index) => (
                         <div key={index} className='metric-item'>
-                            <div className="metric-value-container">
+                            <div className={`metric-value-container metric-value-container-${productName}`}>
                                 <span className='metric-value-block'>
                                     <span className='metric-value metric-value-element'>+</span>
                                     <p className='metric-value'>{metric.valor || "Valor não disponível"}</p>
@@ -161,13 +161,13 @@ function EpicDetailsSection({ productName, epicId }) {
                     <EpicContext context={currentEpic.contexto} />
                 </div>
                 <div className={`block-elements-nav ${currentBlock === 1 ? '' : 'hide'}`}>
-                    <UserStories stories={currentEpic.historias_de_usuario} />
+                    <UserStories stories={currentEpic.historias_de_usuario} productName={productName} />
                 </div>
                 <div className={`block-elements-nav ${currentBlock === 2 ? '' : 'hide'}`}>
                     <DefinitionOfDone doneCriteria={currentEpic.criterios_de_aceitacao} />
                 </div>
                 <div className={`block-elements-nav ${currentBlock === 3 ? '' : 'hide'}`}>
-                    <Metrics metrics={currentEpic.metricas} />
+                    <Metrics metrics={currentEpic.metricas} productName={productName} />
                 </div>
             </div>
         </div>
