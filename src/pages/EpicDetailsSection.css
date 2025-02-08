@@ -72,10 +72,16 @@
 
 .epic-button {
     color: #efefef;
-    background: linear-gradient(270deg, #144921 3.95%, #30AF4F 96.05%);
     border-radius: 40px;
     font-weight: 600;
     padding: 6px 20px;
+}
+
+.btn-skeelo {
+    background: linear-gradient(270deg, #144921 3.95%, #30AF4F 96.05%);
+}
+.btn-skoob {
+    background: linear-gradient(270deg, #055568 3.95%, #2C7FA3 96.05%);
 }
 
 .epic-expand-container {
@@ -145,8 +151,16 @@ ul, ol  {
     justify-content: center;
     height: 40px;
     width: 70px;
-    background: linear-gradient(180deg, rgba(250, 250, 250, 0.3) 0%, rgba(116, 205, 108, 0.4) 50%, rgba(12, 93, 14, 0.5) 100%);
     border-radius: 0px 0px 20px 20px;
+}
+
+
+.metric-value-container-skeelo {
+    background: linear-gradient(180deg, rgba(250, 250, 250, 0.3) 0%, rgba(116, 205, 108, 0.4) 50%, rgba(12, 93, 13, 0.696) 100%);
+}
+
+.metric-value-container-skoob {
+    background: linear-gradient(180deg, rgba(250, 250, 250, 0.3) 0%, rgba(44, 127, 163, 0.4) 50%, rgba(1, 42, 59, 0.779) 100%);
 }
 
 .metric-value-block {

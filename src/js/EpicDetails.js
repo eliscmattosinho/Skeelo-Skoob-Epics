@@ -1,4 +1,3 @@
-// lp-skeelo-skoob\src\js\EpicDetails.js
 import { useEffect, useState } from 'react';
 
 export function useEpicDetails(productName) {
