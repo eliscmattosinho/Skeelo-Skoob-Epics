@@ -1,12 +1,12 @@
 import React from "react";
-import Header from "./components/Header";
-import Sobre from "./components/Sobre";
-import Contexto from "./components/Contexto";
-import Elementos from "./components/Elementos";
-import Skeelo from "./components/Skeelo";
-import Skoob from "./components/Skoob";
-import Contato from "./components/Contato";
-import Footer from "./components/Footer";
+import Header from "./pages/Header";
+import Sobre from "./pages/Sobre";
+import Contexto from "./pages/Contexto";
+import Elementos from "./pages/Elementos";
+import Skeelo from "./pages/Skeelo";
+import Skoob from "./pages/Skoob";
+import Contato from "./pages/Contato";
+import Footer from "./pages/Footer";
 import "./styles/App.css";
 
 function App() {
