@@ -170,6 +170,15 @@
     text-align: center;
 }
 
+.mockups-stack {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-around;
+    gap: 1rem;
+}
+
 @media (min-width: 400px) and (max-width: 768px) {
     .epics-content {
         justify-content: flex-start;
@@ -201,31 +210,7 @@
     .epic-title.epic-section-title {
         font-size: 14px;
     }
-}
 
-/* CSS para EpicDinamicDetails */
-.frames-block {
-    justify-content: flex-start;
-}
-
-.frames-block::-webkit-scrollbar {
-    width: 8px;
-}
-
-.frame-infos-action {
-    top: 120px;
-}
-
-.mockups-stack {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-items: center;
-    justify-content: space-around;
-    gap: 1rem;
-}
-
-@media (min-width: 400px) and (max-width: 768px) {
     .mockups-stack {
         flex-direction: column;
         overflow: hidden;
@@ -241,4 +226,17 @@
         background-color: #c7c7c7;
         border-radius: 25px;
     }
+}
+
+/* CSS para EpicDinamicDetails */
+.frames-block {
+    justify-content: flex-start;
+}
+
+.frames-block::-webkit-scrollbar {
+    width: 8px;
+}
+
+.frame-infos-action {
+    top: 120px;
 }
