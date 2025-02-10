@@ -121,10 +121,17 @@ ul, ol  {
 
 .expand-modal {
     position: absolute;
-    right: 10px;
-    top: 10px;
     border: none;
     background-color: transparent;
+    z-index: 1;
+}
+.expand-modal-us {
+    right: 45px;
+    top: 145px;
+}
+.expand-modal-dod {
+    right: 45px;
+    top: 62px;
 }
 
 .expand-modal svg {
