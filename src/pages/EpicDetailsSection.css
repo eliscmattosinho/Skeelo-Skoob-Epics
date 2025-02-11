@@ -52,7 +52,7 @@
     flex-direction: row;
     gap: 1rem;
     padding: 10px;
-    max-width: 260px;
+    max-width: 290px;
     overflow: hidden;
     overflow-x: auto;
 }
@@ -136,6 +136,10 @@ ul, ol  {
 
 .expand-modal svg {
     cursor: pointer;
+}
+
+.modal-content .epic-buttons-container {
+    max-width: 390px;
 }
 
 .epic-metrics-container {

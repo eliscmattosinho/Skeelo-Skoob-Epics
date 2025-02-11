@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Modal.css';
 import { IoIosCloseCircleOutline } from "react-icons/io";
+import { initializeUserStoryNavigation } from '../js/EpicDinamicElements';
 
 import USSkeelo from "../assets/modal/us-modal-skeelo.svg";
 import DoDSkeelo from "../assets/modal/dod-modal-skeelo.svg";
-import USSkoob from "../assets/modal/us-modal-skeelo.svg";
+import USSkoob from "../assets/modal/us-modal-skoob.svg";
 import DoDSkoob from "../assets/modal/dod-modal-skoob.svg";
 
 const imageMap = {
@@ -19,6 +20,14 @@ const imageMap = {
 };
 
 function Modal({ isOpen, onClose, title, productName, contentType, contentData }) {
+    useEffect(() => {
+        if (isOpen) {
+            setTimeout(() => {
+                initializeUserStoryNavigation();
+            }, 100);
+        }
+    }, [isOpen, contentData]);
+
     if (!isOpen) return null;
 
     const image = imageMap[productName]?.[contentType];

@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef, useState, useEffect } from 'react';
+import React, { useLayoutEffect, useRef, useState } from 'react';
 import './EpicDetailsSection.css';
 import { useEpicDetails } from '../js/EpicDetails';
 import { RiExpandDiagonalLine } from "react-icons/ri";
@@ -32,6 +32,7 @@ function UserStories({ stories = [], productName, openModal }) {
 
     return (
         <div className="epic-section epic-user-stories">
+            <div className="overlay"></div>
             <button className="expand-modal expand-modal-us" onClick={handleExpandClick}>
                 <RiExpandDiagonalLine />
             </button>
@@ -77,6 +78,7 @@ function DefinitionOfDone({ doneCriteria, openModal }) {
 
     return (
         <div className="epic-section epic-definition-of-done">
+            <div className="overlay"></div>
             <button className="expand-modal expand-modal-dod" onClick={handleExpandClick}>
                 <RiExpandDiagonalLine />
             </button>
@@ -131,7 +133,7 @@ function EpicDetailsSection({ productName, epicId }) {
     useLayoutEffect(() => {
         const navElements = document.querySelectorAll('.block-elements-nav');
         navItemsRef.current = Array.from(navElements);
-    
+
         if (previousButtonRef.current && nextButtonRef.current && navItemsRef.current.length > 0) {
             initializeNavigation(previousButtonRef.current, nextButtonRef.current, navItemsRef.current, currentBlock, currentEpic);
         }

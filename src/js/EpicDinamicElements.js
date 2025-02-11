@@ -68,4 +68,29 @@ export function initializeUserStoryNavigation() {
             });
         });
     });
+
+    //Dentro do modal 
+    const modalContent = document.querySelector('.modal-content');
+
+    if (modalContent) {
+        const modalButtons = modalContent.querySelectorAll('.epic-buttons-container .epic-button');
+        const modalStories = modalContent.querySelectorAll('.user-story-details');
+
+        if (modalStories.length > 0 && modalButtons.length > 0) {
+            modalStories.forEach((container, index) => {
+                if (index === 0) {
+                    container.classList.remove('hide');
+                } else {
+                    container.classList.add('hide');
+                }
+            });
+
+            modalButtons.forEach((button, index) => {
+                button.addEventListener('click', () => {
+                    modalStories.forEach(container => container.classList.add('hide'));
+                    modalStories[index].classList.remove('hide');
+                });
+            });
+        }
+    }
 }
