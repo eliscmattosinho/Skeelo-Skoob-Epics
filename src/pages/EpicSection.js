@@ -79,11 +79,11 @@ function EpicSection({ logo, title, description, mocImage, rangeItems, epics, th
                         ))}
                     </div>
 
-                    <div className="epic-section-mockups">
+                    <div className={`epic-section-mockups ${theme}`}>
                         {isEpicVisible && (
                             <span 
                                 id={`${theme}-close`} 
-                                className="close-icon"
+                                className="close-icon invisible"
                                 onClick={resetEpicState}
                             >
                                 <IoIosCloseCircleOutline />

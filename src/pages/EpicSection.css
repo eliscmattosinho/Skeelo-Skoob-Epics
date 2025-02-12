@@ -159,6 +159,9 @@
 .hide {
     display: none;
 }
+.invisible {
+    visibility: hidden;
+}
 
 .close-icon {
     display: flex;
