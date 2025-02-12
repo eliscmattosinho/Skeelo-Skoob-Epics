@@ -1,18 +1,30 @@
 import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+import "./styles/App.css";
+
+import Building from "./components/Building";
+import Boards from "./components/Boards";
 import Header from "./components/Header";
 import Sobre from "./components/Sobre";
 import Contexto from "./components/Contexto";
-import "./styles/App.css";
 
 function App() {
   return (
-    <div className="App">
-      <div id="main">
-        <Header /> { }
-        <Sobre /> { }
-        <Contexto /> { }
+    <Router>
+      <div className="App">
+        <div id="main">
+          <Routes>
+            <Route path="/" element={<Building />} />
+            <Route path="/Skeelo-Skoob-Epics" element={<Building />} />
+            <Route path="/boards" element={<Boards />} />
+            <Route path="/header" element={<Header />} />
+            <Route path="/sobre" element={<Sobre />} />
+            <Route path="/contexto" element={<Contexto />} />
+          </Routes>
+        </div>
       </div>
-    </div>
+    </Router>
   );
 }
 
