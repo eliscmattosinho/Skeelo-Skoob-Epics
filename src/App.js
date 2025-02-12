@@ -1,28 +1,40 @@
 import React from "react";
-import Header from "./pages/Header";
-import Sobre from "./pages/Sobre";
-import Contexto from "./pages/Contexto";
-import Elementos from "./pages/Elementos";
-import Skeelo from "./pages/Skeelo";
-import Skoob from "./pages/Skoob";
-import Contato from "./pages/Contato";
-import Footer from "./pages/Footer";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 import "./styles/App.css";
+
+import Building from "./components/Building";
+import Boards from "./components/Boards";
+import Header from "./components/Header";
+import Sobre from "./components/Sobre";
+import Contexto from "./components/Contexto";
+import Elementos from "./components/Elementos";
+import Skeelo from "./components/Skeelo";
+import Skoob from "./components/Skoob";
+import Contato from "./components/Contato";
+import Footer from "./components/Footer";
 
 function App() {
   return (
-    <div className="App">
-      <div id="main">
-        <Header /> { }
-        <Sobre /> { }
-        <Contexto /> { }
-        <Elementos /> { }
-        <Skeelo /> { }
-        <Skoob /> { }
-        <Contato /> { }
-        <Footer /> { }
+    <Router>
+      <div className="App">
+        <div id="main">
+          <Routes>
+            <Route path="/" element={<Building />} />
+            <Route path="/Skeelo-Skoob-Epics" element={<Building />} />
+            <Route path="/boards" element={<Boards />} />
+            <Route path="/header" element={<Header />} />
+            <Route path="/sobre" element={<Sobre />} />
+            <Route path="/contexto" element={<Contexto />} />
+            <Route path="/elementos" element={<Elementos />} />
+            <Route path="/skeelo" element={<Skeelo />} />
+            <Route path="/skoob" element={<Skoob />} />
+            <Route path="/contato" element={<Contato />} />
+            <Route path="/footer" element={<Footer />} />
+          </Routes>
+        </div>
       </div>
-    </div>
+    </Router>
   );
 }
 
