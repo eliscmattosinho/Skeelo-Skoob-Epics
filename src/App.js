@@ -6,6 +6,7 @@ import "./styles/App.css";
 import Building from "./components/Building";
 import Boards from "./components/Boards";
 import Header from "./components/Header";
+import Sobre from "./components/Sobre";
 
 function App() {
   return (
@@ -16,7 +17,8 @@ function App() {
             <Route path="/" element={<Building />} />
             <Route path="/Skeelo-Skoob-Epics" element={<Building />} />
             <Route path="/boards" element={<Boards />} />
-            <Route path="/header" /> {<Header />}
+            <Route path="/header" element={<Header />} />
+            <Route path="/sobre" element={<Sobre />} />
           </Routes>
         </div>
       </div>
