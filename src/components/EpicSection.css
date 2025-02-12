@@ -79,7 +79,6 @@
 }
 
 .frames-block::-webkit-scrollbar {
-    color: #10303D;
     height: 8px;
     background-color: transparent;
     border-radius: 5px;
@@ -149,8 +148,26 @@
     color: #efefef;
 }
 
+.frame-info-title {
+    max-width: 180px;
+}
+
 .frame-infos-action svg {
     color: #efefef;
+}
+
+.hide {
+    display: none;
+}
+
+.close-icon {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.epic-title.epic-section-title {
+    font-size:16px;
+    text-align: center;
 }
 
 @media (min-width: 400px) and (max-width: 768px) {
@@ -180,6 +197,10 @@
     .cam-point {
         left: 50%;
     }
+
+    .epic-title.epic-section-title {
+        font-size: 14px;
+    }
 }
 
 /* CSS para EpicDinamicDetails */
@@ -193,4 +214,29 @@
 
 .frame-infos-action {
     top: 120px;
+}
+
+.mockups-stack {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-around;
+    gap: 1rem;
+}
+
+@media (min-width: 400px) and (max-width: 768px) {
+    .mockups-stack {
+        flex-direction: column;
+    }
+
+    .mockups-stack::-webkit-scrollbar {
+        height: 8px;
+        background-color: transparent;
+        border-radius: 5px;
+    }
+    .mockups-stack::-webkit-scrollbar-thumb {
+        background-color: #c7c7c7;
+        border-radius: 25px;
+    }
 }

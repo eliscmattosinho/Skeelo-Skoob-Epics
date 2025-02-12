@@ -1,12 +1,57 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { CiLock } from "react-icons/ci";
+import { IoIosCloseCircleOutline } from "react-icons/io";
 import './EpicSection.css';
-import '../js/DinamicEpics';
-import { handleEpicDetails } from '../js/EpicDinamicDetails';
+import EpicDetailsSection from "./EpicDetailsSection";
+import { handleEpicDetails, restoreEpicElements, addMediaQueryListeners } from "../js/EpicDinamicDetails";
+import { initAutoScroll } from "../js/DinamicEpics";
 
 function EpicSection({ logo, title, description, mocImage, rangeItems, epics, theme }) {
+    const [selectedEpics, setSelectedEpics] = useState({});
+    const [clicked, setClicked] = useState(false);
+    const [isEpicVisible, setIsEpicVisible] = useState(false);
+    const [selectedTitle, setSelectedTitle] = useState("");
+    const [showTitle, setShowTitle] = useState(false);
+
+    const handleEpicSelection = (epicId, theme, epicTitle) => {
+        const epicNumber = epicId.replace('epico', '');
+        const formattedTitle = `Épico ${epicNumber} - ${epicTitle}`;
+        
+        setClicked(true);
+        setSelectedEpics(prevState => ({
+            ...prevState,
+            [theme]: epicId
+        }));
+        setSelectedTitle(formattedTitle);
+        setIsEpicVisible(true);
+        setShowTitle(true);
+        handleEpicDetails(epicId, theme);
+    };
+
+    const resetEpicState = () => {
+        restoreEpicElements(theme, selectedEpics[theme]);
+        setSelectedEpics(prevState => ({
+            ...prevState,
+            [theme]: null
+        }));
+        setSelectedTitle("");
+        setIsEpicVisible(false);
+        setClicked(false);
+        setShowTitle(false);
+    };
+
+    useEffect(() => {
+        const handleMediaQueryChange = () => { };
+        addMediaQueryListeners(handleMediaQueryChange);
+        return () => { };
+    }, []);
+
+    useEffect(() => {
+        initAutoScroll();
+    }, []);
+
     return (
-        <div id={`${theme}`} className={`content-block`}>
+        <div id={`${theme}`} className="content-block">
             <div className="content-section">
                 <div className="content epic-content-mockups">
                     <div className="epics-content">
@@ -34,20 +79,52 @@ function EpicSection({ logo, title, description, mocImage, rangeItems, epics, th
                         ))}
                     </div>
 
-                    <div id={`${theme}`} className="mockups-stack">
-                        <div className="frames-block">
-                            {epics.map((epic, index) => (
-                                <div id={epic.id} className="mockup-frame" key={index}>
-                                    <span className="cam-point"></span>
-                                    <img className={`frame-image frame-image-${theme}`} src={epic.image} alt={`frame ${title}`} />
-                                    <span className={`hide-epic hide-${theme}-epic`}></span>
-                                    <div className="frame-infos-action">
-                                        <h4 className="frame-info-title">{epic.title}</h4>
-                                        <CiLock />
-                                        <button className="btn go-to-block-frame" onClick={() => handleEpicDetails(epic.id)}>Desbloquear</button>
+                    <div className="epic-section-mockups">
+                        {isEpicVisible && (
+                            <span 
+                                id={`${theme}-close`} 
+                                className="close-icon"
+                                onClick={resetEpicState}
+                            >
+                                <IoIosCloseCircleOutline />
+                            </span>
+                        )}
+
+                        {showTitle && <h2 className="epic-title epic-section-title">{selectedTitle}</h2>}
+
+                        <div id={`${theme}`} className="mockups-stack">
+                            <div className={`frames-block ${theme}`}>
+                                {epics.map((epic, index) => (
+                                    <div
+                                        id={epic.identificador}
+                                        className={`mockup-frame ${clicked && selectedEpics[theme] !== epic.identificador ? 'hide' : ''}`}
+                                        key={index}
+                                    >
+                                        <span className="cam-point"></span>
+                                        <img className={`frame-image frame-image-${theme}`} src={epic.image} alt={`frame ${epic.title}`} />
+                                        <span className={`hide-epic hide-${theme}-epic`}></span>
+                                        <div className="frame-infos-action">
+                                            <h4 className="frame-info-title">{epic.title || epic.titulo_epico}</h4>
+                                            <CiLock />
+                                            <button
+                                                className="btn go-to-block-frame"
+                                                onClick={() => handleEpicSelection(epic.identificador, theme, epic.title || epic.titulo_epico)}
+                                            >
+                                                Desbloquear
+                                            </button>
+                                        </div>
                                     </div>
-                                </div>
-                            ))}
+                                ))}
+                            </div>
+                            <div id={`${theme}-elements`} className={`block-elements-details ${isEpicVisible ? '' : 'hide'}`}>
+                                {selectedEpics[theme] && (
+                                    <EpicDetailsSection
+                                        key={selectedEpics[theme]}
+                                        productName={theme}
+                                        epicId={selectedEpics[theme]}
+                                    />
+                                )}
+                            </div>
                         </div>
                     </div>
                 </div>

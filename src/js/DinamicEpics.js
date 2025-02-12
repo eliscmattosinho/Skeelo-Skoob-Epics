@@ -1,4 +1,4 @@
-window.onload = function () {
+function initAutoScroll() {
     const containers = document.querySelectorAll(".range");
 
     if (containers.length === 0) {
@@ -7,6 +7,8 @@ window.onload = function () {
     }
 
     containers.forEach(container => {
+        if (container.dataset.cloned) return;
+
         const items = Array.from(container.children);
         const scrollSpeed = 1;
 
@@ -15,16 +17,22 @@ window.onload = function () {
             container.appendChild(clone);
         });
 
+        container.dataset.cloned = "true";
+
         function autoScroll() {
             container.scrollLeft += scrollSpeed;
 
             if (container.scrollLeft >= container.scrollWidth / 2) {
                 container.scrollLeft = 0;
             }
-            
+
             requestAnimationFrame(autoScroll);
         }
 
         autoScroll();
     });
-};
+}
+
+document.addEventListener("DOMContentLoaded", initAutoScroll);
+
+export { initAutoScroll };
