@@ -9,7 +9,7 @@ import Header from "./components/Header";
 import Sobre from "./components/Sobre";
 import Contexto from "./components/Contexto";
 import Elementos from "./components/Elementos";
-import EpicSection from "./components/EpicSection";
+import Skeelo from "./components/Skeelo";
 import Contato from "./components/Contato";
 import Footer from "./components/Footer";
 
@@ -26,7 +26,7 @@ function App() {
             <Route path="/sobre" element={<Sobre />} />
             <Route path="/contexto" element={<Contexto />} />
             <Route path="/elementos" element={<Elementos />} />
-            <Route path="/epicos" element={<EpicSection />} />
+            <Route path="/skeelo" element={<Skeelo />} />
             <Route path="/contato" element={<Contato />} />
             <Route path="/footer" element={<Footer />} />
           </Routes>
