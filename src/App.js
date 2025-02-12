@@ -5,14 +5,7 @@ import "./styles/App.css";
 
 import Building from "./components/Building";
 import Boards from "./components/Boards";
-import Header from "./components/Header";
-import Sobre from "./components/Sobre";
-import Contexto from "./components/Contexto";
-import Elementos from "./components/Elementos";
-import Skeelo from "./components/Skeelo";
-import Skoob from "./components/Skoob";
-import Contato from "./components/Contato";
-import Footer from "./components/Footer";
+import LandingPage from "./pages/LandingPage.js"; // Novo componente que reúne a LP
 
 function App() {
   return (
@@ -20,17 +13,9 @@ function App() {
       <div className="App">
         <div id="main">
           <Routes>
-            <Route path="/" element={<Building />} />
+            <Route path="/" element={<LandingPage />} />
             <Route path="/Skeelo-Skoob-Epics" element={<Building />} />
             <Route path="/boards" element={<Boards />} />
-            <Route path="/header" element={<Header />} />
-            <Route path="/sobre" element={<Sobre />} />
-            <Route path="/contexto" element={<Contexto />} />
-            <Route path="/elementos" element={<Elementos />} />
-            <Route path="/skeelo" element={<Skeelo />} />
-            <Route path="/skoob" element={<Skoob />} />
-            <Route path="/contato" element={<Contato />} />
-            <Route path="/footer" element={<Footer />} />
           </Routes>
         </div>
       </div>
