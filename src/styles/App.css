@@ -125,6 +125,18 @@ p {
   }
 }
 
+.close-icon {
+  color: #ff0000;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+@media (min-width: 400px) and (max-width: 768px) {
+  .close-icon {
+    font-size: 23px;
+  }
+}
+
 @media (min-width: 768px) {
   .grid {
     display: grid;

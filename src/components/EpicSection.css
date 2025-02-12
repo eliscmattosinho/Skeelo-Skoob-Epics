@@ -1,0 +1,242 @@
+.epics-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 2rem;
+}
+
+.first-col-epic {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.block-p-epic {
+    width: 400px;
+}
+
+.epic-content-mockups {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.second-col-epic {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imageMoc {
+    width: 70%;
+    height: auto;
+}
+
+.epic-block-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.span-image {
+    display: block;
+    width: 10%;
+}
+
+.range {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 3rem;
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.range p {
+    font-size: 18px;
+    white-space: nowrap;
+    text-indent: 0;
+    font-weight: 600;
+    color: #efefef;
+}
+
+.frames-block {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.frames-block::-webkit-scrollbar-thumb {
+    background-color: #c7c7c7;
+    border-radius: 25px;
+}
+
+.frames-block::-webkit-scrollbar {
+    height: 8px;
+    background-color: transparent;
+    border-radius: 5px;
+}
+
+.frame-image {
+    display: block;
+    max-width: 230px;
+    height: auto;
+}
+
+.mockup-frame {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.frame-infos-action {
+    position: absolute;
+    width: 90%;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-sizing: border-box;
+    z-index: 2;
+}
+
+.cam-point {
+    position: absolute;
+    top: 20px;
+    left: 44%;
+    width: 5px;
+    height: 5px;
+    border-radius: 20px;
+    background: #141414;
+    backdrop-filter: blur(35px);
+    z-index: 999;
+}
+
+.btn.go-to-block-frame {
+    font-weight: 500;
+    transition: transform 0.3s ease-in-out;
+}
+
+.btn.go-to-block-frame:hover {
+    transform: scale(1.1);
+}
+
+.hide-epic {
+    z-index: 1;
+    position: absolute;
+    top: 9px;
+    left: 10px;
+    width: 190px;
+    height: 360px;
+    border-radius: 20px;
+    backdrop-filter: blur(35px);
+}
+
+.frame-infos-action .frame-info-title {
+    font-weight: 500;
+    color: #efefef;
+}
+
+.frame-info-title {
+    max-width: 180px;
+}
+
+.frame-infos-action svg {
+    color: #efefef;
+}
+
+.hide {
+    display: none;
+}
+
+.close-icon {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.epic-title.epic-section-title {
+    font-size:16px;
+    text-align: center;
+}
+
+@media (min-width: 400px) and (max-width: 768px) {
+    .epics-content {
+        justify-content: flex-start;
+    }
+
+    .block-p-epic {
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+        width: 90%;
+    }
+
+    .second-col-epic {
+        display: none;
+    }
+
+    .mockup-frame {
+        max-width: 200px;
+    }
+
+    .hide-epic {
+        left: -5px;
+    }
+
+    .cam-point {
+        left: 50%;
+    }
+
+    .epic-title.epic-section-title {
+        font-size: 14px;
+    }
+}
+
+/* CSS para EpicDinamicDetails */
+.frames-block {
+    justify-content: flex-start;
+}
+
+.frames-block::-webkit-scrollbar {
+    width: 8px;
+}
+
+.frame-infos-action {
+    top: 120px;
+}
+
+.mockups-stack {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-around;
+    gap: 1rem;
+}
+
+@media (min-width: 400px) and (max-width: 768px) {
+    .mockups-stack {
+        flex-direction: column;
+    }
+
+    .mockups-stack::-webkit-scrollbar {
+        height: 8px;
+        background-color: transparent;
+        border-radius: 5px;
+    }
+    .mockups-stack::-webkit-scrollbar-thumb {
+        background-color: #c7c7c7;
+        border-radius: 25px;
+    }
+}

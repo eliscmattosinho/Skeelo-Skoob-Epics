@@ -19,18 +19,18 @@ function Contato() {
                         </div>
 
                         <div className="contact-card-block">
-                            <div class="block-contact">
+                            <div className="block-contact">
                                 <p className="p-contact">
                                     <a href="https://www.linkedin.com/in/eliscmattosinho/" target='_blank' rel='noreferrer'>LinkedIn</a>
                                 </p>
                                 <img className="img-contact" src={contactCardBlue} alt=""></img>
                             </div>
-                            <div class="block-contact">
+                            <div className="block-contact">
                                 <p className="p-contact">
                                     <a href="mailto:eliscmattosinho.com">E-mail</a>
                                 </p>
                                 <img className="img-contact" src={contactCardRed} alt=""></img></div>
-                            <div class="block-contact">
+                            <div className="block-contact">
                                 <p className="p-contact">
                                     <a href="https://github.com/eliscmattosinho" target='_blank' rel='noreferrer'>GitHub</a>
                                 </p>

@@ -22,7 +22,7 @@ function Elementos() {
     const toggleDoD = () => setIsExpandedDoD(!isExpandedDoD);
 
     return (
-        <div className="content-block content-block-elements">
+        <div id="elementos" className="content-block content-block-elements">
             <div className="section-elements section-content-blocks">
                 <div className="epic-block">
                     <img className="epic-image" src={epicsImage} alt="quebra-cabeça" />
