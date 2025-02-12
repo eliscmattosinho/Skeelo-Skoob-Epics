@@ -1,0 +1,44 @@
+#bg-cgreen {
+    margin-right: 20px;
+    margin-left: 20px;
+    padding: 60px;
+
+    background: linear-gradient(360deg, rgba(61, 214, 179, 0.2) 0%, rgba(91, 220, 191, 0.168839) 35.76%, rgba(121, 227, 203, 0.137677) 71.53%, rgba(255, 255, 255, 0) 100%);
+}
+
+.contact-card-block {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+p.p-contact {
+    text-indent: 0;
+    font-weight: 600;
+    color: #efefef;
+    position: absolute;
+    z-index: 1;
+}
+
+.img-contact {
+    position: relative;
+}
+
+.block-contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (min-width: 400px) and (max-width: 768px) {
+    .p-contact a {
+        font-size: 10px;
+    }
+}
+
+@media (min-width: 768px) {
+    p.p-contact {
+        font-size: 18x;
+    }
+}
