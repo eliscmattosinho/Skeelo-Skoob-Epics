@@ -4,7 +4,7 @@ export function useEpicDetails(productName) {
     const [epicData, setEpicData] = useState([]);
 
     useEffect(() => {
-        fetch('/epics.json')
+        fetch(process.env.PUBLIC_URL + "/epics.json")
             .then((response) => response.json())
             .then((data) => {
                 const product = data[productName];
