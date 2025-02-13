@@ -3,9 +3,12 @@ import './EpicDetailsSection.css';
 import { useEpicDetails } from '../js/EpicDetails';
 import { RiExpandDiagonalLine } from "react-icons/ri";
 import { GrPrevious, GrNext } from "react-icons/gr";
+
 import { initializeNavigation, initializeUserStoryNavigation } from '../js/EpicDinamicElements';
 import { useModal } from '../js/ModalManipulation';
 import Modal from '../components/Modal';
+
+import useExpandHandler from '../hooks/useExpandHandler';
 
 function EpicContext({ context }) {
     return (
@@ -20,23 +23,22 @@ function EpicContext({ context }) {
     );
 }
 
-function UserStories({ stories = [], productName, openModal }) {
+function UserStories({ stories = [], productName, openModal, epicTitle }) {
     useLayoutEffect(() => {
         initializeUserStoryNavigation();
     }, [stories]);
 
-    const handleExpandClick = () => {
-        const content = document.getElementById('epic-user-stories-content')?.innerHTML;
-        openModal("Histórias de usuário", "userStories", content);
-    };
+    const handleExpandClick = useExpandHandler(openModal);
 
     return (
         <div className="epic-section epic-user-stories">
             <div className="overlay"></div>
-            <button className="expand-modal expand-modal-us" onClick={handleExpandClick}>
+            <button className="expand-modal expand-modal-us"
+                onClick={() => handleExpandClick(productName, epicTitle, "Histórias de usuário", "userStories", `epic-user-stories-content-${productName}`)}>
                 <RiExpandDiagonalLine />
             </button>
-            <div id='epic-user-stories-content'>
+
+            <div id={`epic-user-stories-content-${productName}`}>
                 <h3 className='epic-section-title'>User Stories</h3>
                 <div className='epic-buttons-container'>
                     {stories.length > 0 ? (
@@ -70,19 +72,18 @@ function UserStories({ stories = [], productName, openModal }) {
     );
 }
 
-function DefinitionOfDone({ doneCriteria, openModal }) {
-    const handleExpandClick = () => {
-        const content = document.getElementById('epic-dod-content')?.innerHTML;
-        openModal("Definição de pronto", "definitionOfDone", content);
-    };
+function DefinitionOfDone({ doneCriteria, productName, openModal, epicTitle }) {
+    const handleExpandClick = useExpandHandler(openModal);
 
     return (
         <div className="epic-section epic-definition-of-done">
             <div className="overlay"></div>
-            <button className="expand-modal expand-modal-dod" onClick={handleExpandClick}>
+            <button className="expand-modal expand-modal-dod"
+                onClick={() => handleExpandClick(productName, epicTitle, "Definição de pronto", "definitionOfDone", `epic-dod-content-${productName}`)}>
                 <RiExpandDiagonalLine />
             </button>
-            <div id='epic-dod-content'>
+
+            <div id={`epic-dod-content-${productName}`}>
                 <h3 className='epic-section-title'>Definição de pronto</h3>
                 <div className='dod-details epic-expand-container'>
                     <ul>
@@ -119,7 +120,7 @@ function Metrics({ metrics, productName }) {
     );
 }
 
-function EpicDetailsSection({ productName, epicId }) {
+function EpicDetailsSection({ productName, epicId, epicTitle }) {
     const [currentBlock, setCurrentBlock] = useState(0);
     const data = useEpicDetails(productName);
 
@@ -175,10 +176,10 @@ function EpicDetailsSection({ productName, epicId }) {
                     <EpicContext context={currentEpic.contexto} />
                 </div>
                 <div className={`block-elements-nav ${currentBlock === 1 ? '' : 'hide'}`}>
-                    <UserStories stories={currentEpic.historias_de_usuario} productName={productName} openModal={openModal} />
+                    <UserStories stories={currentEpic.historias_de_usuario} productName={productName} epicTitle={epicTitle} openModal={openModal} />
                 </div>
                 <div className={`block-elements-nav ${currentBlock === 2 ? '' : 'hide'}`}>
-                    <DefinitionOfDone doneCriteria={currentEpic.criterios_de_aceitacao} openModal={openModal} />
+                    <DefinitionOfDone doneCriteria={currentEpic.criterios_de_aceitacao} productName={productName} epicTitle={epicTitle} openModal={openModal} />
                 </div>
                 <div className={`block-elements-nav ${currentBlock === 3 ? '' : 'hide'}`}>
                     <Metrics metrics={currentEpic.metricas} productName={productName} />
@@ -189,6 +190,7 @@ function EpicDetailsSection({ productName, epicId }) {
                 isOpen={isOpen}
                 onClose={closeModal}
                 productName={productName}
+                epicTitle={epicTitle}
                 title={modalData.title}
                 contentType={modalData.contentType}
                 contentData={modalData.contentData}

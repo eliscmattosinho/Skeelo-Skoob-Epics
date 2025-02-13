@@ -122,6 +122,7 @@ function EpicSection({ logo, title, description, mocImage, rangeItems, epics, th
                                         key={selectedEpics[theme]}
                                         productName={theme}
                                         epicId={selectedEpics[theme]}
+                                        epicTitle={selectedTitle}
                                     />
                                 )}
                             </div>

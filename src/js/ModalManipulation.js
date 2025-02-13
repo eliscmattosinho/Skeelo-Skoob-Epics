@@ -11,9 +11,17 @@ export function useModal() {
     });
 
     useEffect(() => {
-        // Bloquear o scroll fora do modal
         if (isOpen) {
+            // Bloquear o scroll fora do modal
             document.body.classList.add('modal-open');
+            
+            // Garantir que o títlo seja atualizado quando o modal for aberto
+            let titleBlock = document.querySelector(".modal-content h3.epic-section-title");
+            if (titleBlock) {
+                titleBlock.textContent = modalData.epicTitle;
+            } else {
+                console.log("Título não encontrado:", titleBlock);
+            }
         } else {
             document.body.classList.remove('modal-open');
         }
@@ -22,17 +30,28 @@ export function useModal() {
         return () => {
             document.body.classList.remove('modal-open');
         };
-    }, [isOpen]);
+    }, [isOpen, modalData.epicTitle]);
 
-    const openModal = (title, contentType, contentData) => {
-        setModalData({ title, contentType, contentData });
+    const openModal = (productName, epicTitle, title, contentType, contentData) => {
+        setModalData({ productName, epicTitle, title, contentType, contentData });
         setIsOpen(true);
-        setTimeout(() => initializeUserStoryNavigation(), 100);
+
+        setTimeout(() => {
+            initializeUserStoryNavigation();
+        }, 100);
+
         document.querySelectorAll(".overlay").forEach(overlay => overlay.classList.add("open"));
     };
 
     const closeModal = () => {
         setIsOpen(false);
+        setModalData({
+            productName: '',
+            title: '',
+            contentType: '',
+            contentData: []
+        });
+
         document.querySelectorAll(".overlay").forEach(overlay => overlay.classList.remove("open"));
     };
 
