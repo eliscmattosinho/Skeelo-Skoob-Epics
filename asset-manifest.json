@@ -1,17 +1,37 @@
 {
   "files": {
-    "main.css": "/Skeelo-Skoob-Epics/static/css/main.9cb3101d.css",
-    "main.js": "/Skeelo-Skoob-Epics/static/js/main.5f1a67c1.js",
+    "main.css": "/Skeelo-Skoob-Epics/static/css/main.b6b78810.css",
+    "main.js": "/Skeelo-Skoob-Epics/static/js/main.f971272a.js",
     "static/js/488.6efc8ae0.chunk.js": "/Skeelo-Skoob-Epics/static/js/488.6efc8ae0.chunk.js",
-    "static/media/svg-board.svg": "/Skeelo-Skoob-Epics/static/media/svg-board.8a454da44a7237c3c697a4c23ffdbd77.svg",
-    "static/media/builder.svg": "/Skeelo-Skoob-Epics/static/media/builder.c66d9a902751ee0bf99cc061eeb12fd1.svg",
+    "static/media/skee-epi-3.png": "/Skeelo-Skoob-Epics/static/media/skee-epi-3.78c9183b3426a73d183b.png",
+    "static/media/skee-epi-1.png": "/Skeelo-Skoob-Epics/static/media/skee-epi-1.0951ba0e3e52a3fa69ba.png",
+    "static/media/skoob-epics.png": "/Skeelo-Skoob-Epics/static/media/skoob-epics.5f1533d7b490bc245aa4.png",
+    "static/media/skoob-epi-2.png": "/Skeelo-Skoob-Epics/static/media/skoob-epi-2.3db45c3aad2d6057c6fa.png",
+    "static/media/skeelo-epics.png": "/Skeelo-Skoob-Epics/static/media/skeelo-epics.25cc3bd2169980435955.png",
+    "static/media/skoob-epi-1.png": "/Skeelo-Skoob-Epics/static/media/skoob-epi-1.ed6de8769ce190d30b38.png",
+    "static/media/skee-epi-4.png": "/Skeelo-Skoob-Epics/static/media/skee-epi-4.9b8137d0949cb4280926.png",
+    "static/media/skee-epi-2.png": "/Skeelo-Skoob-Epics/static/media/skee-epi-2.5f97ce22babeab4861a8.png",
+    "static/media/dod-svg.svg": "/Skeelo-Skoob-Epics/static/media/dod-svg.4c71927458e99655a1b8039b5e465cf7.svg",
+    "static/media/dod-modal-skeelo.svg": "/Skeelo-Skoob-Epics/static/media/dod-modal-skeelo.d343ae26ed894b252c364babc458b5c9.svg",
+    "static/media/dod-modal-skoob.svg": "/Skeelo-Skoob-Epics/static/media/dod-modal-skoob.c75cd83cc8e7ef6bd15c22611d1547c5.svg",
+    "static/media/skoob-epi-3.png": "/Skeelo-Skoob-Epics/static/media/skoob-epi-3.52cf0d9b40f2f5adfa55.png",
+    "static/media/metrics-svg.svg": "/Skeelo-Skoob-Epics/static/media/metrics-svg.11f9f5fd56303c40186b79fc827c703b.svg",
+    "static/media/epics-image.svg": "/Skeelo-Skoob-Epics/static/media/epics-image.1d0c807c0bc388ba0a17f01abab1fbe5.svg",
+    "static/media/context-svg.svg": "/Skeelo-Skoob-Epics/static/media/context-svg.38bdc97ba6419e3148f8772ef40e116e.svg",
+    "static/media/us-svg.svg": "/Skeelo-Skoob-Epics/static/media/us-svg.9e13f383cacd612a55e91c9e589a1cc3.svg",
+    "static/media/us-modal-skoob.svg": "/Skeelo-Skoob-Epics/static/media/us-modal-skoob.b2e0a6a213219ec45aea941307fcc559.svg",
+    "static/media/us-modal-skeelo.svg": "/Skeelo-Skoob-Epics/static/media/us-modal-skeelo.a39582bb296bf72ffa3b1c4ae4aab3ee.svg",
+    "static/media/books.svg": "/Skeelo-Skoob-Epics/static/media/books.de1fe780bbd00c9fe08f4be297a9fbf1.svg",
     "index.html": "/Skeelo-Skoob-Epics/index.html",
-    "main.9cb3101d.css.map": "/Skeelo-Skoob-Epics/static/css/main.9cb3101d.css.map",
-    "main.5f1a67c1.js.map": "/Skeelo-Skoob-Epics/static/js/main.5f1a67c1.js.map",
+    "static/media/contact-card-blue.svg": "/Skeelo-Skoob-Epics/static/media/contact-card-blue.1403a6c1399e9fa0ed5bd3b90b8a8074.svg",
+    "static/media/contact-card-red.svg": "/Skeelo-Skoob-Epics/static/media/contact-card-red.db7900a0799c919dec7490937f48fc4a.svg",
+    "static/media/contact-card.svg": "/Skeelo-Skoob-Epics/static/media/contact-card.b9ff65c89a77904ea9bf719061068ce7.svg",
+    "main.b6b78810.css.map": "/Skeelo-Skoob-Epics/static/css/main.b6b78810.css.map",
+    "main.f971272a.js.map": "/Skeelo-Skoob-Epics/static/js/main.f971272a.js.map",
     "488.6efc8ae0.chunk.js.map": "/Skeelo-Skoob-Epics/static/js/488.6efc8ae0.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.9cb3101d.css",
-    "static/js/main.5f1a67c1.js"
+    "static/css/main.b6b78810.css",
+    "static/js/main.f971272a.js"
   ]
 }
