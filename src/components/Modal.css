@@ -10,7 +10,6 @@
     margin: 0 auto;
     padding: 20px;
     max-width: 450px;
-    min-width: 380px;
     border-radius: 20px;
 }
 
@@ -84,6 +83,27 @@
 body.modal-open {
     overflow: hidden;
 }  
+
+@media (max-width: 400px) {
+    .modal-container {
+        padding: 10px;
+    }
+
+    .modal-content {
+        margin: 10px 0;
+    }
+
+    .modal-header {
+        padding: 30px;
+        gap: 1rem;
+    }
+}
+
+@media (min-width: 400px) {
+    .modal-container {
+        min-width: 380px;
+    }
+}
 
 @media (min-width: 768px) {
     .modal-header {

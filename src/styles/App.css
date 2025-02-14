@@ -75,7 +75,7 @@ a {
   cursor: pointer;
 }
 
-p {
+p.text-indent {
   text-indent: 20px;
 }
 
@@ -91,7 +91,7 @@ p {
   gap: 1rem;
 }
 
-@media (min-width: 400px) and (max-width: 768px) {
+@media (min-width: 320px) and (max-width: 768px) {
   .section-title {
     font-size: 20px;
   }
@@ -131,9 +131,13 @@ p {
   cursor: pointer;
 }
 
-@media (min-width: 400px) and (max-width: 768px) {
+@media (min-width: 320px) and (max-width: 768px) {
   .close-icon {
     font-size: 23px;
+  }
+
+  .content-section {
+    padding: 0 4%;
   }
 }
 

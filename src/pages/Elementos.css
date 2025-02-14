@@ -127,8 +127,15 @@ summary:hover {
     margin: 40px auto;
 }
 
-@media (min-width: 400px) and (max-width: 768px) {
+@media (min-width: 320px) and (max-width: 768px) {
     .epic-block {
         max-width: 100%;
+        padding: 20px;
+    }
+    .epic-image {
+        display: none;
+    }
+    .epic-content {
+        padding: 10px;
     }
 }

@@ -3,7 +3,10 @@ export const handleEpicDetails = (epicId, theme) => {
     const epicNumber = epicId.replace('epico', '');
 
     const mockupSection = document.querySelector(`.epic-section-mockups.${theme}`);
-    mockupSection.style.margin = '0 auto';
+
+    if (window.matchMedia('(min-width: 400px)').matches) {
+        mockupSection.style.margin = '0 auto';
+    }
 
     // container mockups-stack
     const themeSection = document.querySelector(`#${theme} .mockups-stack`);

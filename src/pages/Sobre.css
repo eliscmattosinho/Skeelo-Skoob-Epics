@@ -28,6 +28,10 @@
     margin-bottom: -20px;
 }
 
+.alone-p p {
+    text-indent: 0;
+}
+
 @media (max-width: 480px) {
     .center {
         gap:2rem;
@@ -38,14 +42,14 @@
     }
 
     #block-h2 {
-        font-size: 4rem;
+        font-size: 3rem;
     }
-}
+    #block-sub, .alone-p p {
+        font-size: 0.8rem;
+        margin-bottom: 0px;
+    }
 
-@media (min-width: 768px) {
-    
-}
-
-@media (min-width: 1024px) {
-
+    #bg-tgreen {
+        padding: 30px;
+    }
 }

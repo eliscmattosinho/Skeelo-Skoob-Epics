@@ -20,7 +20,7 @@
     background: rgba(20, 73, 33, 0.5);
 }
 
-@media (min-width: 400px) and (max-width: 768px) {
+@media (min-width: 320px) and (max-width: 768px) {
     .skeelo-title {
         font-size: 30px;
     }

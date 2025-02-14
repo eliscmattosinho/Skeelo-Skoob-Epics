@@ -8,7 +8,7 @@ import pokemonSurprise from '../assets/image-icons/pokemon-surprise.jpg';
 function Contexto() {
     return (
         <div id="contexto" className="content-block">
-            <div className="content-section">
+            <div className="context-section content-section">
                 <div className="block-context">
                     <div className="grid mobile-section section-content-blocks">
                         <div className="section-content-blocks first-column">
