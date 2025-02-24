@@ -11,15 +11,11 @@ import dodImage from '../assets/image-icons/dod-svg.svg';
 import { useState } from 'react';
 
 function Elementos() {
-    const [isExpandedContext, setIsExpandedContext] = useState(false);
-    const [isExpandedUS, setIsExpandedUS] = useState(false);
-    const [isExpandedMetrics, setIsExpandedMetrics] = useState(false);
-    const [isExpandedDoD, setIsExpandedDoD] = useState(false);
+    const [expanded, setExpanded] = useState(null);
 
-    const toggleContext = () => setIsExpandedContext(!isExpandedContext);
-    const toggleUS = () => setIsExpandedUS(!isExpandedUS);
-    const toggleMetrics = () => setIsExpandedMetrics(!isExpandedMetrics);
-    const toggleDoD = () => setIsExpandedDoD(!isExpandedDoD);
+    const toggle = (section) => {
+        setExpanded(expanded === section ? null : section);
+    };
 
     return (
         <div id="elementos" className="content-block content-block-elements">
@@ -35,48 +31,25 @@ function Elementos() {
                 </div>
 
                 <div className="block-elements content-section">
-                    <div className="element flex-column element-context">
-                        <div className="img-container-elements">
-                            <img className="image-element" src={contextImage} alt="" />
+                    {[
+                        { id: "context", title: "Contexto", img: contextImage, text: "Ideia geral do épico." },
+                        { id: "us", title: "User Stories", img: usImage, text: "Quebra do épico em histórias de valor." },
+                        { id: "metrics", title: "Métricas", img: metricsImage, text: "Principais medidas com impacto esperado." },
+                        { id: "dod", title: "DoD", img: dodImage, text: "Critérios para o item ser considerado concluído." }
+                    ].map(({ id, title, img, text }) => (
+                        <div key={id} className={`element flex-column element-${id}`}>
+                            <div className="img-container-elements">
+                                <img className="image-element" src={img} alt="" />
+                            </div>
+                            <div className="toggle-section">
+                                <button className="title-summary" onClick={() => toggle(id)}>
+                                    {title}
+                                    {expanded === id ? <IoIosArrowUp /> : <IoIosArrowDown />}
+                                </button>
+                                {expanded === id && <p className="p-element">{text}</p>}
+                            </div>
                         </div>
-                        <details className="flex-column">
-                            <summary className="title-summary" onClick={toggleContext}>
-                                Contexto
-                                {isExpandedContext ? <IoIosArrowUp /> : <IoIosArrowDown />}
-                            </summary>
-                            <p className="p-element">Ideia geral do épico.</p>
-                        </details>
-                    </div>
-                    <div className="element flex-column element-us">
-                        <div className="img-container-elements"><img className="image-element" src={usImage} alt="" /></div>
-                        <details className="flex-column">
-                            <summary className="title-summary" onClick={toggleUS}>
-                                User Stories
-                                {isExpandedUS ? <IoIosArrowUp /> : <IoIosArrowDown />}
-                            </summary>
-                            <p className="p-element">Quebra do épico em histórias de valor.</p>
-                        </details>
-                    </div>
-                    <div className="element flex-column element-metrics">
-                        <div className="img-container-elements"><img className="image-element" src={metricsImage} alt="" /></div>
-                        <details className="flex-column">
-                            <summary className="title-summary" onClick={toggleMetrics}>
-                                Métricas
-                                {isExpandedMetrics ? <IoIosArrowUp /> : <IoIosArrowDown />}
-                            </summary>
-                            <p className="p-element">Principais medidas com impacto esperado.</p>
-                        </details>
-                    </div>
-                    <div className="element flex-column element-dod">
-                        <div className="img-container-elements"><img className="image-element" src={dodImage} alt="" /></div>
-                        <details className="flex-column">
-                            <summary className="title-summary" onClick={toggleDoD}>
-                                DoD
-                                {isExpandedDoD ? <IoIosArrowUp /> : <IoIosArrowDown />}
-                            </summary>
-                            <p className="p-element">Critérios para o item ser considerado concluído.</p>
-                        </details>
-                    </div>
+                    ))}
                 </div>
             </div>
         </div>
