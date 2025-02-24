@@ -44,6 +44,7 @@ export function useModal() {
     };
 
     const closeModal = () => {
+        document.querySelectorAll(".overlay").forEach(overlay => overlay.classList.remove("open"));
         setIsOpen(false);
         setModalData({
             productName: '',
@@ -51,8 +52,6 @@ export function useModal() {
             contentType: '',
             contentData: []
         });
-
-        document.querySelectorAll(".overlay").forEach(overlay => overlay.classList.remove("open"));
     };
 
     return { isOpen, modalData, openModal, closeModal };

@@ -84,6 +84,26 @@ body.modal-open {
     overflow: hidden;
 }  
 
+.modal-container {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-container.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-block {
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+}
+
+.modal-container.open .modal-block {
+    transform: scale(1);
+}
+
 @media (max-width: 400px) {
     .modal-container {
         padding: 10px;

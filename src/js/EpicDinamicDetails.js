@@ -1,7 +1,6 @@
 export const handleEpicDetails = (epicId, theme) => {
     // Extrair o número do épico a partir do identificador
     const epicNumber = epicId.replace('epico', '');
-
     const mockupSection = document.querySelector(`.epic-section-mockups.${theme}`);
 
     if (window.matchMedia('(min-width: 400px)').matches) {
@@ -31,10 +30,11 @@ const hideElementsWithDelay = (themeSection, epicId, theme) => {
     // Esconde elementos com animação
     ['hide', 'frame-infos-action'].forEach(cls => {
         const element = epicFrame.querySelector(`.${cls}-${theme}-epic`) || epicFrame.querySelector(`.${cls}`);
-        if (element) applyAnimation(element, () => {
-            // Garante que o elemento seja escondido após a animação
-            element.style.display = 'none';
-        });
+        if (element) {
+            applyAnimation(element, () => {
+                element.style.display = 'none';
+            });
+        }
     });
 };
 
@@ -43,9 +43,10 @@ const applyAnimation = (element, callback) => {
     element.style.display = 'flex';
     element.style.transition = 'opacity 0.5s ease-out';
     element.style.opacity = '0';
-    
-    // Executa a animação e depois chama o callback
-    setTimeout(() => callback(), 500);
+
+    element.addEventListener('transitionend', () => {
+        callback();
+    }, { once: true });
 };
 
 const applyTransitions = (epicId, theme) => {
@@ -58,8 +59,8 @@ const applyTransitions = (epicId, theme) => {
         return;
     }
 
-    epicDetails.style.opacity = '0';
-    epicDetails.style.transition = 'opacity 0.5s ease-in-out';
+    // epicDetails.style.opacity = '0';
+    // epicDetails.style.transition = 'opacity 0.5s ease-in-out';
 
     epicFrame.style.transition = 'transform 0.5s ease-in-out';
 
@@ -101,16 +102,26 @@ export const restoreEpicElements = (theme) => {
     }
 
     const mockupSection = document.querySelector(`.epic-section-mockups.${theme}`);
-    mockupSection.style.margin = '0';
-    
-    const epicFrames = themeSection.querySelectorAll(`.mockup-frame`);
+    if (mockupSection) {
+        mockupSection.style.margin = '0';
+    }
+
+    const epicFrames = themeSection.querySelectorAll('.mockup-frame');
     epicFrames.forEach(epicFrame => {
         ['hide', 'frame-infos-action'].forEach(cls => {
             const element = epicFrame.querySelector(`.${cls}-${theme}-epic`) || epicFrame.querySelector(`.${cls}`);
             if (element) {
-                element.style.display = 'flex';
-                element.style.opacity = '1';
+                Object.assign(element.style, {
+                    display: 'flex',
+                    opacity: '1',
+                    transition: 'opacity 0.5s ease-in-out'
+                });
             }
+        });
+
+        Object.assign(epicFrame.style, {
+            transform: 'translate(0)',
+            transition: 'transform 0.5s ease-in-out'
         });
     });
 };

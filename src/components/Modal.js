@@ -28,18 +28,14 @@ function Modal({ isOpen, onClose, title, productName, contentType, contentData }
         }
     }, [isOpen, contentData]);
 
-    if (!isOpen) return null;
-
-    const image = imageMap[productName]?.[contentType];
-
     return (
-        <div className="modal-container">
+        <div className={`modal-container ${isOpen ? 'open' : ''}`}>
             <span className="close-icon close-icon-modal" onClick={onClose}>
                 <IoIosCloseCircleOutline />
             </span>
             <div className="modal-block">
                 <div className="modal-header">
-                    <img className='modal-image' src={image} alt='' />
+                    <img className='modal-image' src={imageMap[productName]?.[contentType]} alt='' />
                     <h2 className="modal-title">{title}</h2>
                 </div>
                 <div className="modal-content" dangerouslySetInnerHTML={{ __html: contentData }} />
