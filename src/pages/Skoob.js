@@ -7,7 +7,7 @@ import skoobEpicOne from '../assets/image-icons/skoob-epi-1.png';
 import skoobEpicTwo from '../assets/image-icons/skoob-epi-2.png';
 import skoobEpicThree from '../assets/image-icons/skoob-epi-3.png';
 
-import { useEpicDetails } from '../js/EpicDetails.js';
+import { useEpicDetails } from '../hooks/useEpicDetails.js';
 
 const skoobDescription = [
     "O Skoob é uma rede social literária com funcionalidades de gerenciamento de leituras que permite aos leitores compartilharem opiniões e descobrir novos livros."

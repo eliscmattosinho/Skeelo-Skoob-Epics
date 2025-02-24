@@ -1,12 +1,12 @@
 import React, { useLayoutEffect, useRef, useState } from 'react';
 import './EpicDetailsSection.css';
-import { useEpicDetails } from '../js/EpicDetails';
+import { useEpicDetails } from '../hooks/useEpicDetails.js';
 import { RiExpandDiagonalLine } from "react-icons/ri";
 import { GrPrevious, GrNext } from "react-icons/gr";
 
 import { initializeNavigation, initializeUserStoryNavigation } from '../js/EpicDinamicElements';
 import { useModal } from '../js/ModalManipulation';
-import Modal from '../components/Modal';
+import Modal from '../components/Modal.js';
 
 import useExpandHandler from '../hooks/useExpandHandler';
 

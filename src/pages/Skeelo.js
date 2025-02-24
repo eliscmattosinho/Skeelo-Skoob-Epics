@@ -9,7 +9,7 @@ import skeeEpicTwo from '../assets/image-icons/skee-epi-2.png';
 import skeeEpicThree from '../assets/image-icons/skee-epi-3.png';
 import skeeEpicFour from '../assets/image-icons/skee-epi-4.png';
 
-import { useEpicDetails } from '../js/EpicDetails.js';
+import { useEpicDetails } from '../hooks/useEpicDetails.js';
 
 const skeeloDescription = [
     "O Skeelo é uma empresa que democratiza o acesso aos livros por meio de parcerias com serviços de assinatura.",
