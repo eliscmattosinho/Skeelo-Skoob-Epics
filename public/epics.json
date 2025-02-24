@@ -271,10 +271,10 @@
                                 "user_storie": "Como admin Skeelo, quero ter relatórios detalhados sobre os presentes enviados, para que eu possa acompanhar o uso da funcionalidade de presentear, os tipos de usuários e os livros mais presentes.",
                                 "criterios_de_aceitacao": [
                                     "Relatórios trimestrais devem ser gerados com as seguintes informações:",
-                                    "- Porcentagem do tipo de usuário remetente (novo cadastro ou não).",
-                                    "- Porcentagem do tipo de usuário destinatário (novo cadastro ou não).",
-                                    "- Livro mais escolhido para presentear.",
-                                    "- Faixa de preço mais escolhida para presente.",
+                                    "Porcentagem do tipo de usuário remetente (novo cadastro ou não).",
+                                    "Porcentagem do tipo de usuário destinatário (novo cadastro ou não).",
+                                    "Livro mais escolhido para presentear.",
+                                    "Faixa de preço mais escolhida para presente.",
                                     "Relatórios devem ser exportáveis em formato PDF ou Excel."
                                 ]
                             }
