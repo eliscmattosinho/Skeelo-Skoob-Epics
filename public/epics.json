@@ -21,7 +21,7 @@
                         ],
                         "us2": [
                             {
-                                "titulo": "Identificar livros relacionados",
+                                "titulo": "US2: Identificar livros relacionados",
                                 "numero": "2",
                                 "user_storie": "Como usuário, quero visualizar se uma obra faz parte de um conjunto ordenado por ordem de laçamento, para que possa planejar minha leitura e aquisição dos demais títulos com eficiência.",
                                 "criterios_de_aceitacao": [
