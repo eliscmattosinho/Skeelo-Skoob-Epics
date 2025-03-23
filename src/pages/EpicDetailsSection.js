@@ -57,7 +57,7 @@ function UserStories({ stories = [], productName, openModal, epicTitle }) {
                                 <p className="user-story-description">{story.user_storie || "Descrição não disponível"}</p>
                             </div>
                             <div className="user-story-criteria">
-                                <h4 className='user-story-title'>Critérios</h4>
+                                <h4 className='user-story-title'>Critérios de aceitação</h4>
                                 <ol className='criteria-list'>
                                     {(story.criterios_de_aceitacao || []).map((criteria, i) => (
                                         <li key={i}>{criteria}</li>
