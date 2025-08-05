@@ -37,6 +37,26 @@ details summary::-webkit-details-marker {
     display: none;
 }
 
+.icon-toggle {
+    transition: transform 0.3s ease;
+}
+
+.icon-toggle.rotated {
+    transform: rotate(180deg);
+}
+
+.p-element {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.4s ease, opacity 0.4s ease;
+}
+
+.toggle-section.expanded .p-element {
+    max-height: 500px;
+    opacity: 1;
+}
+
 .title-summary {
     display: flex;
     background: none;
