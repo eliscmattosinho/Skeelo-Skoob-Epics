@@ -1,10 +1,11 @@
 import '../styles/App.css';
 import "./Sobre.css";
 
+import TypingEffect from '../js/TypingEffect';
+
 import booksImage from '../assets/image-icons/books.svg';
 
 function Sobre() {
-    // @TODO: Pensar em nomes melhores para os identificadores e classes
     return (
         <div id="bg-tgreen" className="content-block">
             <div id="sobre" className="content">
@@ -15,7 +16,7 @@ function Sobre() {
                     </div>
                     <div id="block-image-p" className="center">
                         <div className="alone-p">
-                            <p>A mudança no mercado literário começa aqui.</p>
+                            <TypingEffect text="A mudança no mercado literário começa aqui." speed={50} />
                         </div>
                         <div className="block-image">
                             <img id="image-books" src={booksImage} loading="lazy" alt="illustration of green books in a stack" />

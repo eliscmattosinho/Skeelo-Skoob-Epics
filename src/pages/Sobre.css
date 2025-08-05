@@ -17,11 +17,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 3rem;
+    gap: 5rem;
 }
 
 .alone-p {
-    font-weight: 600;
+    font-size: 1.2rem;
 }
 
 #block-sub {
@@ -30,6 +30,15 @@
 
 .alone-p p {
     text-indent: 0;
+}
+
+.blinking-cursor {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  from, to { opacity: 0; }
+  50% { opacity: 1; }
 }
 
 @media (max-width: 480px) {
