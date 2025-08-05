@@ -72,6 +72,23 @@
     max-width: 600px;
 }
 
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.images-block .img-container {
+    animation: float 3s ease-in-out infinite;
+}
+
+
 @media (min-width: 320px) and (max-width: 768px) {
     .btns-block, .images-block {
         display: flex;

@@ -16,7 +16,7 @@ function Sobre() {
                     </div>
                     <div id="block-image-p" className="center">
                         <div className="alone-p">
-                            <TypingEffect text="A mudança no mercado literário começa aqui." speed={50} />
+                            <TypingEffect text="A mudança no mercado literário começa aqui." speed={50} />g
                         </div>
                         <div className="block-image">
                             <img id="image-books" src={booksImage} loading="lazy" alt="illustration of green books in a stack" />
