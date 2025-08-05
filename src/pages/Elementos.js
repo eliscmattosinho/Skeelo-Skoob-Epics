@@ -1,6 +1,6 @@
 import "../styles/App.css";
 import "./Elementos.css";
-import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
+import { IoIosArrowDown } from "react-icons/io";
 
 import epicsImage from '../assets/image-icons/epics-image.svg';
 import contextImage from '../assets/image-icons/context-svg.svg';
@@ -8,18 +8,33 @@ import usImage from '../assets/image-icons/us-svg.svg';
 import metricsImage from '../assets/image-icons/metrics-svg.svg';
 import dodImage from '../assets/image-icons/dod-svg.svg';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 function Elementos() {
     const [expanded, setExpanded] = useState(null);
+    const containerRef = useRef(null);
 
     const toggle = (section) => {
         setExpanded(expanded === section ? null : section);
     };
 
+    // Clique fora da seção
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (containerRef.current && !containerRef.current.contains(event.target)) {
+                setExpanded(null);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
+
     return (
         <div id="elementos" className="content-block content-block-elements">
-            <div className="section-elements section-content-blocks">
+            <div className="section-elements section-content-blocks" ref={containerRef}>
                 <div className="epic-block">
                     <img className="epic-image" src={epicsImage} alt="quebra-cabeça" />
                     <div className="epic-content">
@@ -41,12 +56,12 @@ function Elementos() {
                             <div className="img-container-elements">
                                 <img className="image-element" src={img} alt="" />
                             </div>
-                            <div className="toggle-section">
+                            <div className={`toggle-section ${expanded === id ? 'expanded' : ''}`}>
                                 <button className="title-summary" onClick={() => toggle(id)}>
                                     {title}
-                                    {expanded === id ? <IoIosArrowUp /> : <IoIosArrowDown />}
+                                    <IoIosArrowDown className={`icon-toggle ${expanded === id ? 'rotated' : ''}`} />
                                 </button>
-                                {expanded === id && <p className="p-element">{text}</p>}
+                                <p className="p-element">{text}</p>
                             </div>
                         </div>
                     ))}
