@@ -18,8 +18,9 @@ function Contexto() {
                             </div>
                             <div className="p-blocks">
                                 <div className="p-block">
-                                    <p> Em novembro de 2024, tivemos a aquisição do Skoob pela Skeelo, empresa que vem se expandindo no mercado brasileiro de leitura digital e ganhando o coração de diversos leitores.</p>
-                                    <p> A aquisição foi realizada pelo valor de R$1,5 milhão de acordo com dados do Cade, que aprovou a transação. Com a aquisição, a empresa revelou planos de melhoria e integração entre as plataformas.</p>
+                                    <p>Em agosto de 2024, o Skeelo concluiu a aquisição da rede social literária Skoob, que pertencia à Americanas, e a transação foi aprovada pelo Cade. De acordo com declarações oficiais, o valor da negociação foi de aproximadamente R$ 1,5 milhão.</p>
+                                    <p>Com a aquisição, o Skeelo anunciou um plano de modernização tecnológica do Skoob, incluindo melhorias na interface do app e o desenvolvimento de uma versão web responsiva, atendendo a sua base de cerca de 11 milhões de usuários cadastrados, dos quais aproximadamente 1,3 milhão são ativos por mês (MAUs).</p>
+                                    <p>Até então, os apps e sites das duas marcas continuam operando separadamente, mas integrando progressivamente funcionalidades.</p>
                                 </div>
                             </div>
                             <div className="btns-block">
