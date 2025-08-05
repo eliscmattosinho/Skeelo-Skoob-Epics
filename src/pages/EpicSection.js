@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { CiLock } from "react-icons/ci";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import './EpicSection.css';
 import EpicDetailsSection from "./EpicDetailsSection";
 import { handleEpicDetails, restoreEpicElements, addMediaQueryListeners } from "../js/EpicDinamicDetails";
 import { initAutoScroll } from "../js/DinamicEpics";
+
+import { enableDragScroll } from "../js/DragScroll";
 
 function EpicSection({ logo, title, description, mocImage, rangeItems, epics, theme }) {
     const [selectedEpics, setSelectedEpics] = useState({});
@@ -50,6 +52,15 @@ function EpicSection({ logo, title, description, mocImage, rangeItems, epics, th
         initAutoScroll();
     }, []);
 
+    const framesRef = useRef(null);
+
+    useEffect(() => {
+        const removeListeners = enableDragScroll(framesRef.current);
+        return () => {
+            if (removeListeners) removeListeners();
+        };
+    }, []);
+
     return (
         <div id={`${theme}`} className="content-block">
             <div className="content-section">
@@ -93,7 +104,7 @@ function EpicSection({ logo, title, description, mocImage, rangeItems, epics, th
                         {showTitle && <h2 className="epic-title epic-section-title">{selectedTitle}</h2>}
 
                         <div id={`${theme}`} className="mockups-stack">
-                            <div className={`frames-block ${theme}`}>
+                            <div ref={framesRef} className={`frames-block ${theme}`}>
                                 {epics.map((epic, index) => (
                                     <div
                                         id={epic.identificador}

@@ -182,6 +182,15 @@
     gap: 1rem;
 }
 
+.frames-block {
+    cursor: grab;
+}
+
+.frames-block.dragging {
+    cursor: grabbing;
+    user-select: none;
+}
+
 @media (min-width: 320px) and (max-width: 768px) {
     .epics-content {
         justify-content: flex-start;
