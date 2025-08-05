@@ -16,11 +16,11 @@ function Contexto() {
                                 <h3 className="section-title context-title">Contexto</h3>
                                 <h4 className="sub-title">O início</h4>
                             </div>
-                            <div className="p-blocks">
-                                <div className="p-block">
-                                    <p>Em agosto de 2024, o Skeelo concluiu a aquisição da rede social literária Skoob, que pertencia à Americanas, e a transação foi aprovada pelo Cade. De acordo com declarações oficiais, o valor da negociação foi de aproximadamente R$ 1,5 milhão.</p>
-                                    <p>Com a aquisição, o Skeelo anunciou um plano de modernização tecnológica do Skoob, incluindo melhorias na interface do app e o desenvolvimento de uma versão web responsiva, atendendo a sua base de cerca de 11 milhões de usuários cadastrados, dos quais aproximadamente 1,3 milhão são ativos por mês (MAUs).</p>
-                                    <p>Até então, os apps e sites das duas marcas continuam operando separadamente, mas integrando progressivamente funcionalidades.</p>
+                            <div>
+                                <div className="p-block text-blocks">
+                                    <p className="text-indent">Em agosto de 2024, o Skeelo concluiu a aquisição da rede social literária Skoob, que pertencia à Americanas, e a transação foi aprovada pelo Cade. De acordo com declarações oficiais, o valor da negociação foi de aproximadamente R$ 1,5 milhão.</p>
+                                    <p className="text-indent">Com a aquisição, o Skeelo anunciou um plano de modernização tecnológica do Skoob, incluindo melhorias na interface do app e o desenvolvimento de uma versão web responsiva, atendendo a sua base de cerca de 11 milhões de usuários cadastrados, dos quais aproximadamente 1,3 milhão são ativos por mês (MAUs).</p>
+                                    <p className="text-indent">Até então, os apps e sites das duas marcas continuam operando separadamente, mas integrando progressivamente funcionalidades.</p>
                                 </div>
                             </div>
                             <div className="btns-block">

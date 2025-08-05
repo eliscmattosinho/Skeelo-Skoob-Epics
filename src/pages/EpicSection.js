@@ -62,7 +62,7 @@ function EpicSection({ logo, title, description, mocImage, rangeItems, epics, th
                                     <img src={logo} alt={`${title} logo`} />
                                 </span>
                             </div>
-                            <div className="block-p-epic">
+                            <div className="block-p-epic text-blocks">
                                 {description.map((para, index) => (
                                     <p className={`p-${theme} text-indent`} key={index}>{para}</p>
                                 ))}
