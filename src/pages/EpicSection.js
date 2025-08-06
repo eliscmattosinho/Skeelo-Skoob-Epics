@@ -18,7 +18,7 @@ function EpicSection({ logo, title, description, mocImage, rangeItems, epics, th
     const handleEpicSelection = (epicId, theme, epicTitle) => {
         const epicNumber = epicId.replace('epico', '');
         const formattedTitle = `Épico ${epicNumber} - ${epicTitle}`;
-        
+
         setClicked(true);
         setSelectedEpics(prevState => ({
             ...prevState,
@@ -53,12 +53,17 @@ function EpicSection({ logo, title, description, mocImage, rangeItems, epics, th
     }, []);
 
     const framesRef = useRef(null);
+    const ref = useRef(null);
 
     useEffect(() => {
         const removeListeners = enableDragScroll(framesRef.current);
         return () => {
             if (removeListeners) removeListeners();
         };
+    }, []);
+
+    useEffect(() => {
+        enableDragScroll(ref.current);
     }, []);
 
     return (
@@ -92,8 +97,8 @@ function EpicSection({ logo, title, description, mocImage, rangeItems, epics, th
 
                     <div className={`epic-section-mockups ${theme}`}>
                         {isEpicVisible && (
-                            <span 
-                                id={`${theme}-close`} 
+                            <span
+                                id={`${theme}-close`}
                                 className="close-icon invisible"
                                 onClick={resetEpicState}
                             >
@@ -103,7 +108,7 @@ function EpicSection({ logo, title, description, mocImage, rangeItems, epics, th
 
                         {showTitle && <h2 className="epic-title epic-section-title">{selectedTitle}</h2>}
 
-                        <div id={`${theme}`} className="mockups-stack">
+                        <div ref={ref} id={`${theme}`} className="mockups-stack drag-scroll">
                             <div ref={framesRef} className={`frames-block ${theme}`}>
                                 {epics.map((epic, index) => (
                                     <div
@@ -111,18 +116,29 @@ function EpicSection({ logo, title, description, mocImage, rangeItems, epics, th
                                         className={`mockup-frame ${clicked && selectedEpics[theme] !== epic.identificador ? 'hide' : ''}`}
                                         key={index}
                                     >
-                                        <span className="cam-point"></span>
-                                        <img className={`frame-image frame-image-${theme}`} src={epic.image} alt={`frame ${epic.title}`} />
-                                        <span className={`hide-epic hide-${theme}-epic`}></span>
-                                        <div className="frame-infos-action">
-                                            <h4 className="frame-info-title">{epic.title || epic.titulo_epico}</h4>
-                                            <CiLock />
-                                            <button
-                                                className="btn go-to-block-frame"
-                                                onClick={() => handleEpicSelection(epic.identificador, theme, epic.title || epic.titulo_epico)}
-                                            >
-                                                Desbloquear
-                                            </button>
+                                        <div className="frame-container">
+                                            <img
+                                                className={`frame-image frame-image-${theme}`}
+                                                src={epic.image}
+                                                alt={`frame ${epic.title}`}
+                                            />
+
+                                            <span className={`hide-epic hide-${theme}-epic`}></span>
+
+                                            <span className="cam-point"></span>
+
+                                            <div className="frame-infos-action">
+                                                <h4 className="frame-info-title">{epic.title || epic.titulo_epico}</h4>
+                                                <CiLock />
+                                                <button
+                                                    className="btn go-to-block-frame"
+                                                    onClick={() =>
+                                                        handleEpicSelection(epic.identificador, theme, epic.title || epic.titulo_epico)
+                                                    }
+                                                >
+                                                    Desbloquear
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 ))}
