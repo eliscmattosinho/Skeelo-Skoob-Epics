@@ -1,41 +1,35 @@
 export function enableDragScroll(element) {
     if (!element) return;
 
-    let isDown = false;
-    let startX;
-    let scrollLeft;
+    let isDragging = false;
+    let startX = 0;
+    let scrollStart = 0;
 
-    const mouseDownHandler = (e) => {
-        isDown = true;
+    const startDrag = (clientX) => {
+        isDragging = true;
+        startX = clientX;
+        scrollStart = element.scrollLeft;
         element.classList.add('dragging');
-        startX = e.pageX - element.offsetLeft;
-        scrollLeft = element.scrollLeft;
     };
 
-    const mouseLeaveHandler = () => {
-        if (!isDown) return;
+    const drag = (clientX) => {
+        if (!isDragging) return;
+        const deltaX = clientX - startX;
+        element.scrollLeft = scrollStart - deltaX;
     };
 
-    const mouseUpHandler = () => {
-        isDown = false;
+    const endDrag = () => {
+        isDragging = false;
         element.classList.remove('dragging');
     };
 
-    const mouseMoveHandler = (e) => {
-        if (!isDown) return;
-        e.preventDefault();
-        const x = e.pageX - element.offsetLeft;
-        const walk = (x - startX) * 1.5;
-        element.scrollLeft = scrollLeft - walk;
-    };
+    // Mouse
+    element.addEventListener('mousedown', (e) => startDrag(e.clientX));
+    window.addEventListener('mousemove', (e) => drag(e.clientX));
+    window.addEventListener('mouseup', endDrag);
 
-    element.addEventListener('mousedown', mouseDownHandler);
-    element.addEventListener('mousemove', mouseMoveHandler);
-    window.addEventListener('mouseup', mouseUpHandler);
-
-    return () => {
-        element.removeEventListener('mousedown', mouseDownHandler);
-        element.removeEventListener('mousemove', mouseMoveHandler);
-        window.removeEventListener('mouseup', mouseUpHandler);
-    };
+    // Touch
+    element.addEventListener('touchstart', (e) => startDrag(e.touches[0].clientX), { passive: true });
+    window.addEventListener('touchmove', (e) => drag(e.touches[0].clientX), { passive: true });
+    window.addEventListener('touchend', endDrag);
 }
