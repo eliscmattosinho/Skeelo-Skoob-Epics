@@ -24,41 +24,65 @@ function EpicContext({ context }) {
 }
 
 function UserStories({ stories = [], productName, openModal, epicTitle }) {
+    const containerRef = useRef(null);
+
     useLayoutEffect(() => {
-        initializeUserStoryNavigation();
+        if (containerRef.current) {
+            initializeUserStoryNavigation(containerRef.current);
+        }
     }, [stories]);
 
     const handleExpandClick = useExpandHandler(openModal);
 
     return (
-        <div className="epic-section epic-user-stories">
+        <div className="epic-section epic-user-stories" ref={containerRef}>
             <div className="overlay"></div>
-            <button className="expand-modal expand-modal-us"
-                onClick={() => handleExpandClick(productName, epicTitle, "Histórias de usuário", "userStories", `epic-user-stories-content-${productName}`)}>
+            <button
+                className="expand-modal expand-modal-us"
+                onClick={() =>
+                    handleExpandClick(
+                        productName,
+                        epicTitle,
+                        "Histórias de usuário",
+                        "userStories",
+                        `epic-user-stories-content-${productName}`
+                    )
+                }
+            >
                 <RiExpandDiagonalLine />
             </button>
 
             <div id={`epic-user-stories-content-${productName}`}>
-                <h3 className='epic-section-title'>User Stories</h3>
-                <div className='epic-buttons-container'>
+                <h3 className="epic-section-title">User Stories</h3>
+                <div className="epic-buttons-container">
                     {stories.length > 0 ? (
                         stories.map((story, index) => (
-                            <button key={index} className={`btn epic-button btn-${productName}`}>US{story.numero}</button>
+                            <button key={index} className={`btn epic-button btn-${productName}`}>
+                                US{story.numero}
+                            </button>
                         ))
                     ) : (
                         <p>Nenhuma história de usuário disponível.</p>
                     )}
                 </div>
+
                 {stories.map((story, index) => (
-                    <div key={index} className='epic-us-container epic-expand-container user-story-details'>
+                    <div
+                        key={index}
+                        className="epic-us-container epic-expand-container user-story-details"
+                    >
                         <div className="user-story-content">
                             <div className="user-story-header">
-                                <h4 className="user-story-title">{story.titulo || "Título não disponível"}</h4>
-                                <p className="user-story-description">{story.user_storie || "Descrição não disponível"}</p>
+                                <h4 className="user-story-title">
+                                    {story.titulo || "Título não disponível"}
+                                </h4>
+                                <p className="user-story-description">
+                                    {story.user_storie || "Descrição não disponível"}
+                                </p>
                             </div>
                             <div className="user-story-criteria">
-                                <h4 className='user-story-title'>Critérios de aceitação</h4>
-                                <ol className='criteria-list'>
+                                <h4 className="user-story-title">Critérios de aceitação</h4>
+                                <ol className="criteria-list">
                                     {(story.criterios_de_aceitacao || []).map((criteria, i) => (
                                         <li key={i}>{criteria}</li>
                                     ))}
