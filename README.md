@@ -1,19 +1,34 @@
-# Skeelo-Skoob-Epics
+# Skeelo-Skoob Epics
 
-## Sobre o Projeto
+![Banner 1](src/assets/readme-img/banner-1.png)
 
-O **Skeelo-Skoob-Epics** é uma landing page desenvolvida com **React** para integrar serviços relacionados à leitura digital. O projeto utiliza **React Router**, **React Icons** e outras bibliotecas para fornecer uma experiência fluida e moderna.
+## Project Description
 
-## Tecnologias Utilizadas
+An interactive landing page that showcases the epics of the Skeelo-Skoob ecosystem, making it easier to understand and track the project goals through a dynamic and visual interface.
 
-- **React** 19.0.0
-- **React Router DOM** 7.1.5
-- **React Icons** 5.4.0
-- **React Scripts** 5.0.1
-- **gh-pages** 6.3.0 (para deploy no GitHub Pages)
-- **Web Vitals** 4.2.4
-- **ESLint Config React App** 7.0.1
+- Notion case: [Digital Reading Ecosystem | Notion](https://eliscmattosinho.notion.site/Ecossistema-de-leitura-digital-15432edc5fc5805a8ecfe3447f2d3d0b).
 
----
+## Screenshots
 
-Desenvolvido por [Elis Mattosinho](https://github.com/eliscmattosinho).
+- Project on Behance: [Skeelo-Skoob Epics | Behance](https://www.behance.net/gallery/231311471/Skeelo-Skoob-Epics-of-the-Digital-Reading-Ecosystem).
+
+## Technologies used
+
+- React 19;
+- React Router Dom;
+- React Icons;
+- CSS3;
+- JavaScript (ES6+);
+- GitHub Pages (deployment).
+
+## Deployment
+
+This project aims to provide a clear and dynamic experience to visualize the Skeelo-Skoob epics, facilitating alignment among stakeholders.
+
+You can access the live landing page here:
+
+- [Live Demo](https://eliscmattosinho.github.io/Skeelo-Skoob-Epics/)
+
+<br />
+
+![Banner 2](src/assets/readme-img/banner-2.png)
