@@ -44,53 +44,36 @@ export function initializeNavigation(previousButton, nextButton, navItems, curre
     });
 }
 
-export function initializeUserStoryNavigation() {
-    const epicSections = document.querySelectorAll('.epic-user-stories');
+/**
+ * Inicializa a navegação entre User Stories dentro de um container específico.
+ * 
+ * Esta função permite que, ao clicar em um botão (ex: "US1", "US2"...), 
+ * apenas a respectiva descrição da user story seja exibida,
+ * escondendo as demais. O escopo é limitado ao container passado,
+ * evitando conflitos entre diferentes seções ou modais.
+ * 
+ * @param {HTMLElement} container - Elemento DOM onde as user stories estão inseridas. 
+ * Deve conter os elementos com as classes `.epic-buttons-container` e `.user-story-details`.
+ */
+export function initializeUserStoryNavigation(container) {
+    if (!container) return;
 
-    epicSections.forEach(epicSection => {
-        const userStoryContainers = epicSection.querySelectorAll('.user-story-details');
-        const userStoryButtons = epicSection.querySelectorAll('.epic-buttons-container .epic-button');
+    const userStoryContainers = container.querySelectorAll('.user-story-details');
+    const userStoryButtons = container.querySelectorAll('.epic-buttons-container .epic-button');
 
-        if (userStoryContainers.length === 0 || userStoryButtons.length === 0) return;
+    if (userStoryContainers.length === 0 || userStoryButtons.length === 0) return;
 
-        userStoryContainers.forEach((container, index) => {
-            if (index === 0) {
-                container.classList.remove('hide');
-            } else {
-                container.classList.add('hide');
-            }
-        });
-
-        userStoryButtons.forEach((button, index) => {
-            button.addEventListener('click', () => {
-                userStoryContainers.forEach(container => container.classList.add('hide'));
-                userStoryContainers[index].classList.remove('hide');
-            });
-        });
+    // Exibe apenas o primeiro bloco de user story
+    userStoryContainers.forEach((storyEl, index) => {
+        storyEl.classList.toggle('hide', index !== 0);
     });
 
-    //Dentro do modal 
-    const modalContent = document.querySelector('.modal-content');
-
-    if (modalContent) {
-        const modalButtons = modalContent.querySelectorAll('.epic-buttons-container .epic-button');
-        const modalStories = modalContent.querySelectorAll('.user-story-details');
-
-        if (modalStories.length > 0 && modalButtons.length > 0) {
-            modalStories.forEach((container, index) => {
-                if (index === 0) {
-                    container.classList.remove('hide');
-                } else {
-                    container.classList.add('hide');
-                }
-            });
-
-            modalButtons.forEach((button, index) => {
-                button.addEventListener('click', () => {
-                    modalStories.forEach(container => container.classList.add('hide'));
-                    modalStories[index].classList.remove('hide');
-                });
-            });
-        }
-    }
+    // Adiciona evento de clique para alternar entre histórias
+    userStoryButtons.forEach((button, index) => {
+        button.addEventListener('click', () => {
+            userStoryContainers.forEach(container => container.classList.add('hide'));
+            userStoryContainers[index].classList.remove('hide');
+        });
+    });
 }
+

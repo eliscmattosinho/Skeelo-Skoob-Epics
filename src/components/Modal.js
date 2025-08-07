@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import './Modal.css';
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import { initializeUserStoryNavigation } from '../js/EpicDinamicElements';
@@ -20,11 +20,15 @@ const imageMap = {
 };
 
 function Modal({ isOpen, onClose, title, productName, contentType, contentData }) {
+    const modalContentRef = useRef(null);
+
+    /**
+    * Efeito que inicializa a navegação entre user stories dentro do modal
+    * sempre que ele for aberto ou receber novo conteúdo.
+    */
     useEffect(() => {
-        if (isOpen) {
-            setTimeout(() => {
-                initializeUserStoryNavigation();
-            }, 100);
+        if (isOpen && modalContentRef.current) {
+            initializeUserStoryNavigation(modalContentRef.current);
         }
     }, [isOpen, contentData]);
 
@@ -38,7 +42,11 @@ function Modal({ isOpen, onClose, title, productName, contentType, contentData }
                     <img className='modal-image' src={imageMap[productName]?.[contentType]} alt='' />
                     <h2 className="modal-title">{title}</h2>
                 </div>
-                <div className="modal-content" dangerouslySetInnerHTML={{ __html: contentData }} />
+                <div
+                    ref={modalContentRef}
+                    className="modal-content"
+                    dangerouslySetInnerHTML={{ __html: contentData }}
+                />
             </div>
         </div>
     );
