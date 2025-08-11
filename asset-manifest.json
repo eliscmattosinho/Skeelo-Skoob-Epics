@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Skeelo-Skoob-Epics/static/css/main.965ede49.css",
-    "main.js": "/Skeelo-Skoob-Epics/static/js/main.c6987e62.js",
+    "main.css": "/Skeelo-Skoob-Epics/static/css/main.a54b081a.css",
+    "main.js": "/Skeelo-Skoob-Epics/static/js/main.d466568f.js",
     "static/js/488.ebac5ba4.chunk.js": "/Skeelo-Skoob-Epics/static/js/488.ebac5ba4.chunk.js",
     "static/media/skee-epi-3.png": "/Skeelo-Skoob-Epics/static/media/skee-epi-3.4d4b3949b4e4a3ab13dc.png",
     "static/media/skee-epi-1.png": "/Skeelo-Skoob-Epics/static/media/skee-epi-1.ce1af71b0064e3eb2e3e.png",
@@ -26,12 +26,12 @@
     "static/media/contact-card-blue.svg": "/Skeelo-Skoob-Epics/static/media/contact-card-blue.1403a6c1399e9fa0ed5bd3b90b8a8074.svg",
     "static/media/contact-card-red.svg": "/Skeelo-Skoob-Epics/static/media/contact-card-red.db7900a0799c919dec7490937f48fc4a.svg",
     "static/media/contact-card.svg": "/Skeelo-Skoob-Epics/static/media/contact-card.b9ff65c89a77904ea9bf719061068ce7.svg",
-    "main.965ede49.css.map": "/Skeelo-Skoob-Epics/static/css/main.965ede49.css.map",
-    "main.c6987e62.js.map": "/Skeelo-Skoob-Epics/static/js/main.c6987e62.js.map",
+    "main.a54b081a.css.map": "/Skeelo-Skoob-Epics/static/css/main.a54b081a.css.map",
+    "main.d466568f.js.map": "/Skeelo-Skoob-Epics/static/js/main.d466568f.js.map",
     "488.ebac5ba4.chunk.js.map": "/Skeelo-Skoob-Epics/static/js/488.ebac5ba4.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.965ede49.css",
-    "static/js/main.c6987e62.js"
+    "static/css/main.a54b081a.css",
+    "static/js/main.d466568f.js"
   ]
 }
