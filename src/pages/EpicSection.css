@@ -62,6 +62,12 @@
     color: #efefef;
 }
 
+.range-tag {
+    min-width: 100px;
+    flex: 0 0 auto;
+    text-align: center;
+}
+
 .frames-block {
     display: flex;
     flex-direction: row;
@@ -70,7 +76,7 @@
     flex-wrap: nowrap;
     overflow-x: auto;
     margin: 20px auto;
-    padding: 20px;
+    padding: 40px 20px;
     gap: 1rem;
 }
 
@@ -186,7 +192,7 @@
 }
 
 .epic-title.epic-section-title {
-    font-size:16px;
+    font-size:18px;
     text-align: center;
 }
 
@@ -196,7 +202,7 @@
     flex-wrap: nowrap;
     align-items: center;
     justify-content: space-around;
-    gap: 1rem;
+    gap: 2rem;
 }
 
 .frames-block {
@@ -215,6 +221,7 @@
 
     .frames-block {
         gap: 3rem;
+        padding: 20px 30px;
     }
 
     .block-p-epic {
@@ -233,13 +240,15 @@
     }
 
     .epic-title.epic-section-title {
-        font-size: 14px;
+        font-size: 16px;
+        margin-top: 10px;
     }
 
     .mockups-stack {
         flex-direction: column;
         overflow: hidden;
         overflow-x: auto;
+        gap: 1rem;
     }
 
     .mockups-stack::-webkit-scrollbar {

@@ -130,10 +130,10 @@ p.text-indent {
   }
 
   #bg-tgreen {
-    border-radius: 50px 50px 0px 0px;
+    border-radius: 20px 20px 0px 0px;
   }
   #bg-cgreen {
-    border-radius: 0px 0px 50px 50px;
+    border-radius: 0px 0px 20px 20px;
   }
 }
 
@@ -162,9 +162,9 @@ p.text-indent {
   }
 
   #bg-tgreen {
-    border-radius: 100px 100px 0px 0px;
+    border-radius: 25px 25px 0px 0px;
   }
   #bg-cgreen {
-    border-radius: 0px 0px 100px 100px;
+    border-radius: 0px 0px 25px 25px;
   }
 }

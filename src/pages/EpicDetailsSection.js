@@ -52,7 +52,7 @@ function UserStories({ stories = [], productName, openModal, epicTitle }) {
                 <RiExpandDiagonalLine />
             </button>
 
-            <div id={`epic-user-stories-content-${productName}`}>
+            <div id={`epic-user-stories-content-${productName}`} className="epic-user-stories-container">
                 <h3 className="epic-section-title">User Stories</h3>
                 <div className="epic-buttons-container">
                     {stories.length > 0 ? (

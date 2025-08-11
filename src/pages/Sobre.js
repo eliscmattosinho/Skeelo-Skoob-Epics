@@ -19,7 +19,7 @@ function Sobre() {
                             <TypingEffect text="A mudança no mercado literário começa aqui." speed={50} />
                         </div>
                         <div className="block-image">
-                            <img id="image-books" src={booksImage} loading="lazy" alt="illustration of green books in a stack" />
+                            <img id="image-books" src={booksImage} loading="eager" alt="illustration of green books in a stack" />
                         </div>
                     </div>
                 </div>
