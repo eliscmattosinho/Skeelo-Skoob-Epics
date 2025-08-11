@@ -79,9 +79,9 @@ const applyTransitions = (epicId, theme) => {
     setTimeout(() => {
         epicDetails.style.display = 'flex';
 
-        if (window.matchMedia('(max-width: 768px)').matches) {
-            epicDetails.style.marginTop = '-60px';
-        }
+        // if (window.matchMedia('(max-width: 768px)').matches) {
+        //     epicDetails.style.marginTop = '-60px';
+        // }
 
         setTimeout(() => {
             epicDetails.style.opacity = '1';
