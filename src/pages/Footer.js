@@ -11,7 +11,7 @@ function Footer() {
                     <p className="p-footer">2025</p>
                 </div>
 
-                <a id="p-state" className="btn-p-state" href='https://eliscmattosinho.github.io/Board-de-Desenvolvimento/'>
+                <a id="p-state" className="btn-p-state" href="https://eliscmattosinho.github.io/development-board/" target="_blank" rel="noopener noreferrer">
                     Board de desenvolvimento
                 </a>
             </div>
